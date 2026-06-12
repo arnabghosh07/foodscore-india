@@ -1,9 +1,11 @@
 'use client';
 
 import { FoodScoreResult, NutrientScore, Nutriments } from '@/lib/types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ShareCard from './ShareCard';
 import FoodChat from './FoodChat';
+import { searchProducts } from '@/lib/api';
+import { calculateFoodScore } from '@/lib/scoring';
 
 interface ScoreDisplayProps {
   result: FoodScoreResult;
@@ -127,8 +129,89 @@ function RawNutritionPanel({ nutriments }: { nutriments: Nutriments }) {
 
 export default function ScoreDisplay({ result, onBack }: ScoreDisplayProps) {
   const [activeTab, setActiveTab] = useState<'overview' | 'details' | 'about'>('overview');
+  const [dbAlternatives, setDbAlternatives] = useState<FoodScoreResult[]>([]);
+  const [loadingAlts, setLoadingAlts] = useState(false);
   const { product, scoringFailed } = result;
   const nutriments = product.nutriments ?? {};
+
+  useEffect(() => {
+    let active = true;
+    const fetchDbAlternatives = async () => {
+      if (scoringFailed) return;
+      setLoadingAlts(true);
+      
+      try {
+        const name = (product.product_name + ' ' + (product.categories || '')).toLowerCase();
+        let searchTerms: string[] = [];
+        if (name.includes('noodle') || name.includes('maggi') || name.includes('ramen')) {
+          searchTerms = ['atta noodles', 'millet noodles'];
+        } else if (name.includes('biscuit') || name.includes('cookie')) {
+          searchTerms = ['digestive biscuits', 'roasted makhana'];
+        } else if (name.includes('chip') || name.includes('kurkure') || name.includes('wafer') || name.includes('namkeen') || name.includes('potato')) {
+          searchTerms = ['roasted chana', 'roasted makhana'];
+        } else if (name.includes('drink') || name.includes('cola') || name.includes('soda') || name.includes('juice') || name.includes('beverage')) {
+          searchTerms = ['coconut water', 'buttermilk chaas'];
+        } else {
+          searchTerms = ['roasted almonds', 'roasted makhana'];
+        }
+
+        const promises = searchTerms.map(term => 
+          searchProducts(term).catch(() => [] as any[])
+        );
+        const searchResultsLists = await Promise.all(promises);
+        
+        if (!active) return;
+
+        // Flatten lists
+        const rawProducts = searchResultsLists.flat();
+        
+        const scored = rawProducts
+          .map(p => {
+            try {
+              return calculateFoodScore(p);
+            } catch (e) {
+              return null;
+            }
+          })
+          .filter((res): res is FoodScoreResult => {
+            if (!res) return false;
+            // Exclude current product
+            if (res.product.code === product.code || res.product.product_name?.toLowerCase() === product.product_name?.toLowerCase()) {
+              return false;
+            }
+            // Only suggest healthier alternatives
+            return res.overallScore > result.overallScore;
+          });
+
+        // Deduplicate by name and brand
+        const seen = new Set<string>();
+        const uniqueScored: FoodScoreResult[] = [];
+        for (const res of scored) {
+          const key = `${res.product.product_name?.toLowerCase() || ''}_${res.product.brands?.toLowerCase() || ''}`;
+          if (!seen.has(key)) {
+            seen.add(key);
+            uniqueScored.push(res);
+          }
+        }
+
+        // Sort by score descending and take top 3
+        const finalAlts = uniqueScored
+          .sort((a, b) => b.overallScore - a.overallScore)
+          .slice(0, 3);
+
+        setDbAlternatives(finalAlts);
+      } catch (err) {
+        console.error('Error fetching database alternatives:', err);
+      } finally {
+        if (active) setLoadingAlts(false);
+      }
+    };
+
+    fetchDbAlternatives();
+    return () => {
+      active = false;
+    };
+  }, [product, result.overallScore, scoringFailed]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pb-24">
@@ -337,8 +420,8 @@ export default function ScoreDisplay({ result, onBack }: ScoreDisplayProps) {
                 </div>
               )}
 
-              {/* Healthy Alternatives */}
-              {!scoringFailed && result.healthyAlternatives && result.healthyAlternatives.length > 0 && (
+              {/* Healthy Alternatives & Real Product Comparison */}
+              {!scoringFailed && (
                 <div className="bg-gradient-to-br from-emerald-50 to-teal-50/30 rounded-2xl border border-emerald-100 p-5 space-y-4">
                   <div className="flex items-center gap-2">
                     <svg className="w-5 h-5 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -346,23 +429,88 @@ export default function ScoreDisplay({ result, onBack }: ScoreDisplayProps) {
                     </svg>
                     <h3 className="font-bold text-emerald-950 text-base">Healthier Alternatives</h3>
                   </div>
-                  <p className="text-xs text-emerald-800 leading-normal">
-                    Love this type of food? Swap it for these cleaner, highly rated alternatives:
-                  </p>
-                  <div className="space-y-3.5">
-                    {result.healthyAlternatives.map((alt, idx) => (
-                      <div key={idx} className="bg-white rounded-xl p-4 border border-emerald-100/60 shadow-sm flex items-start gap-3">
-                        <span className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-black text-white shrink-0 shadow-sm"
-                          style={{ backgroundColor: alt.gradeColor }}>
-                          {alt.grade}
-                        </span>
-                        <div className="space-y-1">
-                          <h4 className="font-bold text-gray-900 text-sm">{alt.name}</h4>
-                          <p className="text-xs text-gray-600 leading-relaxed">{alt.reason}</p>
-                        </div>
+
+                  {/* Real Database Products Comparison */}
+                  {dbAlternatives.length > 0 ? (
+                    <div className="space-y-3">
+                      <span className="text-[10px] font-bold text-emerald-800/80 uppercase tracking-wider block">
+                        Real Products Compared (vs. your {result.overallScore}/100)
+                      </span>
+                      <div className="space-y-2.5">
+                        {dbAlternatives.map((alt, idx) => {
+                          const scoreDiff = alt.overallScore - result.overallScore;
+                          return (
+                            <div key={idx} className="bg-white rounded-xl p-3 border border-emerald-100/50 shadow-sm flex items-center justify-between gap-3">
+                              <div className="flex items-center gap-3 overflow-hidden">
+                                {alt.product.image_front_url ? (
+                                  <img 
+                                    src={alt.product.image_front_url} 
+                                    alt={alt.product.product_name}
+                                    className="w-10 h-10 object-contain rounded-md bg-gray-50 border border-gray-100 p-1 flex-shrink-0"
+                                  />
+                                ) : (
+                                  <div className="w-10 h-10 bg-gray-50 rounded-md border border-gray-100 flex items-center justify-center text-gray-400 text-xs flex-shrink-0">
+                                    📦
+                                  </div>
+                                )}
+                                <div className="truncate">
+                                  <h4 className="font-bold text-gray-900 text-xs truncate leading-normal">
+                                    {alt.product.product_name}
+                                  </h4>
+                                  <p className="text-[10px] text-gray-400 truncate leading-none">
+                                    {alt.product.brands || 'Unknown Brand'}
+                                  </p>
+                                  <span className="inline-block mt-1 text-[9px] text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-semibold">
+                                    +{Math.round(scoreDiff)} pts better
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="flex items-center gap-2 shrink-0">
+                                <div className="text-right">
+                                  <span className="text-xs font-black text-gray-800 block leading-tight">
+                                    {Math.round(alt.overallScore)}/100
+                                  </span>
+                                  <span className="text-[9px] text-gray-400">Score</span>
+                                </div>
+                                <span className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-black text-white shadow-sm"
+                                  style={{ backgroundColor: alt.gradeColor }}>
+                                  {alt.grade}
+                                </span>
+                              </div>
+                            </div>
+                          );
+                        })}
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ) : loadingAlts ? (
+                    <div className="flex items-center gap-2 py-2 text-xs text-emerald-800 font-semibold">
+                      <div className="w-3.5 h-3.5 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin" />
+                      Searching database for healthier matches...
+                    </div>
+                  ) : null}
+
+                  {/* General Clean Swaps */}
+                  {result.healthyAlternatives && result.healthyAlternatives.length > 0 && (
+                    <div className="space-y-3 pt-3 border-t border-emerald-100/50">
+                      <span className="text-[10px] font-bold text-emerald-800/80 uppercase tracking-wider block">
+                        General Clean Food Swaps
+                      </span>
+                      <div className="space-y-2.5">
+                        {result.healthyAlternatives.map((alt, idx) => (
+                          <div key={idx} className="bg-white rounded-xl p-3.5 border border-emerald-100/60 shadow-sm flex items-start gap-3">
+                            <span className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-black text-white shrink-0 shadow-sm"
+                              style={{ backgroundColor: alt.gradeColor }}>
+                              {alt.grade}
+                            </span>
+                            <div className="space-y-1">
+                              <h4 className="font-bold text-gray-900 text-xs leading-normal">{alt.name}</h4>
+                              <p className="text-[10px] text-gray-600 leading-normal">{alt.reason}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 
