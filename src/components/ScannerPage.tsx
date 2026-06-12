@@ -33,79 +33,86 @@ export default function ScannerPage() {
     // Drop duplicate calls while a lookup is already in progress
     if (isLookingUpRef.current) return;
     isLookingUpRef.current = true;
-    setCurrentBarcode(barcode);
-    setViewState('loading');
-    setErrorMessage('');
 
-    // ── Step 1: Fetch product data ────────────────────────────────────────
-    // This is the ONLY thing that can send us to the error screen.
-    let product: Product | null = null;
+    // Outer try/finally guarantees the lock is ALWAYS released —
+    // even when we return early from an error, not-found, or exception.
     try {
-      product = await lookupProduct(barcode);
-    } catch (err) {
-      setErrorType(err instanceof ApiError ? err.type : 'unknown');
-      setErrorMessage(err instanceof Error ? err.message : 'Something went wrong');
-      setViewState('error');
-      return;
-    }
+      const cleanBarcode = barcode.trim();
+      setCurrentBarcode(cleanBarcode);
+      setViewState('loading');
+      setErrorMessage('');
 
-    if (!product) {
-      setViewState('not-found');
-      return;
-    }
+      // ── Step 1: Fetch product data ────────────────────────────────────────
+      // This is the ONLY thing that can send us to the error screen.
+      let product: Product | null = null;
+      try {
+        product = await lookupProduct(cleanBarcode);
+      } catch (err) {
+        setErrorType(err instanceof ApiError ? err.type : 'unknown');
+        setErrorMessage(err instanceof Error ? err.message : 'Something went wrong');
+        setViewState('error');
+        return;
+      }
 
-    // ── Step 2: Score the product ─────────────────────────────────────────
-    // Scoring is secondary — if it fails for any reason we still show the
-    // raw product data with a neutral placeholder score.
-    let scoreResult: FoodScoreResult;
-    try {
-      scoreResult = calculateFoodScore(product);
-    } catch {
-      scoreResult = {
-        dataSource: 'openfoodfacts',
-        product,
-        overallScore: 0,
-        negativePoints: 0,
-        positivePoints: 0,
-        grade: '?',
-        gradeColor: '#95a5a6',
-        gradeLabel: 'Unavailable',
-        novaGroup: product.nova_group ?? 4,
-        novaLabel: 'Unknown',
-        novaDescription: 'Processing level could not be determined.',
-        novaScore: 0,
-        nutrientScores: [],
-        warnings: [],
-        positives: [],
-        feedback: 'Score unavailable — showing raw product data.',
-        summary: product.product_name,
-        scoringFailed: true,
-      };
-    }
+      if (!product) {
+        setViewState('not-found');
+        return;
+      }
 
-    setResult(scoreResult);
-    setViewState('results');
+      // ── Step 2: Score the product ─────────────────────────────────────────
+      // Scoring is secondary — if it fails we still show the raw product data.
+      let scoreResult: FoodScoreResult;
+      try {
+        scoreResult = calculateFoodScore(product);
+      } catch {
+        scoreResult = {
+          dataSource: 'openfoodfacts',
+          product,
+          overallScore: 0,
+          negativePoints: 0,
+          positivePoints: 0,
+          grade: '?',
+          gradeColor: '#95a5a6',
+          gradeLabel: 'Unavailable',
+          novaGroup: product.nova_group ?? 4,
+          novaLabel: 'Unknown',
+          novaDescription: 'Processing level could not be determined.',
+          novaScore: 0,
+          nutrientScores: [],
+          warnings: [],
+          positives: [],
+          feedback: 'Score unavailable — showing raw product data.',
+          summary: product.product_name,
+          scoringFailed: true,
+        };
+      }
 
-    // ── Step 3: Save to history ───────────────────────────────────────────
-    // Never let a history error affect the UI.
-    try {
-      addToHistory({
-        barcode: product.code,
-        productName: product.product_name,
-        score: scoreResult.scoringFailed ? 0 : scoreResult.overallScore,
-        grade: scoreResult.grade,
-        timestamp: Date.now(),
-        imageUrl: product.image_front_url,
-      });
-      setHistory(getHistory());
-    } catch {
-      // silently ignore
+      setResult(scoreResult);
+      setViewState('results');
+
+      // ── Step 3: Save to history ───────────────────────────────────────────
+      try {
+        addToHistory({
+          barcode: product.code,
+          productName: product.product_name,
+          score: scoreResult.scoringFailed ? 0 : scoreResult.overallScore,
+          grade: scoreResult.grade,
+          timestamp: Date.now(),
+          imageUrl: product.image_front_url,
+        });
+        setHistory(getHistory());
+      } catch {
+        // silently ignore history errors
+      }
     } finally {
+      // Always release — no matter which code path was taken
       isLookingUpRef.current = false;
     }
   }, []);
 
   const handleBack = useCallback(() => {
+    // Also release the lookup lock in case we're returning from an error state
+    isLookingUpRef.current = false;
     setResult(null);
     setErrorType('unknown');
     setViewState('scanner');
