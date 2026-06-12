@@ -269,15 +269,15 @@ export function calculateFoodScore(product: Product): FoodScoreResult {
     }
     // 2. High Sugar Check
     if (sugars >= 25) {
-      redFlags.push(`Very High Sugar: ${sugars}g per 100g (exceeds recommended daily limit of 25g)`);
+      redFlags.push(`Very High sugar: ${sugars}g per 100g (exceeds recommended daily limit of 25g)`);
     }
     // 3. High Sodium Check
     if (sodium >= 0.6) {
-      redFlags.push(`Very High Sodium: ${Math.round(sodium * 1000)}mg per 100g (raises blood pressure)`);
+      redFlags.push(`Very High sodium: ${Math.round(sodium * 1000)}mg per 100g (raises blood pressure)`);
     }
     // 4. High Saturated Fat Check
     if (satFat >= 10) {
-      redFlags.push(`Very High Saturated Fat: ${satFat}g per 100g`);
+      redFlags.push(`Very High saturated fat: ${satFat}g per 100g`);
     }
     // 5. Hydrogenated Fats Check
     if (ingredients.includes('hydrogenated') || ingredients.includes('vanaspati')) {
@@ -337,7 +337,14 @@ export function calculateFoodScore(product: Product): FoodScoreResult {
     
     // Add red flags to warnings list so they also show up in health warnings tab
     const baseWarnings = generateWarnings(nutriments, novaGroup);
-    const warnings = Array.from(new Set([...redFlags, ...baseWarnings]));
+    const filteredBaseWarnings = baseWarnings.filter(bw => {
+      const bwLower = bw.toLowerCase();
+      if (bwLower.includes('sugar') && redFlags.some(rf => rf.toLowerCase().includes('sugar'))) return false;
+      if (bwLower.includes('sodium') && redFlags.some(rf => rf.toLowerCase().includes('sodium'))) return false;
+      if (bwLower.includes('saturated fat') && redFlags.some(rf => rf.toLowerCase().includes('saturated fat'))) return false;
+      return true;
+    });
+    const warnings = Array.from(new Set([...redFlags, ...filteredBaseWarnings]));
     const positives = generatePositives(nutriments, novaGroup);
 
     // Generate feedback (combines key positive and warning)
