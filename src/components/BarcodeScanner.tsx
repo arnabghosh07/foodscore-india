@@ -13,9 +13,16 @@ export default function BarcodeScanner({ onScan, onError }: BarcodeScannerProps)
   const [cameraError, setCameraError] = useState<string | null>(null);
   const scannerRef = useRef<Html5Qrcode | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  // One-shot lock: html5-qrcode fires the success callback on every frame
+  // that contains a barcode at 10fps. Without this, onScan fires 3-5 times
+  // before stop() resolves, causing duplicate API calls and race conditions.
+  const hasScannedRef = useRef(false);
 
   const startScanning = useCallback(async () => {
     if (!containerRef.current) return;
+
+    // Reset the one-shot lock for this new scan session
+    hasScannedRef.current = false;
 
     try {
       setCameraError(null);
@@ -30,13 +37,19 @@ export default function BarcodeScanner({ onScan, onError }: BarcodeScannerProps)
           aspectRatio: 1.5,
         },
         (decodedText) => {
-          // Stop scanning on successful read
+          // Guard: only process the FIRST successful decode per session.
+          // html5-qrcode fires this callback on every frame containing a
+          // barcode at 10fps — stop() is async so we'd get 3-5 calls before
+          // the scanner actually stops. This lock prevents duplicates.
+          if (hasScannedRef.current) return;
+          hasScannedRef.current = true;
+
           scanner.stop().catch(() => {});
           setIsScanning(false);
           onScan(decodedText);
         },
         () => {
-          // Ignore scan errors (no barcode found yet)
+          // Ignore per-frame errors (no barcode found in this frame)
         }
       );
 

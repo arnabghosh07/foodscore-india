@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 const BarcodeScanner = dynamic(() => import('./BarcodeScanner'), { ssr: false });
 import ManualEntry from './ManualEntry';
@@ -25,8 +25,14 @@ export default function ScannerPage() {
   const [currentBarcode, setCurrentBarcode] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [errorType, setErrorType] = useState<string>('unknown');
+  // Prevent concurrent lookups caused by the scanner firing onScan multiple
+  // times before stop() resolves (10fps → 3-5 duplicate callbacks on mobile).
+  const isLookingUpRef = useRef(false);
 
   const handleLookup = useCallback(async (barcode: string) => {
+    // Drop duplicate calls while a lookup is already in progress
+    if (isLookingUpRef.current) return;
+    isLookingUpRef.current = true;
     setCurrentBarcode(barcode);
     setViewState('loading');
     setErrorMessage('');
@@ -94,6 +100,8 @@ export default function ScannerPage() {
       setHistory(getHistory());
     } catch {
       // silently ignore
+    } finally {
+      isLookingUpRef.current = false;
     }
   }, []);
 
