@@ -1,5 +1,11 @@
 import { Product, FoodScoreResult, NutrientScore, Nutriments } from './types';
 
+/** Return n if it is a finite number, otherwise fallback (default 0). */
+function safeNum(n: number | undefined, fallback = 0): number {
+  return (n != null && isFinite(n)) ? n : fallback;
+}
+import { lookupIndianFood } from './indianFoods';
+
 // Indian dietary context thresholds (per 100g)
 const INDIAN_THRESHOLDS = {
   sugar: { low: 5, high: 15, veryHigh: 25 },
@@ -29,9 +35,9 @@ function getGrade(score: number): { grade: string; color: string; label: string 
 // Calculate negative points (unhealthy components)
 function calculateNegativePoints(nutriments: Nutriments): number {
   let points = 0;
-  const sugars = nutriments.sugars_100g ?? 0;
-  const satFat = nutriments.saturated_fat_100g ?? 0;
-  const sodium = nutriments.sodium_100g ?? (nutriments.salt_100g ? nutriments.salt_100g / 2.5 : 0);
+  const sugars = safeNum(nutriments.sugars_100g);
+  const satFat = safeNum(nutriments.saturated_fat_100g);
+  const sodium = safeNum(nutriments.sodium_100g) || safeNum(nutriments.salt_100g ? nutriments.salt_100g / 2.5 : 0);
 
   // Sugar points (0-10)
   if (sugars >= INDIAN_THRESHOLDS.sugar.veryHigh) points += 10;
@@ -57,9 +63,9 @@ function calculateNegativePoints(nutriments: Nutriments): number {
 // Calculate positive points (healthy components)
 function calculatePositivePoints(nutriments: Nutriments): number {
   let points = 0;
-  const fiber = nutriments.fiber_100g ?? 0;
-  const protein = nutriments.proteins_100g ?? 0;
-  const fruitsVeg = nutriments.fruits_vegetables_nuts_100g ?? 0;
+  const fiber = safeNum(nutriments.fiber_100g);
+  const protein = safeNum(nutriments.proteins_100g);
+  const fruitsVeg = safeNum(nutriments.fruits_vegetables_nuts_100g);
 
   // Fiber points (0-5)
   if (fiber >= INDIAN_THRESHOLDS.fiber.excellent) points += 5;
@@ -95,7 +101,7 @@ function getNutrientScores(nutriments: Nutriments): NutrientScore[] {
   const scores: NutrientScore[] = [];
 
   // Sugar
-  const sugars = nutriments.sugars_100g ?? 0;
+  const sugars = safeNum(nutriments.sugars_100g);
   const sugarScore = Math.min(10, Math.max(0, 10 - (sugars / 2.5)));
   scores.push({
     name: 'Sugar',
@@ -108,7 +114,7 @@ function getNutrientScores(nutriments: Nutriments): NutrientScore[] {
   });
 
   // Saturated Fat
-  const satFat = nutriments.saturated_fat_100g ?? 0;
+  const satFat = safeNum(nutriments.saturated_fat_100g);
   const satFatScore = Math.min(10, Math.max(0, 10 - (satFat / 1)));
   scores.push({
     name: 'Saturated Fat',
@@ -121,7 +127,7 @@ function getNutrientScores(nutriments: Nutriments): NutrientScore[] {
   });
 
   // Sodium
-  const sodium = nutriments.sodium_100g ?? (nutriments.salt_100g ? nutriments.salt_100g / 2.5 : 0);
+  const sodium = safeNum(nutriments.sodium_100g) || safeNum(nutriments.salt_100g ? nutriments.salt_100g / 2.5 : 0);
   const sodiumScore = Math.min(10, Math.max(0, 10 - (sodium / 0.06)));
   scores.push({
     name: 'Sodium',
@@ -134,7 +140,7 @@ function getNutrientScores(nutriments: Nutriments): NutrientScore[] {
   });
 
   // Fiber
-  const fiber = nutriments.fiber_100g ?? 0;
+  const fiber = safeNum(nutriments.fiber_100g);
   const fiberScore = Math.min(10, Math.max(0, (fiber / 0.6)));
   scores.push({
     name: 'Fiber',
@@ -147,7 +153,7 @@ function getNutrientScores(nutriments: Nutriments): NutrientScore[] {
   });
 
   // Protein
-  const protein = nutriments.proteins_100g ?? 0;
+  const protein = safeNum(nutriments.proteins_100g);
   const proteinScore = Math.min(10, Math.max(0, (protein / 1.2)));
   scores.push({
     name: 'Protein',
@@ -165,9 +171,9 @@ function getNutrientScores(nutriments: Nutriments): NutrientScore[] {
 // Generate warnings based on nutritional content
 function generateWarnings(nutriments: Nutriments, novaGroup?: number): string[] {
   const warnings: string[] = [];
-  const sugars = nutriments.sugars_100g ?? 0;
-  const satFat = nutriments.saturated_fat_100g ?? 0;
-  const sodium = nutriments.sodium_100g ?? (nutriments.salt_100g ? nutriments.salt_100g / 2.5 : 0);
+  const sugars = safeNum(nutriments.sugars_100g);
+  const satFat = safeNum(nutriments.saturated_fat_100g);
+  const sodium = safeNum(nutriments.sodium_100g) || safeNum(nutriments.salt_100g ? nutriments.salt_100g / 2.5 : 0);
 
   if (sugars >= INDIAN_THRESHOLDS.sugar.veryHigh) {
     warnings.push(`High sugar: ${sugars}g per 100g (WHO recommends <25g/day)`);
@@ -191,10 +197,10 @@ function generateWarnings(nutriments: Nutriments, novaGroup?: number): string[] 
 // Generate positives
 function generatePositives(nutriments: Nutriments, novaGroup?: number): string[] {
   const positives: string[] = [];
-  const fiber = nutriments.fiber_100g ?? 0;
-  const protein = nutriments.proteins_100g ?? 0;
-  const sugars = nutriments.sugars_100g ?? 0;
-  const satFat = nutriments.saturated_fat_100g ?? 0;
+  const fiber = safeNum(nutriments.fiber_100g);
+  const protein = safeNum(nutriments.proteins_100g);
+  const sugars = safeNum(nutriments.sugars_100g);
+  const satFat = safeNum(nutriments.saturated_fat_100g);
 
   if (fiber >= INDIAN_THRESHOLDS.fiber.good) {
     positives.push(`Good source of fiber: ${fiber}g per 100g`);
@@ -217,7 +223,19 @@ function generatePositives(nutriments: Nutriments, novaGroup?: number): string[]
 
 // Main scoring function
 export function calculateFoodScore(product: Product): FoodScoreResult {
-  const nutriments = product.nutriments;
+  // Use product nutriments, fall back to IFCT Indian food data if empty
+  let nutriments = product.nutriments ?? {};
+  
+  // Check if nutriments are empty (all zeros or missing key fields)
+  const hasNutriments = nutriments.proteins_100g != null || nutriments.sugars_100g != null;
+  let usedIfctFallback = false;
+  if (!hasNutriments && product.product_name) {
+    const indianData = lookupIndianFood(product.product_name);
+    if (indianData) {
+      nutriments = { ...nutriments, ...indianData };
+      usedIfctFallback = true;
+    }
+  }
   const novaGroup = product.nova_group ?? 4;
 
   // Base score from Nutri-Score methodology
@@ -236,6 +254,15 @@ export function calculateFoodScore(product: Product): FoodScoreResult {
   const warnings = generateWarnings(nutriments, novaGroup);
   const positives = generatePositives(nutriments, novaGroup);
 
+  // Generate feedback (combines key positive and warning)
+  const feedback = positives.length > 0 && warnings.length > 0
+    ? positives[0] + '. ' + warnings[0]
+    : positives.length > 0
+      ? positives[0]
+      : warnings.length > 0
+        ? warnings[0]
+        : 'No specific feedback.';
+
   // Generate summary
   let summary = product.product_name + ' scores ' + Math.round(overallScore) + '/100 (' + grade + '). '; 
   if (positives.length > 0) {
@@ -246,17 +273,22 @@ export function calculateFoodScore(product: Product): FoodScoreResult {
   }
 
   return {
+    dataSource: usedIfctFallback ? 'ifct_fallback' : 'openfoodfacts',
     product,
     overallScore,
+    negativePoints,
+    positivePoints,
     grade,
     gradeColor: color,
     gradeLabel: label,
     novaGroup,
     novaLabel: novaInfo.label,
     novaDescription: novaInfo.description,
+    novaScore,
     nutrientScores,
     warnings,
     positives,
+    feedback,
     summary,
   };
 }

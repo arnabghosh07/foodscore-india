@@ -1,4 +1,4 @@
-const CACHE_NAME = 'foodscore-v1';
+const CACHE_NAME = 'foodscore-v2';
 const STATIC_ASSETS = [
   '/',
   '/icon-192.png',
@@ -32,27 +32,44 @@ self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // API requests: Network first, fall back to cache
-  if (url.hostname === 'world.openfoodfacts.org') {
+  // Open Food Facts API: both .org and .net domains
+  // Strategy: Network first, fall back to cache (for offline support)
+  const isOFFApi =
+    url.hostname === 'world.openfoodfacts.org' ||
+    url.hostname === 'world.openfoodfacts.net';
+
+  if (isOFFApi) {
     event.respondWith(
-      caches.open(CACHE_NAME).then((cache) => {
-        return fetch(request)
-          .then((response) => {
-            if (response.ok) {
-              cache.put(request, response.clone());
-            }
-            return response;
-          })
-          .catch(() => {
-            return cache.match(request);
+      fetch(request)
+        .then((response) => {
+          // Only cache successful responses
+          if (response.ok) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+          }
+          return response;
+        })
+        .catch(() => {
+          // Offline fallback: return cached response if available
+          return caches.match(request).then((cached) => {
+            if (cached) return cached;
+            // No cache either — return a synthetic "offline" JSON response
+            return new Response(
+              JSON.stringify({ status: 0, status_verbose: 'offline', product: null }),
+              { status: 200, headers: { 'Content-Type': 'application/json' } }
+            );
           });
-      })
+        })
     );
     return;
   }
 
-  // Images from Open Food Facts: Cache first
-  if (url.hostname === 'images.openfoodfacts.org') {
+  // Product images from Open Food Facts: Cache first (images rarely change)
+  const isOFFImage =
+    url.hostname === 'images.openfoodfacts.org' ||
+    url.hostname === 'images.openfoodfacts.net';
+
+  if (isOFFImage) {
     event.respondWith(
       caches.open(CACHE_NAME).then((cache) => {
         return cache.match(request).then((cached) => {
@@ -69,8 +86,12 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Static assets: Cache first, then network
-  if (request.destination === 'style' || request.destination === 'script' || request.destination === 'font') {
+  // Static assets (JS/CSS/fonts): Cache first, update in background
+  if (
+    request.destination === 'style' ||
+    request.destination === 'script' ||
+    request.destination === 'font'
+  ) {
     event.respondWith(
       caches.open(CACHE_NAME).then((cache) => {
         return cache.match(request).then((cached) => {
@@ -87,8 +108,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-
-  // Navigation requests: Return cached shell when offline
+  // Navigation requests: Network first, fall back to cached shell
   if (request.mode === 'navigate') {
     event.respondWith(
       fetch(request)
@@ -101,27 +121,20 @@ self.addEventListener('fetch', (event) => {
         })
         .catch(() => {
           return caches.match('/').then((cached) => {
-            return cached || new Response('Offline', { status: 503, headers: { 'Content-Type': 'text/html' } });
+            return (
+              cached ||
+              new Response('Offline', {
+                status: 503,
+                headers: { 'Content-Type': 'text/html' },
+              })
+            );
           });
         })
     );
     return;
   }
 
-  // Default: Network first, fall back to cache
-  event.respondWith(
-    fetch(request)
-      .then((response) => {
-        if (response.ok && request.method === 'GET') {
-          const responseClone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(request, responseClone);
-          });
-        }
-        return response;
-      })
-      .catch(() => {
-        return caches.match(request);
-      })
-  );
+  // Default: Network only (don't cache arbitrary requests)
+  // Previously this fell back to cache which returned undefined → TypeError
+  event.respondWith(fetch(request));
 });

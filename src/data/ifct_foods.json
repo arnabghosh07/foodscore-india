@@ -1,0 +1,6265 @@
+{
+  "foods": [
+    {
+      "name": "Rice flakes",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "rice",
+        "riceflakes",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1480,
+      "protein": 7.44,
+      "fat": 1.14,
+      "carbs": 76.75,
+      "fiber": 3.46,
+      "sugar": 0.34,
+      "saturatedFat": 0.284,
+      "sodium": 0.00258
+    },
+    {
+      "name": "Rice, raw, brown",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "rice",
+        "ricerawbrown",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1480,
+      "protein": 9.16,
+      "fat": 1.24,
+      "carbs": 74.8,
+      "fiber": 4.43,
+      "sugar": 0.69,
+      "saturatedFat": 0.346,
+      "sodium": 0.00364
+    },
+    {
+      "name": "Rice, parboiled, milled",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "rice",
+        "riceparboiledmilled",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1471,
+      "protein": 7.81,
+      "fat": 0.55,
+      "carbs": 77.16,
+      "fiber": 3.74,
+      "sugar": 0.67,
+      "saturatedFat": 0.15,
+      "sodium": 0.00316
+    },
+    {
+      "name": "Rice, raw, milled",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "rice",
+        "ricerawmilled",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1491,
+      "protein": 7.94,
+      "fat": 0.52,
+      "carbs": 78.24,
+      "fiber": 2.81,
+      "sugar": 0.69,
+      "saturatedFat": 0.184,
+      "sodium": 0.00234
+    },
+    {
+      "name": "Rice puffed",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "rice",
+        "ricepuffed",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1514,
+      "protein": 7.47,
+      "fat": 1.62,
+      "carbs": 77.68,
+      "fiber": 2.56,
+      "sugar": 0.64,
+      "saturatedFat": 0.04684,
+      "sodium": 0.00369
+    },
+    {
+      "name": "Wheat, semolina",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "wheat",
+        "wheatsemolina",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1396,
+      "protein": 11.38,
+      "fat": 0.74,
+      "carbs": 68.43,
+      "fiber": 9.72,
+      "sugar": 1.65,
+      "saturatedFat": 0.08887,
+      "sodium": 0.00231
+    },
+    {
+      "name": "Wheat, bulgur",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "wheat",
+        "wheatbulgur",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1430,
+      "protein": 10.84,
+      "fat": 1.45,
+      "carbs": 69.06,
+      "fiber": 8.81,
+      "sugar": 1.2,
+      "saturatedFat": 0.196,
+      "sodium": 0.00209
+    },
+    {
+      "name": "Wheat, whole",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "wheat",
+        "wheatwhole",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1347,
+      "protein": 10.59,
+      "fat": 1.47,
+      "carbs": 64.72,
+      "fiber": 11.23,
+      "sugar": 1.77,
+      "saturatedFat": 0.191,
+      "sodium": 0.0025
+    },
+    {
+      "name": "Wheat, vermicelli",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "wheat",
+        "wheatvermicelli",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1392,
+      "protein": 9.7,
+      "fat": 0.45,
+      "carbs": 70.39,
+      "fiber": 9.28,
+      "sugar": 1.68,
+      "saturatedFat": 0.06459,
+      "sodium": 0.00271
+    },
+    {
+      "name": "Wheat, vermicelli, roasted",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "wheat",
+        "wheatvermicelliroasted",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1423,
+      "protein": 10.37,
+      "fat": 0.49,
+      "carbs": 71.42,
+      "fiber": 9.55,
+      "sugar": 2.14,
+      "saturatedFat": 0.04995,
+      "sodium": 0.00343
+    },
+    {
+      "name": "Wheat flour, refined",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "wheat",
+        "wheatflourrefined",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1472,
+      "protein": 10.36,
+      "fat": 0.76,
+      "carbs": 74.27,
+      "fiber": 2.76,
+      "sugar": 1.79,
+      "saturatedFat": 0.09855,
+      "sodium": 0.00154
+    },
+    {
+      "name": "Wheat flour, atta",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "wheat",
+        "wheatflouratta",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1340,
+      "protein": 10.57,
+      "fat": 1.53,
+      "carbs": 64.17,
+      "fiber": 11.36,
+      "sugar": 1.8,
+      "saturatedFat": 0.206,
+      "sodium": 0.00204
+    },
+    {
+      "name": "Corn, Baby",
+      "group": "Other Vegetables",
+      "keywords": [
+        "corn",
+        "cornbaby",
+        "othervegetables"
+      ],
+      "energyKj": 306,
+      "protein": 2.69,
+      "fat": 1.33,
+      "carbs": 11.66,
+      "fiber": 6.09,
+      "sugar": 0.49,
+      "saturatedFat": 0.211,
+      "sodium": 0.0014
+    },
+    {
+      "name": "Maize, tender, local",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "corn",
+        "maizetenderlocal",
+        "cerealsandmillets"
+      ],
+      "energyKj": 502,
+      "protein": 3.57,
+      "fat": 1.4,
+      "carbs": 22.69,
+      "fiber": 3.67,
+      "sugar": 1.47,
+      "saturatedFat": 0.109,
+      "sodium": 0.00224
+    },
+    {
+      "name": "Maize, tender, sweet",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "corn",
+        "maizetendersweet",
+        "cerealsandmillets"
+      ],
+      "energyKj": 405,
+      "protein": 4.16,
+      "fat": 1.35,
+      "carbs": 16.42,
+      "fiber": 3.3,
+      "sugar": 4.67,
+      "saturatedFat": 0.123,
+      "sodium": 0.00223
+    },
+    {
+      "name": "Maize, dry",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "corn",
+        "maizedry",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1398,
+      "protein": 8.8,
+      "fat": 3.77,
+      "carbs": 64.77,
+      "fiber": 12.24,
+      "sugar": 1.66,
+      "saturatedFat": 0.413,
+      "sodium": 0.00444
+    },
+    {
+      "name": "Ragi",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "ragi",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1342,
+      "protein": 7.16,
+      "fat": 1.92,
+      "carbs": 66.82,
+      "fiber": 11.18,
+      "sugar": 0.34,
+      "saturatedFat": 0.317,
+      "sodium": 0.00475
+    },
+    {
+      "name": "Bajra",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "bajra",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1456,
+      "protein": 10.96,
+      "fat": 5.43,
+      "carbs": 61.78,
+      "fiber": 11.49,
+      "sugar": 0.81,
+      "saturatedFat": 0.875,
+      "sodium": 0.00411
+    },
+    {
+      "name": "Jowar",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "jowar",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1398,
+      "protein": 9.97,
+      "fat": 1.73,
+      "carbs": 67.68,
+      "fiber": 10.22,
+      "sugar": 1.27,
+      "saturatedFat": 0.163,
+      "sodium": 0.00542
+    },
+    {
+      "name": "Barley",
+      "group": "Cereals and Millets",
+      "keywords": [
+        "barley",
+        "cerealsandmillets"
+      ],
+      "energyKj": 1321,
+      "protein": 10.94,
+      "fat": 1.3,
+      "carbs": 61.29,
+      "fiber": 15.64,
+      "sugar": 0.06,
+      "saturatedFat": 0.232,
+      "sodium": 0.00756
+    },
+    {
+      "name": "Green gram, whole",
+      "group": "Grain Legumes",
+      "keywords": [
+        "moong",
+        "greengramwhole",
+        "grainlegumes"
+      ],
+      "energyKj": 1229,
+      "protein": 22.53,
+      "fat": 1.14,
+      "carbs": 46.13,
+      "fiber": 17.04,
+      "sugar": 0.54,
+      "saturatedFat": 0.274,
+      "sodium": 0.01248
+    },
+    {
+      "name": "Green gram, dal",
+      "group": "Grain Legumes",
+      "keywords": [
+        "moong",
+        "greengramdal",
+        "grainlegumes"
+      ],
+      "energyKj": 1363,
+      "protein": 23.88,
+      "fat": 1.35,
+      "carbs": 52.59,
+      "fiber": 9.37,
+      "sugar": 0.95,
+      "saturatedFat": 0.247,
+      "sodium": 0.01014
+    },
+    {
+      "name": "Ground nut",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "moong",
+        "groundnut",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 2176,
+      "protein": 23.65,
+      "fat": 39.63,
+      "carbs": 17.27,
+      "fiber": 10.38,
+      "sugar": 4.42,
+      "saturatedFat": 8.144,
+      "sodium": 0.01221
+    },
+    {
+      "name": "Bengal gram, whole",
+      "group": "Grain Legumes",
+      "keywords": [
+        "chana",
+        "bengalgramwhole",
+        "grainlegumes"
+      ],
+      "energyKj": 1201,
+      "protein": 18.77,
+      "fat": 5.11,
+      "carbs": 39.56,
+      "fiber": 25.22,
+      "sugar": 0.99,
+      "saturatedFat": 0.453,
+      "sodium": 0.02656
+    },
+    {
+      "name": "Bengal gram, dal",
+      "group": "Grain Legumes",
+      "keywords": [
+        "chana",
+        "bengalgramdal",
+        "grainlegumes"
+      ],
+      "energyKj": 1377,
+      "protein": 21.55,
+      "fat": 5.31,
+      "carbs": 46.72,
+      "fiber": 15.15,
+      "sugar": 1.03,
+      "saturatedFat": 0.469,
+      "sodium": 0.02083
+    },
+    {
+      "name": "Lentil dal",
+      "group": "Grain Legumes",
+      "keywords": [
+        "masoor",
+        "lentildal",
+        "grainlegumes"
+      ],
+      "energyKj": 1349,
+      "protein": 24.35,
+      "fat": 0.75,
+      "carbs": 52.53,
+      "fiber": 10.43,
+      "sugar": 1.95,
+      "saturatedFat": 0.09102,
+      "sodium": 0.01027
+    },
+    {
+      "name": "Lentil whole, brown",
+      "group": "Grain Legumes",
+      "keywords": [
+        "masoor",
+        "lentilwholebrown",
+        "grainlegumes"
+      ],
+      "energyKj": 1251,
+      "protein": 22.49,
+      "fat": 0.64,
+      "carbs": 48.47,
+      "fiber": 16.82,
+      "sugar": 1.63,
+      "saturatedFat": 0.08122,
+      "sodium": 0.0112
+    },
+    {
+      "name": "Lentil whole, yellowish",
+      "group": "Grain Legumes",
+      "keywords": [
+        "masoor",
+        "lentilwholeyellowish",
+        "grainlegumes"
+      ],
+      "energyKj": 1246,
+      "protein": 22.87,
+      "fat": 0.61,
+      "carbs": 47.91,
+      "fiber": 16.66,
+      "sugar": 1.5,
+      "saturatedFat": 0.07617,
+      "sodium": 0.01087
+    },
+    {
+      "name": "Black gram, whole",
+      "group": "Grain Legumes",
+      "keywords": [
+        "urad",
+        "blackgramwhole",
+        "grainlegumes"
+      ],
+      "energyKj": 1219,
+      "protein": 21.97,
+      "fat": 1.58,
+      "carbs": 43.99,
+      "fiber": 20.41,
+      "sugar": 0.45,
+      "saturatedFat": 0.258,
+      "sodium": 0.0268
+    },
+    {
+      "name": "Black gram, dal",
+      "group": "Grain Legumes",
+      "keywords": [
+        "urad",
+        "blackgramdal",
+        "grainlegumes"
+      ],
+      "energyKj": 1356,
+      "protein": 23.06,
+      "fat": 1.69,
+      "carbs": 51,
+      "fiber": 11.93,
+      "sugar": 0.84,
+      "saturatedFat": 0.276,
+      "sodium": 0.01888
+    },
+    {
+      "name": "Rajmah, black",
+      "group": "Grain Legumes",
+      "keywords": [
+        "rajma",
+        "rajmahblack",
+        "grainlegumes"
+      ],
+      "energyKj": 1247,
+      "protein": 19.01,
+      "fat": 1.62,
+      "carbs": 49.59,
+      "fiber": 17.74,
+      "sugar": 2.02,
+      "saturatedFat": 0.238,
+      "sodium": 0.0094
+    },
+    {
+      "name": "Rajmah, brown",
+      "group": "Grain Legumes",
+      "keywords": [
+        "rajma",
+        "rajmahbrown",
+        "grainlegumes"
+      ],
+      "energyKj": 1245,
+      "protein": 19.5,
+      "fat": 1.68,
+      "carbs": 48.83,
+      "fiber": 16.95,
+      "sugar": 2.27,
+      "saturatedFat": 0.242,
+      "sodium": 0.01047
+    },
+    {
+      "name": "Rajmah, red",
+      "group": "Grain Legumes",
+      "keywords": [
+        "rajma",
+        "rajmahred",
+        "grainlegumes"
+      ],
+      "energyKj": 1252,
+      "protein": 19.91,
+      "fat": 1.77,
+      "carbs": 48.61,
+      "fiber": 16.57,
+      "sugar": 1.52,
+      "saturatedFat": 0.256,
+      "sodium": 0.01045
+    },
+    {
+      "name": "Soya bean, brown",
+      "group": "Grain Legumes",
+      "keywords": [
+        "soybean",
+        "soyabeanbrown",
+        "grainlegumes"
+      ],
+      "energyKj": 1596,
+      "protein": 35.58,
+      "fat": 19.82,
+      "carbs": 12.79,
+      "fiber": 21.55,
+      "sugar": 2.51,
+      "saturatedFat": 3.092,
+      "sodium": 0.00207
+    },
+    {
+      "name": "Soya bean, white",
+      "group": "Grain Legumes",
+      "keywords": [
+        "soybean",
+        "soyabeanwhite",
+        "grainlegumes"
+      ],
+      "energyKj": 1579,
+      "protein": 37.8,
+      "fat": 19.42,
+      "carbs": 10.16,
+      "fiber": 22.63,
+      "sugar": 2.2,
+      "saturatedFat": 3.002,
+      "sodium": 0.00283
+    },
+    {
+      "name": "Red gram, dal",
+      "group": "Grain Legumes",
+      "keywords": [
+        "dal",
+        "redgramdal",
+        "grainlegumes"
+      ],
+      "energyKj": 1384,
+      "protein": 21.7,
+      "fat": 1.56,
+      "carbs": 55.23,
+      "fiber": 9.06,
+      "sugar": 2.08,
+      "saturatedFat": 0.257,
+      "sodium": 0.01801
+    },
+    {
+      "name": "Moth bean",
+      "group": "Grain Legumes",
+      "keywords": [
+        "dal",
+        "mothbean",
+        "grainlegumes"
+      ],
+      "energyKj": 1291,
+      "protein": 19.75,
+      "fat": 1.76,
+      "carbs": 52.09,
+      "fiber": 15.12,
+      "sugar": 1.36,
+      "saturatedFat": 0.434,
+      "sodium": 0.02634
+    },
+    {
+      "name": "Red gram, whole",
+      "group": "Grain Legumes",
+      "keywords": [
+        "dal",
+        "redgramwhole",
+        "grainlegumes"
+      ],
+      "energyKj": 1146,
+      "protein": 20.47,
+      "fat": 1.38,
+      "carbs": 42.48,
+      "fiber": 22.84,
+      "sugar": 1.3,
+      "saturatedFat": 0.277,
+      "sodium": 0.01903
+    },
+    {
+      "name": "Peas, dry",
+      "group": "Grain Legumes",
+      "keywords": [
+        "dal",
+        "peasdry",
+        "grainlegumes"
+      ],
+      "energyKj": 1269,
+      "protein": 20.43,
+      "fat": 1.89,
+      "carbs": 48.93,
+      "fiber": 17.01,
+      "sugar": 2.03,
+      "saturatedFat": 0.242,
+      "sodium": 0.0234
+    },
+    {
+      "name": "Field bean, black",
+      "group": "Grain Legumes",
+      "keywords": [
+        "dal",
+        "fieldbeanblack",
+        "grainlegumes"
+      ],
+      "energyKj": 1155,
+      "protein": 19.93,
+      "fat": 0.92,
+      "carbs": 43.46,
+      "fiber": 23.4,
+      "sugar": 1.15,
+      "saturatedFat": 0.188,
+      "sodium": 0.00135
+    },
+    {
+      "name": "Peas, fresh",
+      "group": "Other Vegetables",
+      "keywords": [
+        "pea",
+        "peasfresh",
+        "othervegetables"
+      ],
+      "energyKj": 340,
+      "protein": 7.25,
+      "fat": 0.13,
+      "carbs": 11.88,
+      "fiber": 6.32,
+      "sugar": 0.97,
+      "saturatedFat": 0.01901,
+      "sodium": 0.00366
+    },
+    {
+      "name": "Cowpea, brown",
+      "group": "Grain Legumes",
+      "keywords": [
+        "pea",
+        "cowpeabrown",
+        "grainlegumes"
+      ],
+      "energyKj": 1340,
+      "protein": 20.36,
+      "fat": 1.15,
+      "carbs": 54.62,
+      "fiber": 11.54,
+      "sugar": 1.6,
+      "saturatedFat": 0.283,
+      "sodium": 0.01368
+    },
+    {
+      "name": "Red gram, tender, fresh",
+      "group": "Other Vegetables",
+      "keywords": [
+        "pea",
+        "redgramtenderfresh",
+        "othervegetables"
+      ],
+      "energyKj": 520,
+      "protein": 8.09,
+      "fat": 0.92,
+      "carbs": 19.46,
+      "fiber": 5.9,
+      "sugar": 0.55,
+      "saturatedFat": 0.211,
+      "sodium": 0.00254
+    },
+    {
+      "name": "Cowpea, white",
+      "group": "Grain Legumes",
+      "keywords": [
+        "pea",
+        "cowpeawhite",
+        "grainlegumes"
+      ],
+      "energyKj": 1340,
+      "protein": 21.25,
+      "fat": 1.14,
+      "carbs": 53.77,
+      "fiber": 11.7,
+      "sugar": 1.18,
+      "saturatedFat": 0.285,
+      "sodium": 0.01252
+    },
+    {
+      "name": "French beans, hybrid",
+      "group": "Other Vegetables",
+      "keywords": [
+        "beans",
+        "frenchbeanshybrid",
+        "othervegetables"
+      ],
+      "energyKj": 93,
+      "protein": 2.12,
+      "fat": 0.19,
+      "carbs": 2.63,
+      "fiber": 4.18,
+      "sugar": 1,
+      "saturatedFat": 0.0668,
+      "sodium": 0.00918
+    },
+    {
+      "name": "French beans, country",
+      "group": "Other Vegetables",
+      "keywords": [
+        "beans",
+        "frenchbeanscountry",
+        "othervegetables"
+      ],
+      "energyKj": 102,
+      "protein": 2.49,
+      "fat": 0.26,
+      "carbs": 2.68,
+      "fiber": 4.38,
+      "sugar": 1.06,
+      "saturatedFat": 0.07107,
+      "sodium": 0.00884
+    },
+    {
+      "name": "Broad beans",
+      "group": "Other Vegetables",
+      "keywords": [
+        "beans",
+        "broadbeans",
+        "othervegetables"
+      ],
+      "energyKj": 123,
+      "protein": 3.85,
+      "fat": 0.15,
+      "carbs": 2.11,
+      "fiber": 8.63,
+      "sugar": 1.22,
+      "saturatedFat": 0.04262,
+      "sodium": 0.02074
+    },
+    {
+      "name": "Bean scarlet, tender",
+      "group": "Other Vegetables",
+      "keywords": [
+        "beans",
+        "beanscarlettender",
+        "othervegetables"
+      ],
+      "energyKj": 179,
+      "protein": 2.86,
+      "fat": 0.99,
+      "carbs": 5.16,
+      "fiber": 4.5,
+      "sugar": 1.03,
+      "saturatedFat": 0.266,
+      "sodium": 0.00146
+    },
+    {
+      "name": "Field bean, brown",
+      "group": "Grain Legumes",
+      "keywords": [
+        "beans",
+        "fieldbeanbrown",
+        "grainlegumes"
+      ],
+      "energyKj": 1184,
+      "protein": 19.9,
+      "fat": 0.98,
+      "carbs": 45.24,
+      "fiber": 22.4,
+      "sugar": 1.17,
+      "saturatedFat": 0.198,
+      "sodium": 0.00141
+    },
+    {
+      "name": "Field bean, white",
+      "group": "Grain Legumes",
+      "keywords": [
+        "beans",
+        "fieldbeanwhite",
+        "grainlegumes"
+      ],
+      "energyKj": 1173,
+      "protein": 19.84,
+      "fat": 0.94,
+      "carbs": 44.53,
+      "fiber": 22.99,
+      "sugar": 1.07,
+      "saturatedFat": 0.186,
+      "sodium": 0.0017
+    },
+    {
+      "name": "Field beans, tender, broad",
+      "group": "Other Vegetables",
+      "keywords": [
+        "beans",
+        "fieldbeanstenderbroad",
+        "othervegetables"
+      ],
+      "energyKj": 129,
+      "protein": 3.06,
+      "fat": 0.64,
+      "carbs": 2.75,
+      "fiber": 5.64,
+      "sugar": 0.95,
+      "saturatedFat": 0.182,
+      "sodium": 0.01414
+    },
+    {
+      "name": "Field beans, tender, lean",
+      "group": "Other Vegetables",
+      "keywords": [
+        "beans",
+        "fieldbeanstenderlean",
+        "othervegetables"
+      ],
+      "energyKj": 140,
+      "protein": 3.71,
+      "fat": 0.6,
+      "carbs": 2.85,
+      "fiber": 6.19,
+      "sugar": 0.76,
+      "saturatedFat": 0.175,
+      "sodium": 0.01276
+    },
+    {
+      "name": "Cluster beans",
+      "group": "Other Vegetables",
+      "keywords": [
+        "beans",
+        "clusterbeans",
+        "othervegetables"
+      ],
+      "energyKj": 168,
+      "protein": 3.55,
+      "fat": 0.37,
+      "carbs": 4.91,
+      "fiber": 4.83,
+      "sugar": 0.12,
+      "saturatedFat": 0.107,
+      "sodium": 0.00405
+    },
+    {
+      "name": "Horse gram, whole",
+      "group": "Grain Legumes",
+      "keywords": [
+        "beans",
+        "horsegramwhole",
+        "grainlegumes"
+      ],
+      "energyKj": 1379,
+      "protein": 21.73,
+      "fat": 0.62,
+      "carbs": 57.24,
+      "fiber": 7.88,
+      "sugar": 0.35,
+      "saturatedFat": 0.135,
+      "sodium": 0.01214
+    },
+    {
+      "name": "Paneer",
+      "group": "Milk and Milk Products",
+      "keywords": [
+        "paneer",
+        "milkandmilkproducts"
+      ],
+      "energyKj": 1079,
+      "protein": 18.86,
+      "fat": 14.78,
+      "carbs": 12.41,
+      "fiber": 0,
+      "sugar": 11.57,
+      "saturatedFat": 8.851,
+      "sodium": 0.01804
+    },
+    {
+      "name": "Milk, whole, Buffalo",
+      "group": "Milk and Milk Products",
+      "keywords": [
+        "milk",
+        "milkwholebuffalo",
+        "milkandmilkproducts"
+      ],
+      "energyKj": 449,
+      "protein": 3.68,
+      "fat": 6.58,
+      "carbs": 8.39,
+      "fiber": 0,
+      "sugar": 5.34,
+      "saturatedFat": 4.63,
+      "sodium": 0.0301
+    },
+    {
+      "name": "Milk, whole, Cow",
+      "group": "Milk and Milk Products",
+      "keywords": [
+        "milk",
+        "milkwholecow",
+        "milkandmilkproducts"
+      ],
+      "energyKj": 305,
+      "protein": 3.26,
+      "fat": 4.48,
+      "carbs": 4.94,
+      "fiber": 0,
+      "sugar": 4.89,
+      "saturatedFat": 2.707,
+      "sodium": 0.02546
+    },
+    {
+      "name": "Milk fish",
+      "group": "Marine Fish",
+      "keywords": [
+        "milk",
+        "milkfish",
+        "marinefish"
+      ],
+      "energyKj": 442,
+      "protein": 23.66,
+      "fat": 1.09,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.366,
+      "sodium": 0.04298
+    },
+    {
+      "name": "Khoa",
+      "group": "Milk and Milk Products",
+      "keywords": [
+        "milk",
+        "khoa",
+        "milkandmilkproducts"
+      ],
+      "energyKj": 1322,
+      "protein": 16.34,
+      "fat": 20.62,
+      "carbs": 16.53,
+      "fiber": 0,
+      "sugar": 16.14,
+      "saturatedFat": 12.936,
+      "sodium": 0.0481
+    },
+    {
+      "name": "Eggs, Cat fish",
+      "group": "Marine Fish",
+      "keywords": [
+        "butter",
+        "eggscatfish",
+        "marinefish"
+      ],
+      "energyKj": 600,
+      "protein": 24.68,
+      "fat": 5.28,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.818,
+      "sodium": 0.05483
+    },
+    {
+      "name": "Parrot fish",
+      "group": "Marine Fish",
+      "keywords": [
+        "cream",
+        "parrotfish",
+        "marinefish"
+      ],
+      "energyKj": 375,
+      "protein": 20.82,
+      "fat": 0.57,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.174,
+      "sodium": 0.05179
+    },
+    {
+      "name": "Potato, red skin",
+      "group": "Roots and Tubers",
+      "keywords": [
+        "potato",
+        "potatoredskin",
+        "rootsandtubers"
+      ],
+      "energyKj": 306,
+      "protein": 1.83,
+      "fat": 0.22,
+      "carbs": 15.43,
+      "fiber": 1.68,
+      "sugar": 0.38,
+      "saturatedFat": 0.03987,
+      "sodium": 0.00436
+    },
+    {
+      "name": "Potato, brown skin, big",
+      "group": "Roots and Tubers",
+      "keywords": [
+        "potato",
+        "potatobrownskinbig",
+        "rootsandtubers"
+      ],
+      "energyKj": 292,
+      "protein": 1.54,
+      "fat": 0.23,
+      "carbs": 14.89,
+      "fiber": 1.71,
+      "sugar": 0.32,
+      "saturatedFat": 0.04356,
+      "sodium": 0.00411
+    },
+    {
+      "name": "Potato, brown skin, small",
+      "group": "Roots and Tubers",
+      "keywords": [
+        "potato",
+        "potatobrownskinsmall",
+        "rootsandtubers"
+      ],
+      "energyKj": 255,
+      "protein": 1.35,
+      "fat": 0.22,
+      "carbs": 12.9,
+      "fiber": 1.69,
+      "sugar": 0.44,
+      "saturatedFat": 0.04403,
+      "sodium": 0.00397
+    },
+    {
+      "name": "Sweet potato, brown skin",
+      "group": "Roots and Tubers",
+      "keywords": [
+        "potato",
+        "sweetpotatobrownskin",
+        "rootsandtubers"
+      ],
+      "energyKj": 456,
+      "protein": 1.33,
+      "fat": 0.26,
+      "carbs": 24.25,
+      "fiber": 3.99,
+      "sugar": 3.63,
+      "saturatedFat": 0.0661,
+      "sodium": 0.0296
+    },
+    {
+      "name": "Sweet potato, pink skin",
+      "group": "Roots and Tubers",
+      "keywords": [
+        "potato",
+        "sweetpotatopinkskin",
+        "rootsandtubers"
+      ],
+      "energyKj": 452,
+      "protein": 1.27,
+      "fat": 0.33,
+      "carbs": 23.93,
+      "fiber": 3.94,
+      "sugar": 4.03,
+      "saturatedFat": 0.101,
+      "sodium": 0.02904
+    },
+    {
+      "name": "Onion, big",
+      "group": "Condiments and Spices",
+      "keywords": [
+        "onion",
+        "onionbig",
+        "condimentsandspices"
+      ],
+      "energyKj": 201,
+      "protein": 1.5,
+      "fat": 0.24,
+      "carbs": 9.56,
+      "fiber": 2.45,
+      "sugar": 5.88,
+      "saturatedFat": 0.06081,
+      "sodium": 0.0055
+    },
+    {
+      "name": "Onion, stalk",
+      "group": "Other Vegetables",
+      "keywords": [
+        "onion",
+        "onionstalk",
+        "othervegetables"
+      ],
+      "energyKj": 107,
+      "protein": 2.07,
+      "fat": 0.26,
+      "carbs": 2.99,
+      "fiber": 5.21,
+      "sugar": 0.41,
+      "saturatedFat": 0.09208,
+      "sodium": 0.01552
+    },
+    {
+      "name": "Onion, small",
+      "group": "Condiments and Spices",
+      "keywords": [
+        "onion",
+        "onionsmall",
+        "condimentsandspices"
+      ],
+      "energyKj": 237,
+      "protein": 1.82,
+      "fat": 0.16,
+      "carbs": 11.58,
+      "fiber": 1.16,
+      "sugar": 5.62,
+      "saturatedFat": 0.04101,
+      "sodium": 0.00406
+    },
+    {
+      "name": "Tomato, green",
+      "group": "Other Vegetables",
+      "keywords": [
+        "tomato",
+        "tomatogreen",
+        "othervegetables"
+      ],
+      "energyKj": 87,
+      "protein": 1.12,
+      "fat": 0.27,
+      "carbs": 3.18,
+      "fiber": 1.62,
+      "sugar": 0.83,
+      "saturatedFat": 0.04691,
+      "sodium": 0.01311
+    },
+    {
+      "name": "Tomato, ripe, hybrid",
+      "group": "Other Vegetables",
+      "keywords": [
+        "tomato",
+        "tomatoripehybrid",
+        "othervegetables"
+      ],
+      "energyKj": 79,
+      "protein": 0.76,
+      "fat": 0.25,
+      "carbs": 3.2,
+      "fiber": 1.58,
+      "sugar": 1.82,
+      "saturatedFat": 0.04765,
+      "sodium": 0.01186
+    },
+    {
+      "name": "Tomato, ripe, local",
+      "group": "Other Vegetables",
+      "keywords": [
+        "tomato",
+        "tomatoripelocal",
+        "othervegetables"
+      ],
+      "energyKj": 82,
+      "protein": 0.9,
+      "fat": 0.47,
+      "carbs": 2.71,
+      "fiber": 1.77,
+      "sugar": 1.34,
+      "saturatedFat": 0.07956,
+      "sodium": 0.00973
+    },
+    {
+      "name": "Cauliflower",
+      "group": "Other Vegetables",
+      "keywords": [
+        "cauliflower",
+        "othervegetables"
+      ],
+      "energyKj": 96,
+      "protein": 2.15,
+      "fat": 0.44,
+      "carbs": 2.03,
+      "fiber": 3.71,
+      "sugar": 0.47,
+      "saturatedFat": 0.117,
+      "sodium": 0.03072
+    },
+    {
+      "name": "Cauliflower leaves",
+      "group": "Green Leafy Vegetables",
+      "keywords": [
+        "cauliflower",
+        "cauliflowerleaves",
+        "greenleafyvegetables"
+      ],
+      "energyKj": 148,
+      "protein": 3.9,
+      "fat": 0.42,
+      "carbs": 3.39,
+      "fiber": 3.43,
+      "sugar": 0.61,
+      "saturatedFat": 0.115,
+      "sodium": 0.02431
+    },
+    {
+      "name": "Cabbage, violet",
+      "group": "Green Leafy Vegetables",
+      "keywords": [
+        "cabbage",
+        "cabbageviolet",
+        "greenleafyvegetables"
+      ],
+      "energyKj": 97,
+      "protein": 1.39,
+      "fat": 0.21,
+      "carbs": 3.54,
+      "fiber": 2.21,
+      "sugar": 0.8,
+      "saturatedFat": 0.05842,
+      "sodium": 0.024
+    },
+    {
+      "name": "Cabbage, Chinese",
+      "group": "Green Leafy Vegetables",
+      "keywords": [
+        "cabbage",
+        "cabbagechinese",
+        "greenleafyvegetables"
+      ],
+      "energyKj": 75,
+      "protein": 1.58,
+      "fat": 0.13,
+      "carbs": 2.36,
+      "fiber": 2.01,
+      "sugar": 0.42,
+      "saturatedFat": 0.03301,
+      "sodium": 0.02028
+    },
+    {
+      "name": "Cabbage, green",
+      "group": "Green Leafy Vegetables",
+      "keywords": [
+        "cabbage",
+        "cabbagegreen",
+        "greenleafyvegetables"
+      ],
+      "energyKj": 90,
+      "protein": 1.36,
+      "fat": 0.12,
+      "carbs": 3.25,
+      "fiber": 2.76,
+      "sugar": 1,
+      "saturatedFat": 0.04654,
+      "sodium": 0.01498
+    },
+    {
+      "name": "Cabbage, collard greens",
+      "group": "Green Leafy Vegetables",
+      "keywords": [
+        "cabbage",
+        "cabbagecollardgreens",
+        "greenleafyvegetables"
+      ],
+      "energyKj": 126,
+      "protein": 3.63,
+      "fat": 0.27,
+      "carbs": 2.79,
+      "fiber": 2.98,
+      "sugar": 0.76,
+      "saturatedFat": 0.06187,
+      "sodium": 0.02298
+    },
+    {
+      "name": "Pak Choi leaves",
+      "group": "Green Leafy Vegetables",
+      "keywords": [
+        "cabbage",
+        "pakchoileaves",
+        "greenleafyvegetables"
+      ],
+      "energyKj": 67,
+      "protein": 1.41,
+      "fat": 0.25,
+      "carbs": 1.78,
+      "fiber": 1.91,
+      "sugar": 0.52,
+      "saturatedFat": 0.03898,
+      "sodium": 0.03373
+    },
+    {
+      "name": "Brussels sprouts",
+      "group": "Green Leafy Vegetables",
+      "keywords": [
+        "cabbage",
+        "brusselssprouts",
+        "greenleafyvegetables"
+      ],
+      "energyKj": 185,
+      "protein": 4.26,
+      "fat": 0.5,
+      "carbs": 5.09,
+      "fiber": 4.29,
+      "sugar": 0.17,
+      "saturatedFat": 0.226,
+      "sodium": 0.01851
+    },
+    {
+      "name": "Knol - Khol",
+      "group": "Other Vegetables",
+      "keywords": [
+        "cabbage",
+        "knolkhol",
+        "othervegetables"
+      ],
+      "energyKj": 67,
+      "protein": 1.58,
+      "fat": 0.35,
+      "carbs": 1.39,
+      "fiber": 2.75,
+      "sugar": 0.43,
+      "saturatedFat": 0.0974,
+      "sodium": 0.02746
+    },
+    {
+      "name": "Knol-Khol, leaves",
+      "group": "Green Leafy Vegetables",
+      "keywords": [
+        "cabbage",
+        "knolkholleaves",
+        "greenleafyvegetables"
+      ],
+      "energyKj": 178,
+      "protein": 3.12,
+      "fat": 0.35,
+      "carbs": 6.16,
+      "fiber": 2.76,
+      "sugar": 0.1,
+      "saturatedFat": 0.107,
+      "sodium": 0.0268
+    },
+    {
+      "name": "Brinjal-1",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal1",
+        "othervegetables"
+      ],
+      "energyKj": 114,
+      "protein": 1.77,
+      "fat": 0.39,
+      "carbs": 3.49,
+      "fiber": 3.57,
+      "sugar": 0.88,
+      "saturatedFat": 0.09453,
+      "sodium": 0.00315
+    },
+    {
+      "name": "Brinjal-2",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal2",
+        "othervegetables"
+      ],
+      "energyKj": 99,
+      "protein": 1.82,
+      "fat": 0.34,
+      "carbs": 2.71,
+      "fiber": 4.01,
+      "sugar": 0.98,
+      "saturatedFat": 0.08811,
+      "sodium": 0.00392
+    },
+    {
+      "name": "Brinjal-3",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal3",
+        "othervegetables"
+      ],
+      "energyKj": 102,
+      "protein": 1.36,
+      "fat": 0.33,
+      "carbs": 3.38,
+      "fiber": 4.26,
+      "sugar": 0.93,
+      "saturatedFat": 0.07234,
+      "sodium": 0.00312
+    },
+    {
+      "name": "Brinjal-4",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal4",
+        "othervegetables"
+      ],
+      "energyKj": 100,
+      "protein": 1.51,
+      "fat": 0.31,
+      "carbs": 3.19,
+      "fiber": 4.04,
+      "sugar": 0.86,
+      "saturatedFat": 0.06691,
+      "sodium": 0.00331
+    },
+    {
+      "name": "Brinjal-5",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal5",
+        "othervegetables"
+      ],
+      "energyKj": 111,
+      "protein": 1.38,
+      "fat": 0.29,
+      "carbs": 4.02,
+      "fiber": 4.13,
+      "sugar": 0.99,
+      "saturatedFat": 0.06924,
+      "sodium": 0.00403
+    },
+    {
+      "name": "Brinjal-6",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal6",
+        "othervegetables"
+      ],
+      "energyKj": 97,
+      "protein": 1.46,
+      "fat": 0.29,
+      "carbs": 3.29,
+      "fiber": 3.68,
+      "sugar": 1,
+      "saturatedFat": 0.07099,
+      "sodium": 0.00375
+    },
+    {
+      "name": "Brinjal-7",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal7",
+        "othervegetables"
+      ],
+      "energyKj": 98,
+      "protein": 1.4,
+      "fat": 0.37,
+      "carbs": 3.1,
+      "fiber": 3.32,
+      "sugar": 1.38,
+      "saturatedFat": 0.07172,
+      "sodium": 0.00345
+    },
+    {
+      "name": "Brinjal-8",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal8",
+        "othervegetables"
+      ],
+      "energyKj": 117,
+      "protein": 1.82,
+      "fat": 0.33,
+      "carbs": 3.75,
+      "fiber": 4.01,
+      "sugar": 0.79,
+      "saturatedFat": 0.06817,
+      "sodium": 0.00473
+    },
+    {
+      "name": "Brinjal-9",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal9",
+        "othervegetables"
+      ],
+      "energyKj": 106,
+      "protein": 1.47,
+      "fat": 0.35,
+      "carbs": 3.52,
+      "fiber": 4,
+      "sugar": 0.91,
+      "saturatedFat": 0.08049,
+      "sodium": 0.00308
+    },
+    {
+      "name": "Brinjal-10",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal10",
+        "othervegetables"
+      ],
+      "energyKj": 116,
+      "protein": 1.68,
+      "fat": 0.25,
+      "carbs": 4.08,
+      "fiber": 3.9,
+      "sugar": 0.86,
+      "saturatedFat": 0.066,
+      "sodium": 0.00435
+    },
+    {
+      "name": "Brinjal-11",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal11",
+        "othervegetables"
+      ],
+      "energyKj": 105,
+      "protein": 1.43,
+      "fat": 0.31,
+      "carbs": 3.53,
+      "fiber": 4.12,
+      "sugar": 1.05,
+      "saturatedFat": 0.06814,
+      "sodium": 0.00347
+    },
+    {
+      "name": "Brinjal-12",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal12",
+        "othervegetables"
+      ],
+      "energyKj": 93,
+      "protein": 1.6,
+      "fat": 0.27,
+      "carbs": 2.73,
+      "fiber": 3.89,
+      "sugar": 1.22,
+      "saturatedFat": 0.06852,
+      "sodium": 0.00388
+    },
+    {
+      "name": "Brinjal-13",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal13",
+        "othervegetables"
+      ],
+      "energyKj": 124,
+      "protein": 1.49,
+      "fat": 0.31,
+      "carbs": 4.51,
+      "fiber": 3.92,
+      "sugar": 1.15,
+      "saturatedFat": 0.08296,
+      "sodium": 0.003
+    },
+    {
+      "name": "Brinjal-14",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal14",
+        "othervegetables"
+      ],
+      "energyKj": 106,
+      "protein": 1.56,
+      "fat": 0.35,
+      "carbs": 3.27,
+      "fiber": 3.87,
+      "sugar": 0.88,
+      "saturatedFat": 0.05914,
+      "sodium": 0.00371
+    },
+    {
+      "name": "Brinjal-15",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal15",
+        "othervegetables"
+      ],
+      "energyKj": 114,
+      "protein": 1.58,
+      "fat": 0.29,
+      "carbs": 3.96,
+      "fiber": 3.99,
+      "sugar": 0.82,
+      "saturatedFat": 0.06708,
+      "sodium": 0.00334
+    },
+    {
+      "name": "Brinjal-16",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal16",
+        "othervegetables"
+      ],
+      "energyKj": 103,
+      "protein": 1.26,
+      "fat": 0.34,
+      "carbs": 3.46,
+      "fiber": 3.74,
+      "sugar": 0.99,
+      "saturatedFat": 0.08365,
+      "sodium": 0.00322
+    },
+    {
+      "name": "Brinjal-17",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal17",
+        "othervegetables"
+      ],
+      "energyKj": 91,
+      "protein": 1.18,
+      "fat": 0.36,
+      "carbs": 2.89,
+      "fiber": 3.94,
+      "sugar": 0.85,
+      "saturatedFat": 0.08114,
+      "sodium": 0.00309
+    },
+    {
+      "name": "Brinjal-18",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal18",
+        "othervegetables"
+      ],
+      "energyKj": 116,
+      "protein": 1.47,
+      "fat": 0.33,
+      "carbs": 4.1,
+      "fiber": 4.38,
+      "sugar": 1.44,
+      "saturatedFat": 0.06918,
+      "sodium": 0.00363
+    },
+    {
+      "name": "Brinjal-19",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal19",
+        "othervegetables"
+      ],
+      "energyKj": 100,
+      "protein": 1.26,
+      "fat": 0.31,
+      "carbs": 3.39,
+      "fiber": 3.97,
+      "sugar": 0.96,
+      "saturatedFat": 0.05927,
+      "sodium": 0.00311
+    },
+    {
+      "name": "Brinjal-20",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal20",
+        "othervegetables"
+      ],
+      "energyKj": 99,
+      "protein": 1.44,
+      "fat": 0.34,
+      "carbs": 3.15,
+      "fiber": 3.73,
+      "sugar": 0.76,
+      "saturatedFat": 0.07991,
+      "sodium": 0.00358
+    },
+    {
+      "name": "Brinjal-21",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjal21",
+        "othervegetables"
+      ],
+      "energyKj": 113,
+      "protein": 1.36,
+      "fat": 0.35,
+      "carbs": 3.93,
+      "fiber": 3.85,
+      "sugar": 0.93,
+      "saturatedFat": 0.08828,
+      "sodium": 0.00306
+    },
+    {
+      "name": "Brinjal - all varieties",
+      "group": "Other Vegetables",
+      "keywords": [
+        "brinjal",
+        "brinjalallvarieties",
+        "othervegetables"
+      ],
+      "energyKj": 106,
+      "protein": 1.48,
+      "fat": 0.32,
+      "carbs": 3.52,
+      "fiber": 3.98,
+      "sugar": 0.97,
+      "saturatedFat": 0.07115,
+      "sodium": 0.00355
+    },
+    {
+      "name": "Carrot, red",
+      "group": "Roots and Tubers",
+      "keywords": [
+        "carrot",
+        "carrotred",
+        "rootsandtubers"
+      ],
+      "energyKj": 160,
+      "protein": 1.04,
+      "fat": 0.47,
+      "carbs": 6.71,
+      "fiber": 4.49,
+      "sugar": 3.96,
+      "saturatedFat": 0.08891,
+      "sodium": 0.06069
+    },
+    {
+      "name": "Carrot, orange",
+      "group": "Roots and Tubers",
+      "keywords": [
+        "carrot",
+        "carrotorange",
+        "rootsandtubers"
+      ],
+      "energyKj": 139,
+      "protein": 0.95,
+      "fat": 0.47,
+      "carbs": 5.55,
+      "fiber": 4.18,
+      "sugar": 3.23,
+      "saturatedFat": 0.08771,
+      "sodium": 0.05233
+    },
+    {
+      "name": "Spinach",
+      "group": "Green Leafy Vegetables",
+      "keywords": [
+        "spinach",
+        "greenleafyvegetables"
+      ],
+      "energyKj": 102,
+      "protein": 2.14,
+      "fat": 0.64,
+      "carbs": 2.05,
+      "fiber": 2.38,
+      "sugar": 0.24,
+      "saturatedFat": 0.183,
+      "sodium": 0.04255
+    },
+    {
+      "name": "Basella leaves",
+      "group": "Green Leafy Vegetables",
+      "keywords": [
+        "spinach",
+        "basellaleaves",
+        "greenleafyvegetables"
+      ],
+      "energyKj": 82,
+      "protein": 1.57,
+      "fat": 0.45,
+      "carbs": 2.01,
+      "fiber": 2.21,
+      "sugar": 0.02,
+      "saturatedFat": 0.101,
+      "sodium": 0.01874
+    },
+    {
+      "name": "Agathi leaves",
+      "group": "Green Leafy Vegetables",
+      "keywords": [
+        "spinach",
+        "agathileaves",
+        "greenleafyvegetables"
+      ],
+      "energyKj": 295,
+      "protein": 8.01,
+      "fat": 1.35,
+      "carbs": 5.21,
+      "fiber": 8.6,
+      "sugar": 0.23,
+      "saturatedFat": 0.49,
+      "sodium": 0.01812
+    },
+    {
+      "name": "Pumpkin, green, cylindrical",
+      "group": "Other Vegetables",
+      "keywords": [
+        "pumpkin",
+        "pumpkingreencylindrical",
+        "othervegetables"
+      ],
+      "energyKj": 103,
+      "protein": 0.87,
+      "fat": 0.18,
+      "carbs": 4.22,
+      "fiber": 2.53,
+      "sugar": 2.9,
+      "saturatedFat": 0.05332,
+      "sodium": 0.00521
+    },
+    {
+      "name": "Pumpkin, orange, round",
+      "group": "Other Vegetables",
+      "keywords": [
+        "pumpkin",
+        "pumpkinorangeround",
+        "othervegetables"
+      ],
+      "energyKj": 97,
+      "protein": 0.84,
+      "fat": 0.16,
+      "carbs": 4,
+      "fiber": 2.56,
+      "sugar": 2.97,
+      "saturatedFat": 0.04458,
+      "sodium": 0.00881
+    },
+    {
+      "name": "Pumpkin leaves, tender",
+      "group": "Green Leafy Vegetables",
+      "keywords": [
+        "pumpkin",
+        "pumpkinleavestender",
+        "greenleafyvegetables"
+      ],
+      "energyKj": 185,
+      "protein": 4.21,
+      "fat": 0.74,
+      "carbs": 4.75,
+      "fiber": 2.25,
+      "sugar": 0.1,
+      "saturatedFat": 0.267,
+      "sodium": 0.0122
+    },
+    {
+      "name": "Tinda, tender",
+      "group": "Other Vegetables",
+      "keywords": [
+        "pumpkin",
+        "tindatender",
+        "othervegetables"
+      ],
+      "energyKj": 58,
+      "protein": 1.02,
+      "fat": 0.17,
+      "carbs": 1.9,
+      "fiber": 2,
+      "sugar": 0.44,
+      "saturatedFat": 0.04897,
+      "sodium": 0.02061
+    },
+    {
+      "name": "Ash gourd",
+      "group": "Other Vegetables",
+      "keywords": [
+        "pumpkin",
+        "ashgourd",
+        "othervegetables"
+      ],
+      "energyKj": 73,
+      "protein": 0.79,
+      "fat": 0.14,
+      "carbs": 2.84,
+      "fiber": 3.37,
+      "sugar": 0.19,
+      "saturatedFat": 0.02526,
+      "sodium": 0.00077
+    },
+    {
+      "name": "Bottle gourd, elongate, pale green",
+      "group": "Other Vegetables",
+      "keywords": [
+        "bottlegourd",
+        "bottlegourdelongatepalegreen",
+        "othervegetables"
+      ],
+      "energyKj": 46,
+      "protein": 0.53,
+      "fat": 0.13,
+      "carbs": 1.68,
+      "fiber": 2.12,
+      "sugar": 0.36,
+      "saturatedFat": 0.04144,
+      "sodium": 0.00146
+    },
+    {
+      "name": "Bottle gourd, elongate, dark green",
+      "group": "Other Vegetables",
+      "keywords": [
+        "bottlegourd",
+        "bottlegourdelongatedarkgreen",
+        "othervegetables"
+      ],
+      "energyKj": 54,
+      "protein": 0.49,
+      "fat": 0.13,
+      "carbs": 2.25,
+      "fiber": 2.11,
+      "sugar": 0.39,
+      "saturatedFat": 0.04204,
+      "sodium": 0.00135
+    },
+    {
+      "name": "Bottle gourd, round, pale green",
+      "group": "Other Vegetables",
+      "keywords": [
+        "bottlegourd",
+        "bottlegourdroundpalegreen",
+        "othervegetables"
+      ],
+      "energyKj": 57,
+      "protein": 0.42,
+      "fat": 0.12,
+      "carbs": 2.53,
+      "fiber": 2.1,
+      "sugar": 0.34,
+      "saturatedFat": 0.04107,
+      "sodium": 0.00152
+    },
+    {
+      "name": "Bitter gourd, jagged, smooth ridges, elongate",
+      "group": "Other Vegetables",
+      "keywords": [
+        "bittergourd",
+        "bittergourdjaggedsmoothridgeselongate",
+        "othervegetables"
+      ],
+      "energyKj": 81,
+      "protein": 1.61,
+      "fat": 0.26,
+      "carbs": 2.29,
+      "fiber": 3.72,
+      "sugar": 0.08,
+      "saturatedFat": 0.142,
+      "sodium": 0.01116
+    },
+    {
+      "name": "Bitter gourd, jagged, teeth ridges, elongate",
+      "group": "Other Vegetables",
+      "keywords": [
+        "bittergourd",
+        "bittergourdjaggedteethridgeselongate",
+        "othervegetables"
+      ],
+      "energyKj": 87,
+      "protein": 1.44,
+      "fat": 0.24,
+      "carbs": 2.82,
+      "fiber": 3.78,
+      "sugar": 0.04,
+      "saturatedFat": 0.144,
+      "sodium": 0.01309
+    },
+    {
+      "name": "Bitter gourd, jagged, teeth ridges, short",
+      "group": "Other Vegetables",
+      "keywords": [
+        "bittergourd",
+        "bittergourdjaggedteethridgesshort",
+        "othervegetables"
+      ],
+      "energyKj": 79,
+      "protein": 1.34,
+      "fat": 0.24,
+      "carbs": 2.53,
+      "fiber": 3.49,
+      "sugar": 0.06,
+      "saturatedFat": 0.139,
+      "sodium": 0.01259
+    },
+    {
+      "name": "Ridge gourd",
+      "group": "Other Vegetables",
+      "keywords": [
+        "ridgegourd",
+        "othervegetables"
+      ],
+      "energyKj": 55,
+      "protein": 0.91,
+      "fat": 0.14,
+      "carbs": 1.72,
+      "fiber": 1.81,
+      "sugar": 0.62,
+      "saturatedFat": 0.05449,
+      "sodium": 0.00471
+    },
+    {
+      "name": "Ridge gourd, smooth skin",
+      "group": "Other Vegetables",
+      "keywords": [
+        "ridgegourd",
+        "ridgegourdsmoothskin",
+        "othervegetables"
+      ],
+      "energyKj": 64,
+      "protein": 0.98,
+      "fat": 0.13,
+      "carbs": 2.24,
+      "fiber": 1.85,
+      "sugar": 0.41,
+      "saturatedFat": 0.04307,
+      "sodium": 0.00627
+    },
+    {
+      "name": "Cucumber, green, elongate",
+      "group": "Other Vegetables",
+      "keywords": [
+        "cucumber",
+        "cucumbergreenelongate",
+        "othervegetables"
+      ],
+      "energyKj": 82,
+      "protein": 0.71,
+      "fat": 0.16,
+      "carbs": 3.48,
+      "fiber": 2.14,
+      "sugar": 0.27,
+      "saturatedFat": 0.06417,
+      "sodium": 0.00633
+    },
+    {
+      "name": "Cucumber, green, short",
+      "group": "Other Vegetables",
+      "keywords": [
+        "cucumber",
+        "cucumbergreenshort",
+        "othervegetables"
+      ],
+      "energyKj": 73,
+      "protein": 0.83,
+      "fat": 0.18,
+      "carbs": 2.82,
+      "fiber": 2.13,
+      "sugar": 0.21,
+      "saturatedFat": 0.06777,
+      "sodium": 0.00611
+    },
+    {
+      "name": "Cucumber, orange, round",
+      "group": "Other Vegetables",
+      "keywords": [
+        "cucumber",
+        "cucumberorangeround",
+        "othervegetables"
+      ],
+      "energyKj": 82,
+      "protein": 0.98,
+      "fat": 0.24,
+      "carbs": 3.01,
+      "fiber": 2.46,
+      "sugar": 0.22,
+      "saturatedFat": 0.0719,
+      "sodium": 0.00816
+    },
+    {
+      "name": "Radish, elongate, red skin",
+      "group": "Roots and Tubers",
+      "keywords": [
+        "radish",
+        "radishelongateredskin",
+        "rootsandtubers"
+      ],
+      "energyKj": 134,
+      "protein": 0.67,
+      "fat": 0.13,
+      "carbs": 6.71,
+      "fiber": 2.46,
+      "sugar": 1.15,
+      "saturatedFat": 0.04265,
+      "sodium": 0.02473
+    },
+    {
+      "name": "Radish, elongate, white skin",
+      "group": "Roots and Tubers",
+      "keywords": [
+        "radish",
+        "radishelongatewhiteskin",
+        "rootsandtubers"
+      ],
+      "energyKj": 135,
+      "protein": 0.77,
+      "fat": 0.15,
+      "carbs": 6.56,
+      "fiber": 2.65,
+      "sugar": 0.95,
+      "saturatedFat": 0.04388,
+      "sodium": 0.0282
+    },
+    {
+      "name": "Radish, round, red skin",
+      "group": "Roots and Tubers",
+      "keywords": [
+        "radish",
+        "radishroundredskin",
+        "rootsandtubers"
+      ],
+      "energyKj": 130,
+      "protein": 0.89,
+      "fat": 0.16,
+      "carbs": 6.07,
+      "fiber": 2.29,
+      "sugar": 0.86,
+      "saturatedFat": 0.04608,
+      "sodium": 0.03227
+    },
+    {
+      "name": "Radish, round, white skin",
+      "group": "Roots and Tubers",
+      "keywords": [
+        "radish",
+        "radishroundwhiteskin",
+        "rootsandtubers"
+      ],
+      "energyKj": 129,
+      "protein": 0.8,
+      "fat": 0.14,
+      "carbs": 6.13,
+      "fiber": 2.37,
+      "sugar": 1.16,
+      "saturatedFat": 0.04115,
+      "sodium": 0.02414
+    },
+    {
+      "name": "Radish leaves",
+      "group": "Green Leafy Vegetables",
+      "keywords": [
+        "radish",
+        "radishleaves",
+        "greenleafyvegetables"
+      ],
+      "energyKj": 109,
+      "protein": 2.22,
+      "fat": 0.51,
+      "carbs": 2.77,
+      "fiber": 1.82,
+      "sugar": 0.29,
+      "saturatedFat": 0.147,
+      "sodium": 0.01739
+    },
+    {
+      "name": "Beet root",
+      "group": "Roots and Tubers",
+      "keywords": [
+        "beetroot",
+        "rootsandtubers"
+      ],
+      "energyKj": 149,
+      "protein": 1.95,
+      "fat": 0.14,
+      "carbs": 6.18,
+      "fiber": 3.31,
+      "sugar": 4.35,
+      "saturatedFat": 0.03117,
+      "sodium": 0.06944
+    },
+    {
+      "name": "Capsicum, green",
+      "group": "Other Vegetables",
+      "keywords": [
+        "capsicum",
+        "capsicumgreen",
+        "othervegetables"
+      ],
+      "energyKj": 68,
+      "protein": 1.11,
+      "fat": 0.34,
+      "carbs": 1.84,
+      "fiber": 2.06,
+      "sugar": 0.86,
+      "saturatedFat": 0.07703,
+      "sodium": 0.00184
+    },
+    {
+      "name": "Capsicum, red",
+      "group": "Other Vegetables",
+      "keywords": [
+        "capsicum",
+        "capsicumred",
+        "othervegetables"
+      ],
+      "energyKj": 83,
+      "protein": 1.47,
+      "fat": 0.47,
+      "carbs": 2.14,
+      "fiber": 2.19,
+      "sugar": 0.93,
+      "saturatedFat": 0.08639,
+      "sodium": 0.0017
+    },
+    {
+      "name": "Capsicum, yellow",
+      "group": "Other Vegetables",
+      "keywords": [
+        "capsicum",
+        "capsicumyellow",
+        "othervegetables"
+      ],
+      "energyKj": 78,
+      "protein": 1.35,
+      "fat": 0.41,
+      "carbs": 1.95,
+      "fiber": 2.19,
+      "sugar": 0.97,
+      "saturatedFat": 0.102,
+      "sodium": 0.00156
+    },
+    {
+      "name": "Chillies, green-1",
+      "group": "Condiments and Spices",
+      "keywords": [
+        "capsicum",
+        "chilliesgreen1",
+        "condimentsandspices"
+      ],
+      "energyKj": 191,
+      "protein": 2.62,
+      "fat": 0.73,
+      "carbs": 6.32,
+      "fiber": 4.86,
+      "sugar": 0.71,
+      "saturatedFat": 0.126,
+      "sodium": 0.00332
+    },
+    {
+      "name": "Chillies, green-2",
+      "group": "Condiments and Spices",
+      "keywords": [
+        "capsicum",
+        "chilliesgreen2",
+        "condimentsandspices"
+      ],
+      "energyKj": 167,
+      "protein": 2.28,
+      "fat": 0.75,
+      "carbs": 5.27,
+      "fiber": 5.13,
+      "sugar": 1.05,
+      "saturatedFat": 0.131,
+      "sodium": 0.00247
+    },
+    {
+      "name": "Chillies, green-3",
+      "group": "Condiments and Spices",
+      "keywords": [
+        "capsicum",
+        "chilliesgreen3",
+        "condimentsandspices"
+      ],
+      "energyKj": 169,
+      "protein": 2.38,
+      "fat": 0.75,
+      "carbs": 5.23,
+      "fiber": 5.1,
+      "sugar": 0.54,
+      "saturatedFat": 0.133,
+      "sodium": 0.00256
+    },
+    {
+      "name": "Chillies, green-4",
+      "group": "Condiments and Spices",
+      "keywords": [
+        "capsicum",
+        "chilliesgreen4",
+        "condimentsandspices"
+      ],
+      "energyKj": 190,
+      "protein": 2.33,
+      "fat": 0.74,
+      "carbs": 6.63,
+      "fiber": 4.15,
+      "sugar": 0.62,
+      "saturatedFat": 0.148,
+      "sodium": 0.00194
+    },
+    {
+      "name": "Chillies, green-5",
+      "group": "Condiments and Spices",
+      "keywords": [
+        "capsicum",
+        "chilliesgreen5",
+        "condimentsandspices"
+      ],
+      "energyKj": 180,
+      "protein": 2.01,
+      "fat": 0.65,
+      "carbs": 6.64,
+      "fiber": 3.95,
+      "sugar": 0.46,
+      "saturatedFat": 0.109,
+      "sodium": 0.00219
+    },
+    {
+      "name": "Chillies, green-6",
+      "group": "Condiments and Spices",
+      "keywords": [
+        "capsicum",
+        "chilliesgreen6",
+        "condimentsandspices"
+      ],
+      "energyKj": 175,
+      "protein": 3.01,
+      "fat": 0.64,
+      "carbs": 5.31,
+      "fiber": 5.15,
+      "sugar": 0.59,
+      "saturatedFat": 0.121,
+      "sodium": 0.00243
+    },
+    {
+      "name": "Chillies, green-7",
+      "group": "Condiments and Spices",
+      "keywords": [
+        "capsicum",
+        "chilliesgreen7",
+        "condimentsandspices"
+      ],
+      "energyKj": 163,
+      "protein": 2.12,
+      "fat": 0.6,
+      "carbs": 5.61,
+      "fiber": 4.95,
+      "sugar": 0.73,
+      "saturatedFat": 0.102,
+      "sodium": 0.002
+    },
+    {
+      "name": "Chillies, green - all varieties",
+      "group": "Condiments and Spices",
+      "keywords": [
+        "capsicum",
+        "chilliesgreenallvarieties",
+        "condimentsandspices"
+      ],
+      "energyKj": 177,
+      "protein": 2.36,
+      "fat": 0.72,
+      "carbs": 5.86,
+      "fiber": 4.77,
+      "sugar": 0.67,
+      "saturatedFat": 0.129,
+      "sodium": 0.0025
+    },
+    {
+      "name": "Chillies, red",
+      "group": "Condiments and Spices",
+      "keywords": [
+        "capsicum",
+        "chilliesred",
+        "condimentsandspices"
+      ],
+      "energyKj": 990,
+      "protein": 12.69,
+      "fat": 6.4,
+      "carbs": 29.46,
+      "fiber": 31.15,
+      "sugar": 4.7,
+      "saturatedFat": 1.141,
+      "sodium": 0.01945
+    },
+    {
+      "name": "Drumstick",
+      "group": "Other Vegetables",
+      "keywords": [
+        "drumstick",
+        "othervegetables"
+      ],
+      "energyKj": 123,
+      "protein": 2.62,
+      "fat": 0.12,
+      "carbs": 3.76,
+      "fiber": 6.83,
+      "sugar": 1.47,
+      "saturatedFat": 0.02905,
+      "sodium": 0.02238
+    },
+    {
+      "name": "Drumstick leaves",
+      "group": "Green Leafy Vegetables",
+      "keywords": [
+        "drumstick",
+        "drumstickleaves",
+        "greenleafyvegetables"
+      ],
+      "energyKj": 282,
+      "protein": 6.41,
+      "fat": 1.64,
+      "carbs": 5.62,
+      "fiber": 8.21,
+      "sugar": 0.02,
+      "saturatedFat": 0.56,
+      "sodium": 0.00934
+    },
+    {
+      "name": "Fenugreek leaves",
+      "group": "Green Leafy Vegetables",
+      "keywords": [
+        "fenugreek",
+        "fenugreekleaves",
+        "greenleafyvegetables"
+      ],
+      "energyKj": 144,
+      "protein": 3.68,
+      "fat": 0.83,
+      "carbs": 2.17,
+      "fiber": 4.9,
+      "sugar": 0.88,
+      "saturatedFat": 0.199,
+      "sodium": 0.04701
+    },
+    {
+      "name": "Fenugreek seeds",
+      "group": "Condiments and Spices",
+      "keywords": [
+        "fenugreek",
+        "fenugreekseeds",
+        "condimentsandspices"
+      ],
+      "energyKj": 983,
+      "protein": 25.41,
+      "fat": 5.72,
+      "carbs": 10.57,
+      "fiber": 47.55,
+      "sugar": 0.55,
+      "saturatedFat": 0.77,
+      "sodium": 0.0402
+    },
+    {
+      "name": "Coriander leaves",
+      "group": "Condiments and Spices",
+      "keywords": [
+        "coriander",
+        "corianderleaves",
+        "condimentsandspices"
+      ],
+      "energyKj": 130,
+      "protein": 3.52,
+      "fat": 0.7,
+      "carbs": 1.93,
+      "fiber": 4.66,
+      "sugar": 0.17,
+      "saturatedFat": 0.228,
+      "sodium": 0.037
+    },
+    {
+      "name": "Coriander seeds",
+      "group": "Condiments and Spices",
+      "keywords": [
+        "coriander",
+        "corianderseeds",
+        "condimentsandspices"
+      ],
+      "energyKj": 1125,
+      "protein": 10.66,
+      "fat": 17.47,
+      "carbs": 12.98,
+      "fiber": 44.81,
+      "sugar": 2.38,
+      "saturatedFat": 0.952,
+      "sodium": 0.03441
+    },
+    {
+      "name": "Banana, ripe, montham",
+      "group": "Fruits",
+      "keywords": [
+        "banana",
+        "bananaripemontham",
+        "fruits"
+      ],
+      "energyKj": 463,
+      "protein": 1.25,
+      "fat": 0.32,
+      "carbs": 24.95,
+      "fiber": 2.21,
+      "sugar": 14.9,
+      "saturatedFat": 0.11,
+      "sodium": 0.00125
+    },
+    {
+      "name": "Banana, ripe, poovam",
+      "group": "Fruits",
+      "keywords": [
+        "banana",
+        "bananaripepoovam",
+        "fruits"
+      ],
+      "energyKj": 445,
+      "protein": 1.49,
+      "fat": 0.35,
+      "carbs": 23.41,
+      "fiber": 2.33,
+      "sugar": 12.54,
+      "saturatedFat": 0.113,
+      "sodium": 0.001
+    },
+    {
+      "name": "Banana, ripe, red",
+      "group": "Fruits",
+      "keywords": [
+        "banana",
+        "bananaripered",
+        "fruits"
+      ],
+      "energyKj": 467,
+      "protein": 1.29,
+      "fat": 0.29,
+      "carbs": 25.21,
+      "fiber": 1.98,
+      "sugar": 14.57,
+      "saturatedFat": 0.106,
+      "sodium": 0.00111
+    },
+    {
+      "name": "Banana, ripe, robusta",
+      "group": "Fruits",
+      "keywords": [
+        "banana",
+        "bananariperobusta",
+        "fruits"
+      ],
+      "energyKj": 440,
+      "protein": 1.23,
+      "fat": 0.33,
+      "carbs": 23.63,
+      "fiber": 1.94,
+      "sugar": 13.65,
+      "saturatedFat": 0.114,
+      "sodium": 0.00085
+    },
+    {
+      "name": "Plantain, stem",
+      "group": "Other Vegetables",
+      "keywords": [
+        "banana",
+        "plantainstem",
+        "othervegetables"
+      ],
+      "energyKj": 165,
+      "protein": 0.35,
+      "fat": 0.16,
+      "carbs": 8.64,
+      "fiber": 2.12,
+      "sugar": 0.65,
+      "saturatedFat": 0.02745,
+      "sodium": 0.02317
+    },
+    {
+      "name": "Plantain, flower",
+      "group": "Other Vegetables",
+      "keywords": [
+        "banana",
+        "plantainflower",
+        "othervegetables"
+      ],
+      "energyKj": 89,
+      "protein": 1.47,
+      "fat": 0.63,
+      "carbs": 2.15,
+      "fiber": 5.25,
+      "sugar": 0.17,
+      "saturatedFat": 0.273,
+      "sodium": 0.00751
+    },
+    {
+      "name": "Plantain, green",
+      "group": "Other Vegetables",
+      "keywords": [
+        "banana",
+        "plantaingreen",
+        "othervegetables"
+      ],
+      "energyKj": 334,
+      "protein": 1.18,
+      "fat": 0.23,
+      "carbs": 17.58,
+      "fiber": 3.6,
+      "sugar": 0.86,
+      "saturatedFat": 0.05713,
+      "sodium": 0.01857
+    },
+    {
+      "name": "Apple, small",
+      "group": "Fruits",
+      "keywords": [
+        "apple",
+        "applesmall",
+        "fruits"
+      ],
+      "energyKj": 267,
+      "protein": 0.31,
+      "fat": 0.53,
+      "carbs": 13.95,
+      "fiber": 2.06,
+      "sugar": 9.8,
+      "saturatedFat": 0.149,
+      "sodium": 0.00145
+    },
+    {
+      "name": "Apple, green",
+      "group": "Fruits",
+      "keywords": [
+        "apple",
+        "applegreen",
+        "fruits"
+      ],
+      "energyKj": 214,
+      "protein": 0.46,
+      "fat": 0.5,
+      "carbs": 10.65,
+      "fiber": 2.54,
+      "sugar": 8.39,
+      "saturatedFat": 0.116,
+      "sodium": 0.00147
+    },
+    {
+      "name": "Apple, small, Kashmir",
+      "group": "Fruits",
+      "keywords": [
+        "apple",
+        "applesmallkashmir",
+        "fruits"
+      ],
+      "energyKj": 269,
+      "protein": 0.27,
+      "fat": 0.6,
+      "carbs": 13.99,
+      "fiber": 2.07,
+      "sugar": 9.15,
+      "saturatedFat": 0.176,
+      "sodium": 0.00122
+    },
+    {
+      "name": "Apple, big",
+      "group": "Fruits",
+      "keywords": [
+        "apple",
+        "applebig",
+        "fruits"
+      ],
+      "energyKj": 261,
+      "protein": 0.29,
+      "fat": 0.64,
+      "carbs": 13.11,
+      "fiber": 2.59,
+      "sugar": 9.53,
+      "saturatedFat": 0.154,
+      "sodium": 0.00143
+    },
+    {
+      "name": "Custard apple",
+      "group": "Fruits",
+      "keywords": [
+        "apple",
+        "custardapple",
+        "fruits"
+      ],
+      "energyKj": 414,
+      "protein": 1.62,
+      "fat": 0.67,
+      "carbs": 20.38,
+      "fiber": 5.1,
+      "sugar": 13.35,
+      "saturatedFat": 0.138,
+      "sodium": 0.00311
+    },
+    {
+      "name": "Wood Apple",
+      "group": "Fruits",
+      "keywords": [
+        "apple",
+        "woodapple",
+        "fruits"
+      ],
+      "energyKj": 327,
+      "protein": 3.14,
+      "fat": 3.62,
+      "carbs": 7.52,
+      "fiber": 5.21,
+      "sugar": 3.81,
+      "saturatedFat": 0.877,
+      "sodium": 0.00148
+    },
+    {
+      "name": "Bael fruit",
+      "group": "Fruits",
+      "keywords": [
+        "apple",
+        "baelfruit",
+        "fruits"
+      ],
+      "energyKj": 569,
+      "protein": 2.63,
+      "fat": 0.57,
+      "carbs": 28.21,
+      "fiber": 6.31,
+      "sugar": 16.35,
+      "saturatedFat": 0.19,
+      "sodium": 0.00156
+    },
+    {
+      "name": "Jambu fruit, ripe",
+      "group": "Fruits",
+      "keywords": [
+        "apple",
+        "jambufruitripe",
+        "fruits"
+      ],
+      "energyKj": 235,
+      "protein": 0.82,
+      "fat": 0.17,
+      "carbs": 12.3,
+      "fiber": 3.07,
+      "sugar": 6.84,
+      "saturatedFat": 0.06649,
+      "sodium": 0.00264
+    },
+    {
+      "name": "Palm fruit, tender",
+      "group": "Fruits",
+      "keywords": [
+        "apple",
+        "palmfruittender",
+        "fruits"
+      ],
+      "energyKj": 101,
+      "protein": 0.5,
+      "fat": 0.12,
+      "carbs": 4.92,
+      "fiber": 2.4,
+      "sugar": 0.19,
+      "saturatedFat": 0.03336,
+      "sodium": 0.00125
+    },
+    {
+      "name": "Mango, green, raw",
+      "group": "Other Vegetables",
+      "keywords": [
+        "mango",
+        "mangogreenraw",
+        "othervegetables"
+      ],
+      "energyKj": 205,
+      "protein": 0.69,
+      "fat": 0.08,
+      "carbs": 10.59,
+      "fiber": 3.01,
+      "sugar": 2.42,
+      "saturatedFat": 0.02728,
+      "sodium": 0.03315
+    },
+    {
+      "name": "Mango, ripe, banganapalli",
+      "group": "Fruits",
+      "keywords": [
+        "mango",
+        "mangoripebanganapalli",
+        "fruits"
+      ],
+      "energyKj": 175,
+      "protein": 0.54,
+      "fat": 0.55,
+      "carbs": 8.18,
+      "fiber": 1.88,
+      "sugar": 7.77,
+      "saturatedFat": 0.17,
+      "sodium": 0.00134
+    },
+    {
+      "name": "Mango, ripe, gulabkhas",
+      "group": "Fruits",
+      "keywords": [
+        "mango",
+        "mangoripegulabkhas",
+        "fruits"
+      ],
+      "energyKj": 209,
+      "protein": 0.52,
+      "fat": 0.53,
+      "carbs": 10.32,
+      "fiber": 1.67,
+      "sugar": 8.13,
+      "saturatedFat": 0.18,
+      "sodium": 0.00139
+    },
+    {
+      "name": "Mango, ripe, himsagar",
+      "group": "Fruits",
+      "keywords": [
+        "mango",
+        "mangoripehimsagar",
+        "fruits"
+      ],
+      "energyKj": 187,
+      "protein": 0.46,
+      "fat": 0.54,
+      "carbs": 9.03,
+      "fiber": 1.55,
+      "sugar": 8.06,
+      "saturatedFat": 0.174,
+      "sodium": 0.00131
+    },
+    {
+      "name": "Mango, ripe, kesar",
+      "group": "Fruits",
+      "keywords": [
+        "mango",
+        "mangoripekesar",
+        "fruits"
+      ],
+      "energyKj": 231,
+      "protein": 0.54,
+      "fat": 0.57,
+      "carbs": 11.36,
+      "fiber": 2.02,
+      "sugar": 9,
+      "saturatedFat": 0.172,
+      "sodium": 0.00143
+    },
+    {
+      "name": "Mango, ripe, neelam",
+      "group": "Fruits",
+      "keywords": [
+        "mango",
+        "mangoripeneelam",
+        "fruits"
+      ],
+      "energyKj": 178,
+      "protein": 0.68,
+      "fat": 0.55,
+      "carbs": 8.21,
+      "fiber": 1.77,
+      "sugar": 7.94,
+      "saturatedFat": 0.178,
+      "sodium": 0.0012
+    },
+    {
+      "name": "Mango, ripe, paheri",
+      "group": "Fruits",
+      "keywords": [
+        "mango",
+        "mangoripepaheri",
+        "fruits"
+      ],
+      "energyKj": 188,
+      "protein": 0.68,
+      "fat": 0.58,
+      "carbs": 8.67,
+      "fiber": 1.97,
+      "sugar": 8.48,
+      "saturatedFat": 0.186,
+      "sodium": 0.00163
+    },
+    {
+      "name": "Mango, ripe, totapari",
+      "group": "Fruits",
+      "keywords": [
+        "mango",
+        "mangoripetotapari",
+        "fruits"
+      ],
+      "energyKj": 248,
+      "protein": 0.41,
+      "fat": 0.49,
+      "carbs": 12.75,
+      "fiber": 1.73,
+      "sugar": 9.24,
+      "saturatedFat": 0.175,
+      "sodium": 0.00132
+    },
+    {
+      "name": "Mango ginger",
+      "group": "Condiments and Spices",
+      "keywords": [
+        "mango",
+        "mangoginger",
+        "condimentsandspices"
+      ],
+      "energyKj": 177,
+      "protein": 1.45,
+      "fat": 0.7,
+      "carbs": 6.98,
+      "fiber": 4.74,
+      "sugar": 2.42,
+      "saturatedFat": 0.177,
+      "sodium": 0.00551
+    },
+    {
+      "name": "Orange, pulp",
+      "group": "Fruits",
+      "keywords": [
+        "orange",
+        "orangepulp",
+        "fruits"
+      ],
+      "energyKj": 156,
+      "protein": 0.7,
+      "fat": 0.13,
+      "carbs": 7.92,
+      "fiber": 1.29,
+      "sugar": 6.86,
+      "saturatedFat": 0.03711,
+      "sodium": 0.00147
+    },
+    {
+      "name": "Kalava",
+      "group": "Marine Fish",
+      "keywords": [
+        "orange",
+        "kalava",
+        "marinefish"
+      ],
+      "energyKj": 374,
+      "protein": 19.38,
+      "fat": 1.2,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.455,
+      "sodium": 0.04014
+    },
+    {
+      "name": "Tiger Prawns, orange",
+      "group": "Marine Shellfish",
+      "keywords": [
+        "orange",
+        "tigerprawnsorange",
+        "marineshellfish"
+      ],
+      "energyKj": 270,
+      "protein": 14.25,
+      "fat": 0.74,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.177,
+      "sodium": 0.06105
+    },
+    {
+      "name": "Musk melon, orange flesh",
+      "group": "Fruits",
+      "keywords": [
+        "orange",
+        "muskmelonorangeflesh",
+        "fruits"
+      ],
+      "energyKj": 97,
+      "protein": 0.42,
+      "fat": 0.35,
+      "carbs": 4.24,
+      "fiber": 1.51,
+      "sugar": 2.99,
+      "saturatedFat": 0.09294,
+      "sodium": 0.01494
+    },
+    {
+      "name": "Grapes, seedless, round, black",
+      "group": "Fruits",
+      "keywords": [
+        "grape",
+        "grapesseedlessroundblack",
+        "fruits"
+      ],
+      "energyKj": 374,
+      "protein": 1.24,
+      "fat": 0.35,
+      "carbs": 19.86,
+      "fiber": 1.15,
+      "sugar": 10.88,
+      "saturatedFat": 0.129,
+      "sodium": 0.00192
+    },
+    {
+      "name": "Grapes, seedless, oval, black",
+      "group": "Fruits",
+      "keywords": [
+        "grape",
+        "grapesseedlessovalblack",
+        "fruits"
+      ],
+      "energyKj": 395,
+      "protein": 1.41,
+      "fat": 0.46,
+      "carbs": 20.48,
+      "fiber": 1.64,
+      "sugar": 9.19,
+      "saturatedFat": 0.04563,
+      "sodium": 0.00183
+    },
+    {
+      "name": "Grapes, seedless, round, green",
+      "group": "Fruits",
+      "keywords": [
+        "grape",
+        "grapesseedlessroundgreen",
+        "fruits"
+      ],
+      "energyKj": 224,
+      "protein": 0.62,
+      "fat": 0.26,
+      "carbs": 11.81,
+      "fiber": 1.28,
+      "sugar": 9.6,
+      "saturatedFat": 0.08711,
+      "sodium": 0.00181
+    },
+    {
+      "name": "Grapes, seeded, round, green",
+      "group": "Fruits",
+      "keywords": [
+        "grape",
+        "grapesseededroundgreen",
+        "fruits"
+      ],
+      "energyKj": 235,
+      "protein": 0.77,
+      "fat": 0.29,
+      "carbs": 12.19,
+      "fiber": 1.25,
+      "sugar": 9.59,
+      "saturatedFat": 0.09242,
+      "sodium": 0.00189
+    },
+    {
+      "name": "Grapes, seeded, round, red",
+      "group": "Fruits",
+      "keywords": [
+        "grape",
+        "grapesseededroundred",
+        "fruits"
+      ],
+      "energyKj": 244,
+      "protein": 0.95,
+      "fat": 0.29,
+      "carbs": 12.55,
+      "fiber": 1.28,
+      "sugar": 10.47,
+      "saturatedFat": 0.09204,
+      "sodium": 0.00159
+    },
+    {
+      "name": "Grapes, seeded, round, black",
+      "group": "Fruits",
+      "keywords": [
+        "grape",
+        "grapesseededroundblack",
+        "fruits"
+      ],
+      "energyKj": 254,
+      "protein": 0.76,
+      "fat": 0.32,
+      "carbs": 13.23,
+      "fiber": 1.35,
+      "sugar": 10.02,
+      "saturatedFat": 0.106,
+      "sodium": 0.00193
+    },
+    {
+      "name": "Raisins, dried, black",
+      "group": "Fruits",
+      "keywords": [
+        "grape",
+        "raisinsdriedblack",
+        "fruits"
+      ],
+      "energyKj": 1279,
+      "protein": 2.57,
+      "fat": 0.34,
+      "carbs": 71.29,
+      "fiber": 3.92,
+      "sugar": 61.51,
+      "saturatedFat": 0.06247,
+      "sodium": 0.01099
+    },
+    {
+      "name": "Raisins, dried, golden",
+      "group": "Fruits",
+      "keywords": [
+        "grape",
+        "raisinsdriedgolden",
+        "fruits"
+      ],
+      "energyKj": 1241,
+      "protein": 2.76,
+      "fat": 0.35,
+      "carbs": 68.79,
+      "fiber": 4.56,
+      "sugar": 57.12,
+      "saturatedFat": 0.121,
+      "sodium": 0.01016
+    },
+    {
+      "name": "Guava, white flesh",
+      "group": "Fruits",
+      "keywords": [
+        "guava",
+        "guavawhiteflesh",
+        "fruits"
+      ],
+      "energyKj": 135,
+      "protein": 1.44,
+      "fat": 0.32,
+      "carbs": 5.13,
+      "fiber": 8.59,
+      "sugar": 4.1,
+      "saturatedFat": 0.0493,
+      "sodium": 0.00287
+    },
+    {
+      "name": "Guava, pink flesh",
+      "group": "Fruits",
+      "keywords": [
+        "guava",
+        "guavapinkflesh",
+        "fruits"
+      ],
+      "energyKj": 195,
+      "protein": 1.19,
+      "fat": 0.25,
+      "carbs": 9.14,
+      "fiber": 7.39,
+      "sugar": 7.79,
+      "saturatedFat": 0.02718,
+      "sodium": 0.00189
+    },
+    {
+      "name": "Papaya, raw",
+      "group": "Other Vegetables",
+      "keywords": [
+        "papaya",
+        "papayaraw",
+        "othervegetables"
+      ],
+      "energyKj": 100,
+      "protein": 0.5,
+      "fat": 0.23,
+      "carbs": 4.4,
+      "fiber": 2.28,
+      "sugar": 3.63,
+      "saturatedFat": 0.06915,
+      "sodium": 0.00755
+    },
+    {
+      "name": "Papaya, ripe",
+      "group": "Fruits",
+      "keywords": [
+        "papaya",
+        "papayaripe",
+        "fruits"
+      ],
+      "energyKj": 100,
+      "protein": 0.42,
+      "fat": 0.16,
+      "carbs": 4.61,
+      "fiber": 2.83,
+      "sugar": 4.09,
+      "saturatedFat": 0.05608,
+      "sodium": 0.00668
+    },
+    {
+      "name": "Pomegranate, maroon seeds",
+      "group": "Fruits",
+      "keywords": [
+        "pomegranate",
+        "pomegranatemaroonseeds",
+        "fruits"
+      ],
+      "energyKj": 229,
+      "protein": 1.33,
+      "fat": 0.15,
+      "carbs": 11.58,
+      "fiber": 2.83,
+      "sugar": 10.87,
+      "saturatedFat": 0.0425,
+      "sodium": 0.00213
+    },
+    {
+      "name": "Coconut, kernal, dry",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "coconut",
+        "coconutkernaldry",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 2611,
+      "protein": 7.27,
+      "fat": 63.26,
+      "carbs": 8.01,
+      "fiber": 15.88,
+      "sugar": 6.93,
+      "saturatedFat": 43.138,
+      "sodium": 0.01668
+    },
+    {
+      "name": "Coconut, kernel, fresh",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "coconut",
+        "coconutkernelfresh",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 1711,
+      "protein": 3.84,
+      "fat": 41.38,
+      "carbs": 6.3,
+      "fiber": 10.42,
+      "sugar": 6.2,
+      "saturatedFat": 28.048,
+      "sodium": 0.00812
+    },
+    {
+      "name": "Coconut Water",
+      "group": "Miscellaneous Foods",
+      "keywords": [
+        "coconut",
+        "coconutwater",
+        "miscellaneousfoods"
+      ],
+      "energyKj": 64,
+      "protein": 0.26,
+      "fat": 0.16,
+      "carbs": 3.16,
+      "fiber": 0,
+      "sugar": 3.06,
+      "saturatedFat": 0.09349,
+      "sodium": 0.02809
+    },
+    {
+      "name": "Water melon, dark green (sugar baby)",
+      "group": "Fruits",
+      "keywords": [
+        "watermelon",
+        "watermelondarkgreensugarbaby",
+        "fruits"
+      ],
+      "energyKj": 85,
+      "protein": 0.6,
+      "fat": 0.16,
+      "carbs": 3.86,
+      "fiber": 0.7,
+      "sugar": 3.66,
+      "saturatedFat": 0.0397,
+      "sodium": 0.00189
+    },
+    {
+      "name": "Water melon, pale green",
+      "group": "Fruits",
+      "keywords": [
+        "watermelon",
+        "watermelonpalegreen",
+        "fruits"
+      ],
+      "energyKj": 70,
+      "protein": 0.59,
+      "fat": 0.16,
+      "carbs": 3.02,
+      "fiber": 0.78,
+      "sugar": 3,
+      "saturatedFat": 0.05033,
+      "sodium": 0.00162
+    },
+    {
+      "name": "Musk melon, yellow flesh",
+      "group": "Fruits",
+      "keywords": [
+        "muskmelon",
+        "muskmelonyellowflesh",
+        "fruits"
+      ],
+      "energyKj": 116,
+      "protein": 0.53,
+      "fat": 0.26,
+      "carbs": 5.4,
+      "fiber": 1.49,
+      "sugar": 2.36,
+      "saturatedFat": 0.079,
+      "sodium": 0.01578
+    },
+    {
+      "name": "Pineapple",
+      "group": "Fruits",
+      "keywords": [
+        "pineapple",
+        "fruits"
+      ],
+      "energyKj": 180,
+      "protein": 0.52,
+      "fat": 0.16,
+      "carbs": 9.42,
+      "fiber": 3.46,
+      "sugar": 8.56,
+      "saturatedFat": 0.05109,
+      "sodium": 0.00143
+    },
+    {
+      "name": "Sapota",
+      "group": "Fruits",
+      "keywords": [
+        "sapota",
+        "fruits"
+      ],
+      "energyKj": 307,
+      "protein": 0.92,
+      "fat": 1.26,
+      "carbs": 13.9,
+      "fiber": 9.6,
+      "sugar": 12.3,
+      "saturatedFat": 0.389,
+      "sodium": 0.00461
+    },
+    {
+      "name": "Jack fruit, raw",
+      "group": "Other Vegetables",
+      "keywords": [
+        "jackfruit",
+        "jackfruitraw",
+        "othervegetables"
+      ],
+      "energyKj": 110,
+      "protein": 1.98,
+      "fat": 0.35,
+      "carbs": 3.48,
+      "fiber": 7.69,
+      "sugar": 2.02,
+      "saturatedFat": 0.04736,
+      "sodium": 0.00353
+    },
+    {
+      "name": "Jack fruit, seed, mature",
+      "group": "Other Vegetables",
+      "keywords": [
+        "jackfruit",
+        "jackfruitseedmature",
+        "othervegetables"
+      ],
+      "energyKj": 322,
+      "protein": 5.79,
+      "fat": 0.44,
+      "carbs": 11.81,
+      "fiber": 8.63,
+      "sugar": 2.23,
+      "saturatedFat": 0.146,
+      "sodium": 0.004
+    },
+    {
+      "name": "Lime, sweet, pulp",
+      "group": "Fruits",
+      "keywords": [
+        "sweetlime",
+        "limesweetpulp",
+        "fruits"
+      ],
+      "energyKj": 114,
+      "protein": 0.76,
+      "fat": 0.2,
+      "carbs": 5.18,
+      "fiber": 2.07,
+      "sugar": 3.42,
+      "saturatedFat": 0.0764,
+      "sodium": 0.00117
+    },
+    {
+      "name": "Chicken, poultry, leg, skinless",
+      "group": "Poultry",
+      "keywords": [
+        "chicken",
+        "chickenpoultrylegskinless",
+        "poultry"
+      ],
+      "energyKj": 1605,
+      "protein": 19.44,
+      "fat": 12.64,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.157,
+      "sodium": 0.06507
+    },
+    {
+      "name": "Chicken, poultry, thigh, skinless",
+      "group": "Poultry",
+      "keywords": [
+        "chicken",
+        "chickenpoultrythighskinless",
+        "poultry"
+      ],
+      "energyKj": 836,
+      "protein": 18.18,
+      "fat": 14.23,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.071,
+      "sodium": 0.06459
+    },
+    {
+      "name": "Chicken, poultry, breast, skinless",
+      "group": "Poultry",
+      "keywords": [
+        "chicken",
+        "chickenpoultrybreastskinless",
+        "poultry"
+      ],
+      "energyKj": 704,
+      "protein": 21.81,
+      "fat": 9,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.816,
+      "sodium": 0.0367
+    },
+    {
+      "name": "Chicken, poultry, wing, skinless",
+      "group": "Poultry",
+      "keywords": [
+        "chicken",
+        "chickenpoultrywingskinless",
+        "poultry"
+      ],
+      "energyKj": 807,
+      "protein": 17.42,
+      "fat": 13.81,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.241,
+      "sodium": 0.07278
+    },
+    {
+      "name": "Chicken mushroom, fresh",
+      "group": "Mushrooms",
+      "keywords": [
+        "chicken",
+        "chickenmushroomfresh",
+        "mushrooms"
+      ],
+      "energyKj": 89,
+      "protein": 1.84,
+      "fat": 0.25,
+      "carbs": 2.76,
+      "fiber": 1.99,
+      "sugar": 0.1,
+      "saturatedFat": 0.0596,
+      "sodium": 0.01022
+    },
+    {
+      "name": "Poultry, chicken, liver",
+      "group": "Poultry",
+      "keywords": [
+        "chicken",
+        "poultrychickenliver",
+        "poultry"
+      ],
+      "energyKj": 518,
+      "protein": 21.57,
+      "fat": 4.08,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.328,
+      "sodium": 0.06158
+    },
+    {
+      "name": "Poultry, chicken, gizzard",
+      "group": "Poultry",
+      "keywords": [
+        "chicken",
+        "poultrychickengizzard",
+        "poultry"
+      ],
+      "energyKj": 386,
+      "protein": 18.22,
+      "fat": 2.07,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.772,
+      "sodium": 0.0506
+    },
+    {
+      "name": "Egg, poultry, omlet",
+      "group": "Egg and Egg Products",
+      "keywords": [
+        "egg",
+        "eggpoultryomlet",
+        "eggandeggproducts"
+      ],
+      "energyKj": 710,
+      "protein": 16.53,
+      "fat": 11.6,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 3.179,
+      "sodium": 0.169
+    },
+    {
+      "name": "Egg, poultry, whole, raw",
+      "group": "Egg and Egg Products",
+      "keywords": [
+        "egg",
+        "eggpoultrywholeraw",
+        "eggandeggproducts"
+      ],
+      "energyKj": 564,
+      "protein": 13.28,
+      "fat": 9.15,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 2.958,
+      "sodium": 0.123
+    },
+    {
+      "name": "Egg, poultry, white, raw",
+      "group": "Egg and Egg Products",
+      "keywords": [
+        "egg",
+        "eggpoultrywhiteraw",
+        "eggandeggproducts"
+      ],
+      "energyKj": 187,
+      "protein": 10.84,
+      "fat": 0.06,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0,
+      "sodium": 0.166
+    },
+    {
+      "name": "Egg, poultry, yolk, raw",
+      "group": "Egg and Egg Products",
+      "keywords": [
+        "egg",
+        "eggpoultryyolkraw",
+        "eggandeggproducts"
+      ],
+      "energyKj": 1242,
+      "protein": 15.74,
+      "fat": 26.34,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 8.58,
+      "sodium": 0.04633
+    },
+    {
+      "name": "Egg, poultry, whole, boiled",
+      "group": "Egg and Egg Products",
+      "keywords": [
+        "egg",
+        "eggpoultrywholeboiled",
+        "eggandeggproducts"
+      ],
+      "energyKj": 618,
+      "protein": 13.43,
+      "fat": 10.54,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 3.464,
+      "sodium": 0.121
+    },
+    {
+      "name": "Egg, poultry, white, boiled",
+      "group": "Egg and Egg Products",
+      "keywords": [
+        "egg",
+        "eggpoultrywhiteboiled",
+        "eggandeggproducts"
+      ],
+      "energyKj": 220,
+      "protein": 12.37,
+      "fat": 0.26,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0,
+      "sodium": 0.144
+    },
+    {
+      "name": "Egg, poultry, yolk, boiled",
+      "group": "Egg and Egg Products",
+      "keywords": [
+        "egg",
+        "eggpoultryyolkboiled",
+        "eggandeggproducts"
+      ],
+      "energyKj": 1290,
+      "protein": 16.13,
+      "fat": 27.46,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 8.819,
+      "sodium": 0.04483
+    },
+    {
+      "name": "Egg, country hen, omlet",
+      "group": "Egg and Egg Products",
+      "keywords": [
+        "egg",
+        "eggcountryhenomlet",
+        "eggandeggproducts"
+      ],
+      "energyKj": 855,
+      "protein": 14.8,
+      "fat": 16.3,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 4.886,
+      "sodium": 0.157
+    },
+    {
+      "name": "Egg, duck, whole, boiled",
+      "group": "Egg and Egg Products",
+      "keywords": [
+        "egg",
+        "eggduckwholeboiled",
+        "eggandeggproducts"
+      ],
+      "energyKj": 738,
+      "protein": 13.8,
+      "fat": 13.61,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 3.598,
+      "sodium": 0.11
+    },
+    {
+      "name": "Egg, duck, whole, raw",
+      "group": "Egg and Egg Products",
+      "keywords": [
+        "egg",
+        "eggduckwholeraw",
+        "eggandeggproducts"
+      ],
+      "energyKj": 760,
+      "protein": 14.6,
+      "fat": 13.83,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 3.373,
+      "sodium": 0.113
+    },
+    {
+      "name": "Egg, duck, whole, omlet",
+      "group": "Egg and Egg Products",
+      "keywords": [
+        "egg",
+        "eggduckwholeomlet",
+        "eggandeggproducts"
+      ],
+      "energyKj": 804,
+      "protein": 15.1,
+      "fat": 14.8,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 3.871,
+      "sodium": 0.175
+    },
+    {
+      "name": "Egg, quial, whole, raw",
+      "group": "Egg and Egg Products",
+      "keywords": [
+        "egg",
+        "eggquialwholeraw",
+        "eggandeggproducts"
+      ],
+      "energyKj": 635,
+      "protein": 12.39,
+      "fat": 11.46,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 2.788,
+      "sodium": 0.132
+    },
+    {
+      "name": "Egg, quial, whole, boiled",
+      "group": "Egg and Egg Products",
+      "keywords": [
+        "egg",
+        "eggquialwholeboiled",
+        "eggandeggproducts"
+      ],
+      "energyKj": 647,
+      "protein": 13.03,
+      "fat": 11.5,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 2.726,
+      "sodium": 0.13
+    },
+    {
+      "name": "Egg, country hen, whole, raw",
+      "group": "Egg and Egg Products",
+      "keywords": [
+        "egg",
+        "eggcountryhenwholeraw",
+        "eggandeggproducts"
+      ],
+      "energyKj": 704,
+      "protein": 13.14,
+      "fat": 13,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 3.792,
+      "sodium": 0.157
+    },
+    {
+      "name": "Egg, country hen, whole, boiled",
+      "group": "Egg and Egg Products",
+      "keywords": [
+        "egg",
+        "eggcountryhenwholeboiled",
+        "eggandeggproducts"
+      ],
+      "energyKj": 767,
+      "protein": 14.43,
+      "fat": 14.1,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 4.074,
+      "sodium": 0.149
+    },
+    {
+      "name": "Gold fish",
+      "group": "Fresh Water Fish and Shellfish",
+      "keywords": [
+        "fish",
+        "goldfish",
+        "freshwaterfishandshellfish"
+      ],
+      "energyKj": 396,
+      "protein": 16.91,
+      "fat": 2.94,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.077,
+      "sodium": 0.02753
+    },
+    {
+      "name": "Moon fish",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "moonfish",
+        "marinefish"
+      ],
+      "energyKj": 526,
+      "protein": 20.74,
+      "fat": 4.69,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 2.929,
+      "sodium": 0.06517
+    },
+    {
+      "name": "Silk fish",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "silkfish",
+        "marinefish"
+      ],
+      "energyKj": 408,
+      "protein": 20.65,
+      "fat": 1.53,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.497,
+      "sodium": 0.04157
+    },
+    {
+      "name": "Queen fish",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "queenfish",
+        "marinefish"
+      ],
+      "energyKj": 400,
+      "protein": 20.97,
+      "fat": 1.17,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.693,
+      "sodium": 0.04893
+    },
+    {
+      "name": "Raai fish",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "raaifish",
+        "marinefish"
+      ],
+      "energyKj": 430,
+      "protein": 21.61,
+      "fat": 1.69,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.654,
+      "sodium": 0.04762
+    },
+    {
+      "name": "Myil meen",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "myilmeen",
+        "marinefish"
+      ],
+      "energyKj": 410,
+      "protein": 22.89,
+      "fat": 0.56,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.15,
+      "sodium": 0.06196
+    },
+    {
+      "name": "Xiphinis",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "xiphinis",
+        "marinefish"
+      ],
+      "energyKj": 370,
+      "protein": 19.82,
+      "fat": 0.88,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.363,
+      "sodium": 0.06621
+    },
+    {
+      "name": "Kannadi paarai",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "kannadipaarai",
+        "marinefish"
+      ],
+      "energyKj": 423,
+      "protein": 22.09,
+      "fat": 1.27,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.479,
+      "sodium": 0.05957
+    },
+    {
+      "name": "Maagaa",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "maagaa",
+        "marinefish"
+      ],
+      "energyKj": 366,
+      "protein": 20.11,
+      "fat": 0.67,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.201,
+      "sodium": 0.05228
+    },
+    {
+      "name": "Tarlava",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "tarlava",
+        "marinefish"
+      ],
+      "energyKj": 414,
+      "protein": 21.72,
+      "fat": 1.2,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.504,
+      "sodium": 0.0674
+    },
+    {
+      "name": "Salmon",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "salmon",
+        "marinefish"
+      ],
+      "energyKj": 721,
+      "protein": 20.97,
+      "fat": 9.86,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 4.305,
+      "sodium": 0.02025
+    },
+    {
+      "name": "Sangada",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "sangada",
+        "marinefish"
+      ],
+      "energyKj": 443,
+      "protein": 20.26,
+      "fat": 2.67,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.128,
+      "sodium": 0.07782
+    },
+    {
+      "name": "Pomfret, snub nose",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "pomfretsnubnose",
+        "marinefish"
+      ],
+      "energyKj": 375,
+      "protein": 21.05,
+      "fat": 0.46,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.145,
+      "sodium": 0.0361
+    },
+    {
+      "name": "Ari fish",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "arifish",
+        "marinefish"
+      ],
+      "energyKj": 415,
+      "protein": 22.01,
+      "fat": 1.11,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.408,
+      "sodium": 0.03735
+    },
+    {
+      "name": "Cat fish",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "catfish",
+        "marinefish"
+      ],
+      "energyKj": 456,
+      "protein": 22.18,
+      "fat": 2.13,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.792,
+      "sodium": 0.03582
+    },
+    {
+      "name": "Guitar fish",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "guitarfish",
+        "marinefish"
+      ],
+      "energyKj": 400,
+      "protein": 22.56,
+      "fat": 0.44,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.114,
+      "sodium": 0.07081
+    },
+    {
+      "name": "Kite fish",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "kitefish",
+        "marinefish"
+      ],
+      "energyKj": 413,
+      "protein": 23.07,
+      "fat": 0.56,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.169,
+      "sodium": 0.05903
+    },
+    {
+      "name": "Sole fish",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "solefish",
+        "marinefish"
+      ],
+      "energyKj": 367,
+      "protein": 19.05,
+      "fat": 1.18,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.416,
+      "sodium": 0.07457
+    },
+    {
+      "name": "Matha",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "matha",
+        "marinefish"
+      ],
+      "energyKj": 389,
+      "protein": 21.17,
+      "fat": 0.79,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.297,
+      "sodium": 0.06258
+    },
+    {
+      "name": "Paarai",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "paarai",
+        "marinefish"
+      ],
+      "energyKj": 435,
+      "protein": 21.58,
+      "fat": 1.84,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.72,
+      "sodium": 0.04522
+    },
+    {
+      "name": "Silver carp",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "silvercarp",
+        "marinefish"
+      ],
+      "energyKj": 555,
+      "protein": 21.71,
+      "fat": 5.17,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.826,
+      "sodium": 0.0196
+    },
+    {
+      "name": "Tilapia",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "tilapia",
+        "marinefish"
+      ],
+      "energyKj": 349,
+      "protein": 18.48,
+      "fat": 1.08,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.413,
+      "sodium": 0.05255
+    },
+    {
+      "name": "Tuna, striped",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "tunastriped",
+        "marinefish"
+      ],
+      "energyKj": 403,
+      "protein": 21.28,
+      "fat": 1.12,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.424,
+      "sodium": 0.0226
+    },
+    {
+      "name": "Kulam paarai",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "kulampaarai",
+        "marinefish"
+      ],
+      "energyKj": 501,
+      "protein": 21.62,
+      "fat": 3.6,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.43,
+      "sodium": 0.04917
+    },
+    {
+      "name": "Pambada",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "pambada",
+        "marinefish"
+      ],
+      "energyKj": 537,
+      "protein": 21.95,
+      "fat": 4.44,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.959,
+      "sodium": 0.08265
+    },
+    {
+      "name": "Sadaya",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "sadaya",
+        "marinefish"
+      ],
+      "energyKj": 462,
+      "protein": 20.68,
+      "fat": 2.97,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.059,
+      "sodium": 0.04941
+    },
+    {
+      "name": "Freshwater Eel",
+      "group": "Fresh Water Fish and Shellfish",
+      "keywords": [
+        "fish",
+        "freshwatereel",
+        "freshwaterfishandshellfish"
+      ],
+      "energyKj": 451,
+      "protein": 20.41,
+      "fat": 2.63,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.981,
+      "sodium": 0.08867
+    },
+    {
+      "name": "Chakla",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "chakla",
+        "marinefish"
+      ],
+      "energyKj": 406,
+      "protein": 20.21,
+      "fat": 1.68,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.654,
+      "sodium": 0.05141
+    },
+    {
+      "name": "Chelu",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "chelu",
+        "marinefish"
+      ],
+      "energyKj": 366,
+      "protein": 20.02,
+      "fat": 0.7,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.229,
+      "sodium": 0.0376
+    },
+    {
+      "name": "Mural",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "mural",
+        "marinefish"
+      ],
+      "energyKj": 345,
+      "protein": 19.04,
+      "fat": 0.58,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.349,
+      "sodium": 0.11
+    },
+    {
+      "name": "Phopat",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "phopat",
+        "marinefish"
+      ],
+      "energyKj": 424,
+      "protein": 22.05,
+      "fat": 1.33,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.441,
+      "sodium": 0.0362
+    },
+    {
+      "name": "Jathi vela meen",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "jathivelameen",
+        "marinefish"
+      ],
+      "energyKj": 453,
+      "protein": 22.45,
+      "fat": 1.92,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.837,
+      "sodium": 0.03053
+    },
+    {
+      "name": "Sankata paarai",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "sankatapaarai",
+        "marinefish"
+      ],
+      "energyKj": 434,
+      "protein": 21.87,
+      "fat": 1.68,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 3.317,
+      "sodium": 0.02233
+    },
+    {
+      "name": "Cat fish",
+      "group": "Fresh Water Fish and Shellfish",
+      "keywords": [
+        "fish",
+        "catfish",
+        "freshwaterfishandshellfish"
+      ],
+      "energyKj": 518,
+      "protein": 15.86,
+      "fat": 6.24,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 2.182,
+      "sodium": 0.02829
+    },
+    {
+      "name": "Tuna",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "tuna",
+        "marinefish"
+      ],
+      "energyKj": 470,
+      "protein": 24.5,
+      "fat": 1.44,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.66,
+      "sodium": 0.05289
+    },
+    {
+      "name": "Ray fish, bow head, spotted",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "rayfishbowheadspotted",
+        "marinefish"
+      ],
+      "energyKj": 349,
+      "protein": 19.03,
+      "fat": 0.7,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.187,
+      "sodium": 0.105
+    },
+    {
+      "name": "Kalamaara",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "kalamaara",
+        "marinefish"
+      ],
+      "energyKj": 523,
+      "protein": 20.89,
+      "fat": 4.54,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 2.107,
+      "sodium": 0.02933
+    },
+    {
+      "name": "Gobro",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "gobro",
+        "marinefish"
+      ],
+      "energyKj": 362,
+      "protein": 19.37,
+      "fat": 0.88,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.289,
+      "sodium": 0.05268
+    },
+    {
+      "name": "Mullet",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "mullet",
+        "marinefish"
+      ],
+      "energyKj": 393,
+      "protein": 20.23,
+      "fat": 1.32,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.495,
+      "sodium": 0.06609
+    },
+    {
+      "name": "Narba",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "narba",
+        "marinefish"
+      ],
+      "energyKj": 432,
+      "protein": 21.95,
+      "fat": 1.6,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.603,
+      "sodium": 0.04951
+    },
+    {
+      "name": "Raai vanthu",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "raaivanthu",
+        "marinefish"
+      ],
+      "energyKj": 410,
+      "protein": 19.39,
+      "fat": 2.17,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.864,
+      "sodium": 0.05083
+    },
+    {
+      "name": "Sardine",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "sardine",
+        "marinefish"
+      ],
+      "energyKj": 637,
+      "protein": 17.91,
+      "fat": 8.99,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.25,
+      "sodium": 0.03849
+    },
+    {
+      "name": "Karimeen",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "karimeen",
+        "marinefish"
+      ],
+      "energyKj": 386,
+      "protein": 19.68,
+      "fat": 1.38,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.577,
+      "sodium": 0.02372
+    },
+    {
+      "name": "Kiriyan",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "kiriyan",
+        "marinefish"
+      ],
+      "energyKj": 556,
+      "protein": 22.49,
+      "fat": 4.7,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 2.102,
+      "sodium": 0.03588
+    },
+    {
+      "name": "Vanjaram",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "vanjaram",
+        "marinefish"
+      ],
+      "energyKj": 570,
+      "protein": 22.28,
+      "fat": 5.18,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 2.229,
+      "sodium": 0.03485
+    },
+    {
+      "name": "Pulli paarai",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "pullipaarai",
+        "marinefish"
+      ],
+      "energyKj": 399,
+      "protein": 20.06,
+      "fat": 1.55,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.593,
+      "sodium": 0.05856
+    },
+    {
+      "name": "Korka",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "korka",
+        "marinefish"
+      ],
+      "energyKj": 528,
+      "protein": 23.72,
+      "fat": 3.36,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.407,
+      "sodium": 0.0433
+    },
+    {
+      "name": "Red snapper, small",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "redsnappersmall",
+        "marinefish"
+      ],
+      "energyKj": 451,
+      "protein": 21.5,
+      "fat": 2.3,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.861,
+      "sodium": 0.03897
+    },
+    {
+      "name": "Nalla bontha",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "nallabontha",
+        "marinefish"
+      ],
+      "energyKj": 364,
+      "protein": 19.82,
+      "fat": 0.72,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.238,
+      "sodium": 0.05787
+    },
+    {
+      "name": "Rohu",
+      "group": "Fresh Water Fish and Shellfish",
+      "keywords": [
+        "fish",
+        "rohu",
+        "freshwaterfishandshellfish"
+      ],
+      "energyKj": 428,
+      "protein": 19.71,
+      "fat": 2.39,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 2.047,
+      "sodium": 0.03556
+    },
+    {
+      "name": "Catla",
+      "group": "Fresh Water Fish and Shellfish",
+      "keywords": [
+        "fish",
+        "catla",
+        "freshwaterfishandshellfish"
+      ],
+      "energyKj": 394,
+      "protein": 17.94,
+      "fat": 2.15,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.67,
+      "sodium": 0.03656
+    },
+    {
+      "name": "Allathi",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "allathi",
+        "marinefish"
+      ],
+      "energyKj": 406,
+      "protein": 21.77,
+      "fat": 0.98,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.346,
+      "sodium": 0.03268
+    },
+    {
+      "name": "Aluva",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "aluva",
+        "marinefish"
+      ],
+      "energyKj": 434,
+      "protein": 21.63,
+      "fat": 1.8,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.755,
+      "sodium": 0.04486
+    },
+    {
+      "name": "Anchovy",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "anchovy",
+        "marinefish"
+      ],
+      "energyKj": 367,
+      "protein": 19.88,
+      "fat": 0.78,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.248,
+      "sodium": 0.212
+    },
+    {
+      "name": "Betki",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "betki",
+        "marinefish"
+      ],
+      "energyKj": 284,
+      "protein": 15.28,
+      "fat": 0.29,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.0864,
+      "sodium": 0.06368
+    },
+    {
+      "name": "Black snapper",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "blacksnapper",
+        "marinefish"
+      ],
+      "energyKj": 377,
+      "protein": 19.5,
+      "fat": 1.24,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.47,
+      "sodium": 0.04123
+    },
+    {
+      "name": "Bombay duck",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "bombayduck",
+        "marinefish"
+      ],
+      "energyKj": 287,
+      "protein": 13.53,
+      "fat": 1.03,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.398,
+      "sodium": 0.223
+    },
+    {
+      "name": "Bommuralu",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "bommuralu",
+        "marinefish"
+      ],
+      "energyKj": 485,
+      "protein": 22.3,
+      "fat": 2.87,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.238,
+      "sodium": 0.06187
+    },
+    {
+      "name": "Chappal",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "chappal",
+        "marinefish"
+      ],
+      "energyKj": 317,
+      "protein": 17.17,
+      "fat": 0.67,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.199,
+      "sodium": 0.03812
+    },
+    {
+      "name": "Chembali",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "chembali",
+        "marinefish"
+      ],
+      "energyKj": 406,
+      "protein": 20.06,
+      "fat": 1.77,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.7,
+      "sodium": 0.03898
+    },
+    {
+      "name": "Eri meen",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "erimeen",
+        "marinefish"
+      ],
+      "energyKj": 454,
+      "protein": 22.3,
+      "fat": 2.02,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.739,
+      "sodium": 0.04119
+    },
+    {
+      "name": "Hilsa",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "hilsa",
+        "marinefish"
+      ],
+      "energyKj": 1083,
+      "protein": 21.8,
+      "fat": 18.49,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 9.286,
+      "sodium": 0.08088
+    },
+    {
+      "name": "Jallal",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "jallal",
+        "marinefish"
+      ],
+      "energyKj": 420,
+      "protein": 21.55,
+      "fat": 1.46,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.519,
+      "sodium": 0.07433
+    },
+    {
+      "name": "Kadal bral",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "kadalbral",
+        "marinefish"
+      ],
+      "energyKj": 368,
+      "protein": 18.72,
+      "fat": 1.34,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.478,
+      "sodium": 0.05366
+    },
+    {
+      "name": "Kadali",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "kadali",
+        "marinefish"
+      ],
+      "energyKj": 530,
+      "protein": 22.07,
+      "fat": 4.2,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.611,
+      "sodium": 0.03606
+    },
+    {
+      "name": "Kanamayya",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "kanamayya",
+        "marinefish"
+      ],
+      "energyKj": 367,
+      "protein": 20.19,
+      "fat": 0.65,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.209,
+      "sodium": 0.05053
+    },
+    {
+      "name": "Karnagawala",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "karnagawala",
+        "marinefish"
+      ],
+      "energyKj": 363,
+      "protein": 19.52,
+      "fat": 0.84,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.255,
+      "sodium": 0.06327
+    },
+    {
+      "name": "Kayrai",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "kayrai",
+        "marinefish"
+      ],
+      "energyKj": 454,
+      "protein": 20.15,
+      "fat": 3,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.096,
+      "sodium": 0.02512
+    },
+    {
+      "name": "Mackerel",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "mackerel",
+        "marinefish"
+      ],
+      "energyKj": 423,
+      "protein": 21.51,
+      "fat": 1.53,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.604,
+      "sodium": 0.08301
+    },
+    {
+      "name": "Manda clathi",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "mandaclathi",
+        "marinefish"
+      ],
+      "energyKj": 398,
+      "protein": 21.27,
+      "fat": 1,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.337,
+      "sodium": 0.0585
+    },
+    {
+      "name": "Padayappa",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "padayappa",
+        "marinefish"
+      ],
+      "energyKj": 360,
+      "protein": 19.7,
+      "fat": 0.69,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.169,
+      "sodium": 0.03387
+    },
+    {
+      "name": "Pali kora",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "palikora",
+        "marinefish"
+      ],
+      "energyKj": 394,
+      "protein": 19.25,
+      "fat": 1.81,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.761,
+      "sodium": 0.05485
+    },
+    {
+      "name": "Pandukopa",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "pandukopa",
+        "marinefish"
+      ],
+      "energyKj": 360,
+      "protein": 19.73,
+      "fat": 0.65,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.195,
+      "sodium": 0.04915
+    },
+    {
+      "name": "Parava",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "parava",
+        "marinefish"
+      ],
+      "energyKj": 467,
+      "protein": 21.5,
+      "fat": 2.74,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.184,
+      "sodium": 0.08408
+    },
+    {
+      "name": "Parcus",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "parcus",
+        "marinefish"
+      ],
+      "energyKj": 361,
+      "protein": 19.87,
+      "fat": 0.62,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.166,
+      "sodium": 0.06438
+    },
+    {
+      "name": "Perinkilichai",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "perinkilichai",
+        "marinefish"
+      ],
+      "energyKj": 387,
+      "protein": 20.89,
+      "fat": 0.87,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.29,
+      "sodium": 0.03416
+    },
+    {
+      "name": "Piranha",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "piranha",
+        "marinefish"
+      ],
+      "energyKj": 549,
+      "protein": 20.46,
+      "fat": 5.43,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.973,
+      "sodium": 0.03897
+    },
+    {
+      "name": "Pomfret, black",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "pomfretblack",
+        "marinefish"
+      ],
+      "energyKj": 515,
+      "protein": 18.91,
+      "fat": 4.83,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 2.229,
+      "sodium": 0.06909
+    },
+    {
+      "name": "Pomfret, white",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "pomfretwhite",
+        "marinefish"
+      ],
+      "energyKj": 513,
+      "protein": 19.02,
+      "fat": 5.12,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 2.669,
+      "sodium": 0.04609
+    },
+    {
+      "name": "Pranel",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "pranel",
+        "marinefish"
+      ],
+      "energyKj": 405,
+      "protein": 19.69,
+      "fat": 1.89,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.827,
+      "sodium": 0.05237
+    },
+    {
+      "name": "Rani",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "rani",
+        "marinefish"
+      ],
+      "energyKj": 377,
+      "protein": 18.83,
+      "fat": 1.49,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 2.926,
+      "sodium": 0.06317
+    },
+    {
+      "name": "Red snapper",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "redsnapper",
+        "marinefish"
+      ],
+      "energyKj": 437,
+      "protein": 22.79,
+      "fat": 1.34,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.485,
+      "sodium": 0.05989
+    },
+    {
+      "name": "Shark",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "shark",
+        "marinefish"
+      ],
+      "energyKj": 398,
+      "protein": 21.6,
+      "fat": 0.83,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.275,
+      "sodium": 0.06363
+    },
+    {
+      "name": "Shark, hammer head",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "sharkhammerhead",
+        "marinefish"
+      ],
+      "energyKj": 432,
+      "protein": 23.4,
+      "fat": 0.8,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.264,
+      "sodium": 0.05355
+    },
+    {
+      "name": "Shark, spotted",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "sharkspotted",
+        "marinefish"
+      ],
+      "energyKj": 384,
+      "protein": 20.95,
+      "fat": 0.75,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.253,
+      "sodium": 0.131
+    },
+    {
+      "name": "Shelavu",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "shelavu",
+        "marinefish"
+      ],
+      "energyKj": 446,
+      "protein": 22.46,
+      "fat": 1.74,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.677,
+      "sodium": 0.03873
+    },
+    {
+      "name": "Silan",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "silan",
+        "marinefish"
+      ],
+      "energyKj": 633,
+      "protein": 22.72,
+      "fat": 6.68,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 3.615,
+      "sodium": 0.02939
+    },
+    {
+      "name": "Stingray",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "stingray",
+        "marinefish"
+      ],
+      "energyKj": 408,
+      "protein": 23.98,
+      "fat": 0.68,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.289,
+      "sodium": 0.06414
+    },
+    {
+      "name": "Tholam",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "tholam",
+        "marinefish"
+      ],
+      "energyKj": 432,
+      "protein": 20.78,
+      "fat": 2.13,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.856,
+      "sodium": 0.028
+    },
+    {
+      "name": "Valava",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "valava",
+        "marinefish"
+      ],
+      "energyKj": 410,
+      "protein": 21.8,
+      "fat": 1.06,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.403,
+      "sodium": 0.09191
+    },
+    {
+      "name": "Vela meen",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "velameen",
+        "marinefish"
+      ],
+      "energyKj": 537,
+      "protein": 22.16,
+      "fat": 4.34,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.857,
+      "sodium": 0.03815
+    },
+    {
+      "name": "Vora",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "vora",
+        "marinefish"
+      ],
+      "energyKj": 422,
+      "protein": 20.14,
+      "fat": 2.14,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.207,
+      "sodium": 0.04366
+    },
+    {
+      "name": "Whale shark",
+      "group": "Marine Fish",
+      "keywords": [
+        "fish",
+        "whaleshark",
+        "marinefish"
+      ],
+      "energyKj": 401,
+      "protein": 21.83,
+      "fat": 0.82,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.266,
+      "sodium": 0.116
+    },
+    {
+      "name": "Pangas",
+      "group": "Fresh Water Fish and Shellfish",
+      "keywords": [
+        "fish",
+        "pangas",
+        "freshwaterfishandshellfish"
+      ],
+      "energyKj": 852,
+      "protein": 17.12,
+      "fat": 16.77,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.863,
+      "sodium": 0.03742
+    },
+    {
+      "name": "Crab",
+      "group": "Fresh Water Fish and Shellfish",
+      "keywords": [
+        "fish",
+        "crab",
+        "freshwaterfishandshellfish"
+      ],
+      "energyKj": 327,
+      "protein": 13.23,
+      "fat": 0.89,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.214,
+      "sodium": 0.28
+    },
+    {
+      "name": "Prawns, big",
+      "group": "Fresh Water Fish and Shellfish",
+      "keywords": [
+        "fish",
+        "prawnsbig",
+        "freshwaterfishandshellfish"
+      ],
+      "energyKj": 380,
+      "protein": 19.24,
+      "fat": 0.52,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.08686,
+      "sodium": 0.849
+    },
+    {
+      "name": "Prawns, small",
+      "group": "Fresh Water Fish and Shellfish",
+      "keywords": [
+        "fish",
+        "prawnssmall",
+        "freshwaterfishandshellfish"
+      ],
+      "energyKj": 297,
+      "protein": 13.07,
+      "fat": 0.78,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.197,
+      "sodium": 0.07771
+    },
+    {
+      "name": "Tiger prawns",
+      "group": "Fresh Water Fish and Shellfish",
+      "keywords": [
+        "fish",
+        "tigerprawns",
+        "freshwaterfishandshellfish"
+      ],
+      "energyKj": 284,
+      "protein": 14.24,
+      "fat": 0.66,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.134,
+      "sodium": 0.08077
+    },
+    {
+      "name": "Tiger prawns, brown",
+      "group": "Marine Shellfish",
+      "keywords": [
+        "prawn",
+        "tigerprawnsbrown",
+        "marineshellfish"
+      ],
+      "energyKj": 273,
+      "protein": 14.85,
+      "fat": 0.56,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 0.121,
+      "sodium": 0.188
+    },
+    {
+      "name": "Goat, chops",
+      "group": "Animal Meat",
+      "keywords": [
+        "goat",
+        "goatchops",
+        "animalmeat"
+      ],
+      "energyKj": 568,
+      "protein": 20.39,
+      "fat": 5.98,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 2.877,
+      "sodium": 0.04572
+    },
+    {
+      "name": "Goat, legs",
+      "group": "Animal Meat",
+      "keywords": [
+        "goat",
+        "goatlegs",
+        "animalmeat"
+      ],
+      "energyKj": 669,
+      "protein": 22.07,
+      "fat": 7.94,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 3.665,
+      "sodium": 0.04277
+    },
+    {
+      "name": "Goat, brain",
+      "group": "Animal Meat",
+      "keywords": [
+        "goat",
+        "goatbrain",
+        "animalmeat"
+      ],
+      "energyKj": 533,
+      "protein": 13.82,
+      "fat": 8.06,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 2.138,
+      "sodium": 0.132
+    },
+    {
+      "name": "Goat, tongue",
+      "group": "Animal Meat",
+      "keywords": [
+        "goat",
+        "goattongue",
+        "animalmeat"
+      ],
+      "energyKj": 789,
+      "protein": 16.63,
+      "fat": 13.68,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 5.028,
+      "sodium": 0.118
+    },
+    {
+      "name": "Goat, lungs",
+      "group": "Animal Meat",
+      "keywords": [
+        "goat",
+        "goatlungs",
+        "animalmeat"
+      ],
+      "energyKj": 401,
+      "protein": 16.86,
+      "fat": 3.09,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.564,
+      "sodium": 0.08572
+    },
+    {
+      "name": "Goat, heart",
+      "group": "Animal Meat",
+      "keywords": [
+        "goat",
+        "goatheart",
+        "animalmeat"
+      ],
+      "energyKj": 492,
+      "protein": 19.38,
+      "fat": 4.4,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.939,
+      "sodium": 0.07321
+    },
+    {
+      "name": "Goat, liver",
+      "group": "Animal Meat",
+      "keywords": [
+        "goat",
+        "goatliver",
+        "animalmeat"
+      ],
+      "energyKj": 526,
+      "protein": 20.32,
+      "fat": 4.88,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.77,
+      "sodium": 0.05541
+    },
+    {
+      "name": "Goat, tripe",
+      "group": "Animal Meat",
+      "keywords": [
+        "goat",
+        "goattripe",
+        "animalmeat"
+      ],
+      "energyKj": 386,
+      "protein": 15.36,
+      "fat": 3.36,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.682,
+      "sodium": 0.02238
+    },
+    {
+      "name": "Goat, spleen",
+      "group": "Animal Meat",
+      "keywords": [
+        "goat",
+        "goatspleen",
+        "animalmeat"
+      ],
+      "energyKj": 401,
+      "protein": 18.45,
+      "fat": 2.37,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.2,
+      "sodium": 0.0524
+    },
+    {
+      "name": "Goat, kidneys",
+      "group": "Animal Meat",
+      "keywords": [
+        "goat",
+        "goatkidneys",
+        "animalmeat"
+      ],
+      "energyKj": 374,
+      "protein": 15.6,
+      "fat": 2.93,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.143,
+      "sodium": 0.184
+    },
+    {
+      "name": "Goat, testis",
+      "group": "Animal Meat",
+      "keywords": [
+        "goat",
+        "goattestis",
+        "animalmeat"
+      ],
+      "energyKj": 298,
+      "protein": 12.32,
+      "fat": 2.39,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.215,
+      "sodium": 0.09261
+    },
+    {
+      "name": "Goat, shoulder, meat",
+      "group": "Animal Meat",
+      "keywords": [
+        "goat",
+        "goatshouldermeat",
+        "animalmeat"
+      ],
+      "energyKj": 787,
+      "protein": 20.33,
+      "fat": 11.94,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 5.444,
+      "sodium": 0.04731
+    },
+    {
+      "name": "Goat, tube (small intestine)",
+      "group": "Animal Meat",
+      "keywords": [
+        "goat",
+        "goattubesmallintestine",
+        "animalmeat"
+      ],
+      "energyKj": 525,
+      "protein": 12.92,
+      "fat": 8.26,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 4.445,
+      "sodium": 0.00746
+    },
+    {
+      "name": "Pork, shoulder",
+      "group": "Animal Meat",
+      "keywords": [
+        "pork",
+        "porkshoulder",
+        "animalmeat"
+      ],
+      "energyKj": 993,
+      "protein": 17.41,
+      "fat": 18.83,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 6.887,
+      "sodium": 0.05447
+    },
+    {
+      "name": "Pork, chops",
+      "group": "Animal Meat",
+      "keywords": [
+        "pork",
+        "porkchops",
+        "animalmeat"
+      ],
+      "energyKj": 748,
+      "protein": 19.41,
+      "fat": 11.3,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 4.803,
+      "sodium": 0.0437
+    },
+    {
+      "name": "Pork, ham",
+      "group": "Animal Meat",
+      "keywords": [
+        "pork",
+        "porkham",
+        "animalmeat"
+      ],
+      "energyKj": 1006,
+      "protein": 18.83,
+      "fat": 18.55,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 6.938,
+      "sodium": 0.04044
+    },
+    {
+      "name": "Pork, lungs",
+      "group": "Animal Meat",
+      "keywords": [
+        "pork",
+        "porklungs",
+        "animalmeat"
+      ],
+      "energyKj": 358,
+      "protein": 15.13,
+      "fat": 2.74,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.247,
+      "sodium": 0.06141
+    },
+    {
+      "name": "Pork, heart",
+      "group": "Animal Meat",
+      "keywords": [
+        "pork",
+        "porkheart",
+        "animalmeat"
+      ],
+      "energyKj": 457,
+      "protein": 16.31,
+      "fat": 4.87,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.575,
+      "sodium": 0.07052
+    },
+    {
+      "name": "Pork, liver",
+      "group": "Animal Meat",
+      "keywords": [
+        "pork",
+        "porkliver",
+        "animalmeat"
+      ],
+      "energyKj": 484,
+      "protein": 19.89,
+      "fat": 3.94,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.325,
+      "sodium": 0.06489
+    },
+    {
+      "name": "Pork, stomach",
+      "group": "Animal Meat",
+      "keywords": [
+        "pork",
+        "porkstomach",
+        "animalmeat"
+      ],
+      "energyKj": 550,
+      "protein": 15.36,
+      "fat": 7.81,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 3.327,
+      "sodium": 0.109
+    },
+    {
+      "name": "Pork, spleen",
+      "group": "Animal Meat",
+      "keywords": [
+        "pork",
+        "porkspleen",
+        "animalmeat"
+      ],
+      "energyKj": 357,
+      "protein": 15.13,
+      "fat": 2.71,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.245,
+      "sodium": 0.04914
+    },
+    {
+      "name": "Pork, kidneys",
+      "group": "Animal Meat",
+      "keywords": [
+        "pork",
+        "porkkidneys",
+        "animalmeat"
+      ],
+      "energyKj": 379,
+      "protein": 14.35,
+      "fat": 3.65,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 1.169,
+      "sodium": 0.138
+    },
+    {
+      "name": "Pork, tube (small intestine)",
+      "group": "Animal Meat",
+      "keywords": [
+        "pork",
+        "porktubesmallintestine",
+        "animalmeat"
+      ],
+      "energyKj": 587,
+      "protein": 14.96,
+      "fat": 8.98,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "saturatedFat": 4.109,
+      "sodium": 0.06017
+    },
+    {
+      "name": "Jaggery, cane",
+      "group": "Sugars",
+      "keywords": [
+        "sugar",
+        "jaggerycane",
+        "sugars"
+      ],
+      "energyKj": 1480,
+      "protein": 1.85,
+      "fat": 0.16,
+      "carbs": 84.87,
+      "fiber": 0,
+      "sugar": 84.32,
+      "saturatedFat": 0.06923,
+      "sodium": 0.02538
+    },
+    {
+      "name": "Sugarcane, juice",
+      "group": "Sugars",
+      "keywords": [
+        "sugar",
+        "sugarcanejuice",
+        "sugars"
+      ],
+      "energyKj": 242,
+      "protein": 0.16,
+      "fat": 0.4,
+      "carbs": 13.11,
+      "fiber": 0.56,
+      "sugar": 12.85,
+      "saturatedFat": 0.14,
+      "sodium": 0.00116
+    },
+    {
+      "name": "Mustard seeds",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "mustardoil",
+        "mustardseeds",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 2132,
+      "protein": 19.51,
+      "fat": 40.19,
+      "carbs": 16.8,
+      "fiber": 14.1,
+      "sugar": 5.07,
+      "saturatedFat": 2.112,
+      "sodium": 0.00397
+    },
+    {
+      "name": "Sunflower seeds",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "sunfloweroil",
+        "sunflowerseeds",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 2453,
+      "protein": 23.53,
+      "fat": 51.85,
+      "carbs": 6.85,
+      "fiber": 10.8,
+      "sugar": 2.81,
+      "saturatedFat": 6.159,
+      "sodium": 0.0019
+    },
+    {
+      "name": "Gingelly seeds, brown",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "sesameoil",
+        "gingellyseedsbrown",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 2161,
+      "protein": 21.61,
+      "fat": 43.22,
+      "carbs": 9.76,
+      "fiber": 17.21,
+      "sugar": 1.39,
+      "saturatedFat": 6.25,
+      "sodium": 0.01194
+    },
+    {
+      "name": "Gingelly seeds, white",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "sesameoil",
+        "gingellyseedswhite",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 2174,
+      "protein": 21.7,
+      "fat": 43.05,
+      "carbs": 10.83,
+      "fiber": 16.99,
+      "sugar": 0.67,
+      "saturatedFat": 6.43,
+      "sodium": 0.01543
+    },
+    {
+      "name": "Gingelly seeds, black",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "sesameoil",
+        "gingellyseedsblack",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 2124,
+      "protein": 19.17,
+      "fat": 43.1,
+      "carbs": 10.29,
+      "fiber": 17.16,
+      "sugar": 0.99,
+      "saturatedFat": 6.317,
+      "sodium": 0.01591
+    },
+    {
+      "name": "Almond",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "oliveoil",
+        "almond",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 2549,
+      "protein": 18.41,
+      "fat": 58.49,
+      "carbs": 3.04,
+      "fiber": 13.06,
+      "sugar": 2.23,
+      "saturatedFat": 4.358,
+      "sodium": 0.0015
+    },
+    {
+      "name": "Arecanut, dried, brown",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "oliveoil",
+        "arecanutdriedbrown",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 1467,
+      "protein": 5.78,
+      "fat": 4.35,
+      "carbs": 70.42,
+      "fiber": 11.44,
+      "sugar": 1.76,
+      "saturatedFat": 2.605,
+      "sodium": 0.01206
+    },
+    {
+      "name": "Arecanut, dried, red color",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "oliveoil",
+        "arecanutdriedredcolor",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 1477,
+      "protein": 6.46,
+      "fat": 4.46,
+      "carbs": 70.27,
+      "fiber": 11.11,
+      "sugar": 1.79,
+      "saturatedFat": 1.674,
+      "sodium": 0.01713
+    },
+    {
+      "name": "Arecanut, fresh",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "oliveoil",
+        "arecanutfresh",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 1024,
+      "protein": 2.73,
+      "fat": 5.51,
+      "carbs": 45,
+      "fiber": 7.63,
+      "sugar": 4.72,
+      "saturatedFat": 3.389,
+      "sodium": 0.00553
+    },
+    {
+      "name": "Cashew nut",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "oliveoil",
+        "cashewnut",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 2438,
+      "protein": 18.78,
+      "fat": 45.2,
+      "carbs": 25.46,
+      "fiber": 3.86,
+      "sugar": 3.11,
+      "saturatedFat": 7.816,
+      "sodium": 0.009
+    },
+    {
+      "name": "Garden cress, seeds",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "oliveoil",
+        "gardencressseeds",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 1863,
+      "protein": 23.36,
+      "fat": 23.74,
+      "carbs": 33.66,
+      "fiber": 8.27,
+      "sugar": 0.91,
+      "saturatedFat": 4.101,
+      "sodium": 0.02184
+    },
+    {
+      "name": "Linseeds",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "oliveoil",
+        "linseeds",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 1857,
+      "protein": 18.55,
+      "fat": 35.67,
+      "carbs": 10.99,
+      "fiber": 26.17,
+      "sugar": 0.6,
+      "saturatedFat": 2.968,
+      "sodium": 0.03293
+    },
+    {
+      "name": "Niger seeds, black",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "oliveoil",
+        "nigerseedsblack",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 2144,
+      "protein": 18.92,
+      "fat": 38.61,
+      "carbs": 22.98,
+      "fiber": 10.93,
+      "sugar": 1.75,
+      "saturatedFat": 5.945,
+      "sodium": 0.0107
+    },
+    {
+      "name": "Niger seeds, gray",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "oliveoil",
+        "nigerseedsgray",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 2128,
+      "protein": 18.34,
+      "fat": 39.53,
+      "carbs": 20.59,
+      "fiber": 10.96,
+      "sugar": 0.41,
+      "saturatedFat": 9.737,
+      "sodium": 0.00808
+    },
+    {
+      "name": "Pine seed",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "oliveoil",
+        "pineseed",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 2486,
+      "protein": 12.55,
+      "fat": 48.79,
+      "carbs": 26.77,
+      "fiber": 3.79,
+      "sugar": 4.67,
+      "saturatedFat": 3.801,
+      "sodium": 0.00131
+    },
+    {
+      "name": "Pistachio nuts",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "oliveoil",
+        "pistachionuts",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 2257,
+      "protein": 23.35,
+      "fat": 42.49,
+      "carbs": 15.82,
+      "fiber": 10.64,
+      "sugar": 7.9,
+      "saturatedFat": 4.043,
+      "sodium": 0.00693
+    },
+    {
+      "name": "Safflower seeds",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "oliveoil",
+        "safflowerseeds",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 1981,
+      "protein": 17.66,
+      "fat": 30.87,
+      "carbs": 30.18,
+      "fiber": 13.49,
+      "sugar": 2.67,
+      "saturatedFat": 2.548,
+      "sodium": 0.00305
+    },
+    {
+      "name": "Walnut",
+      "group": "Nuts and Oil Seeds",
+      "keywords": [
+        "oliveoil",
+        "walnut",
+        "nutsandoilseeds"
+      ],
+      "energyKj": 2809,
+      "protein": 14.92,
+      "fat": 64.27,
+      "carbs": 10.14,
+      "fiber": 5.39,
+      "sugar": 3.22,
+      "saturatedFat": 5.208,
+      "sodium": 0.00133
+    },
+    {
+      "name": "Manila tamarind",
+      "group": "Fruits",
+      "keywords": [
+        "jalebi",
+        "manilatamarind",
+        "fruits"
+      ],
+      "energyKj": 342,
+      "protein": 3.56,
+      "fat": 1.14,
+      "carbs": 13.54,
+      "fiber": 4.4,
+      "sugar": 12.13,
+      "saturatedFat": 0.02781,
+      "sodium": 0.00135
+    },
+    {
+      "name": "Black berry",
+      "group": "Fruits",
+      "keywords": [
+        "gulabjamun",
+        "blackberry",
+        "fruits"
+      ],
+      "energyKj": 227,
+      "protein": 0.92,
+      "fat": 0.63,
+      "carbs": 10.64,
+      "fiber": 4.35,
+      "sugar": 7.61,
+      "saturatedFat": 0.195,
+      "sodium": 0.00121
+    },
+    {
+      "name": "Lemon, juice",
+      "group": "Fruits",
+      "keywords": [
+        "juice",
+        "lemonjuice",
+        "fruits"
+      ],
+      "energyKj": 153,
+      "protein": 0.41,
+      "fat": 0.75,
+      "carbs": 0,
+      "fiber": 0,
+      "sugar": 2.59,
+      "saturatedFat": 0.202,
+      "sodium": 0.00121
+    }
+  ]
+}

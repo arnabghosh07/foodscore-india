@@ -8,20 +8,23 @@ import ScoreDisplay from './ScoreDisplay';
 import HistoryList from './HistoryList';
 import LoadingSpinner from './LoadingSpinner';
 import NotFound from './NotFound';
-import { lookupProduct } from '@/lib/api';
+import { lookupProduct, searchProducts, ApiError } from '@/lib/api';
 import { calculateFoodScore } from '@/lib/scoring';
 import { getHistory, addToHistory, clearHistory } from '@/lib/history';
-import { FoodScoreResult, ScanHistory } from '@/lib/types';
+import { Product, FoodScoreResult, ScanHistory } from '@/lib/types';
 
-type ViewState = 'scanner' | 'loading' | 'results' | 'not-found' | 'error';
+type ViewState = 'scanner' | 'loading' | 'results' | 'search-results' | 'not-found' | 'error';
 
 export default function ScannerPage() {
   const [viewState, setViewState] = useState<ViewState>('scanner');
   const [result, setResult] = useState<FoodScoreResult | null>(null);
+  const [searchResults, setSearchResults] = useState<Product[]>([]);
+  const [showAllSamples, setShowAllSamples] = useState(false);
   const [history, setHistory] = useState<ScanHistory[]>([]);
   useEffect(() => { setHistory(getHistory()); }, []);
   const [currentBarcode, setCurrentBarcode] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const [errorType, setErrorType] = useState<string>('unknown');
 
   const handleLookup = useCallback(async (barcode: string) => {
     setCurrentBarcode(barcode);
@@ -51,6 +54,11 @@ export default function ScannerPage() {
       });
       setHistory(getHistory());
     } catch (err) {
+      if (err instanceof ApiError) {
+        setErrorType(err.type);
+      } else {
+        setErrorType('unknown');
+      }
       setErrorMessage(err instanceof Error ? err.message : 'Something went wrong');
       setViewState('error');
     }
@@ -58,6 +66,7 @@ export default function ScannerPage() {
 
   const handleBack = useCallback(() => {
     setResult(null);
+    setErrorType('unknown');
     setViewState('scanner');
     setErrorMessage('');
   }, []);
@@ -100,20 +109,68 @@ export default function ScannerPage() {
         )}
 
         {viewState === 'error' && (
-          <div className="py-16 text-center">
-            <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
-              </svg>
+          <div className="py-12 text-center">
+            {/* Contextual icon */}
+            <div className={
+              errorType === 'network' ? 'w-16 h-16 bg-amber-50 rounded-full flex items-center justify-center mx-auto mb-4' :
+              errorType === 'timeout' ? 'w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-4' :
+              errorType === 'rate-limit' ? 'w-16 h-16 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-4' :
+              errorType === 'http' ? 'w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4' :
+              'w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4'
+            }>
+              {errorType === 'network' && (
+                <svg className="w-8 h-8 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18.364 5.636a9 9 0 010 12.728m-2.829-2.829a5 5 0 000-7.07m-4.243 4.243a1 1 0 010-1.414M3 3l18 18" />
+                </svg>
+              )}
+              {errorType === 'timeout' && (
+                <svg className="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              )}
+              {errorType === 'rate-limit' && (
+                <svg className="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              )}
+              {errorType === 'http' && (
+                <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                </svg>
+              )}
+              {errorType === 'unknown' && (
+                <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                </svg>
+              )}
             </div>
-            <h2 className="text-lg font-semibold text-gray-900 mb-2">Error</h2>
-            <p className="text-sm text-gray-500 mb-4">{errorMessage}</p>
-            <button
-              onClick={handleBack}
-              className="px-6 py-2.5 bg-gray-900 text-white rounded-xl text-sm font-medium hover:bg-gray-800 transition"
-            >
-              Try Again
-            </button>
+
+            {/* Contextual heading */}
+            <h2 className="text-lg font-semibold text-gray-900 mb-1">
+              {errorType === 'network' ? 'Connection Error' :
+               errorType === 'timeout' ? 'Request Timed Out' :
+               errorType === 'rate-limit' ? 'Too Many Requests' :
+               errorType === 'http' ? 'Server Error' :
+               'Something Went Wrong'}
+            </h2>
+            <p className="text-xs text-gray-400 mb-1">Barcode: {currentBarcode}</p>
+            <p className="text-sm text-gray-500 mb-6 max-w-sm mx-auto">{errorMessage}</p>
+
+            {/* Action buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <button
+                onClick={() => handleLookup(currentBarcode)}
+                className="px-6 py-2.5 bg-emerald-500 text-white rounded-xl text-sm font-medium hover:bg-emerald-600 transition shadow-sm"
+              >
+                Retry
+              </button>
+              <button
+                onClick={handleBack}
+                className="px-6 py-2.5 bg-gray-100 text-gray-700 rounded-xl text-sm font-medium hover:bg-gray-200 transition"
+              >
+                Try Another Barcode
+              </button>
+            </div>
           </div>
         )}
 
@@ -139,24 +196,45 @@ export default function ScannerPage() {
 
             {/* Sample Barcodes */}
             <div className="mt-4 bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm">Try these Indian products</h3>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="font-semibold text-gray-900 text-sm">Try Maggi products (verified)</h3>
+                <button
+                  onClick={() => setShowAllSamples(!showAllSamples)}
+                  className="text-xs font-medium text-emerald-600 hover:text-emerald-700 transition-all"
+                >
+                  {showAllSamples ? 'Show less' : 'Show all 5'}
+                </button>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {[
-                  { barcode: '8901042011267', name: 'Maggi Noodles' },
-                  { barcode: '8901135001023', name: 'Amul Butter' },
-                  { barcode: '8901058001158', name: 'Haldiram Aloo Bhujia' },
-                  { barcode: '8906004735109', name: 'Bournvita' },
-                  { barcode: '8901063033508', name: 'Kissan Jam' },
-                ].map((item) => (
+                  { barcode: '8901058022193', name: 'Maggi Noodles' },
+                  { barcode: '8901058006292', name: 'Maggi 2-Min Noodles' },
+                  { barcode: '8901058851304', name: 'Maggi Masala Noodles' },
+                  { barcode: '8901058019346', name: 'Maggi Noodles 280g' },
+                  { barcode: '8901058000306', name: 'Maggi Noodles 560g' },
+                ]
+                  .filter((_, i) => showAllSamples || i < 3)
+                  .map((item) => (
+                    <button
+                      key={item.barcode}
+                      onClick={() => handleLookup(item.barcode)}
+                      className="px-3 py-1.5 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg text-xs text-gray-700 transition"
+                    >
+                      {item.name}
+                    </button>
+                  ))}
+                {!showAllSamples && (
                   <button
-                    key={item.barcode}
-                    onClick={() => handleLookup(item.barcode)}
-                    className="px-3 py-1.5 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg text-xs text-gray-700 transition"
+                    onClick={() => setShowAllSamples(true)}
+                    className="px-3 py-1.5 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg text-xs text-emerald-700 font-medium transition"
                   >
-                    {item.name}
+                    +2 more
                   </button>
-                ))}
+                )}
               </div>
+              {!showAllSamples && (
+                <p className="text-xs text-gray-400 mt-2">Showing 3 of 5 products</p>
+              )}
             </div>
 
             {/* History */}

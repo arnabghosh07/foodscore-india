@@ -29,8 +29,14 @@ export interface Product {
 }
 
 export interface FoodScoreResult {
+  /** Source of nutritional data: 'openfoodfacts' from API, 'ifct_fallback' from Indian food database */
+  dataSource: 'openfoodfacts' | 'ifct_fallback';
   product: Product;
   overallScore: number;
+  negativePoints: number;
+  positivePoints: number;
+  novaScore: number;
+  feedback: string;
   grade: string;
   gradeColor: string;
   gradeLabel: string;

@@ -1,7 +1,7 @@
 'use client';
 
 import { FoodScoreResult, NutrientScore } from '@/lib/types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface ScoreDisplayProps {
   result: FoodScoreResult;
@@ -144,7 +144,7 @@ export default function ScoreDisplay({ result, onBack }: ScoreDisplayProps) {
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500">Energy</span>
                   <span className="font-semibold text-gray-900">
-                    {result.product.nutriments.energy_100g ?? "-"} kcal
+                    {result.product.nutriments.energy_100g != null ? `${result.product.nutriments.energy_100g} kcal` : '—'} / 100g
                   </span>
                 </div>
               </div>

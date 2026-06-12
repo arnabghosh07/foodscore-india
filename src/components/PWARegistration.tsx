@@ -8,9 +8,10 @@ export default function PWARegistration() {
       navigator.serviceWorker
         .register('/sw.js')
         .then((reg) => {
+          // Immediately check for a new SW version and activate it
+          reg.update();
         })
-        .catch((err) => {
-        });
+        .catch(() => {});
     }
   }, []);
 
