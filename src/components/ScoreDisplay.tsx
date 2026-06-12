@@ -29,20 +29,65 @@ function ScoreCircle({ score, color }: { score: number; color: string }) {
 }
 
 function NutrientBar({ nutrient }: { nutrient: NutrientScore }) {
+  const isNegativeNutrient = ['Sugar', 'Saturated Fat', 'Sodium'].includes(nutrient.name);
+  const isGreen = nutrient.color === '#2ecc71';
+  const isOrange = nutrient.color === '#f39c12';
+  
+  let isLeft = false;
+  let widthPercent = 0;
+  let barColor = nutrient.color;
+  
+  if (isNegativeNutrient) {
+    if (isGreen) {
+      isLeft = false;
+      widthPercent = (nutrient.score / 10) * 50;
+      barColor = '#10b981'; // Green
+    } else {
+      isLeft = true;
+      widthPercent = ((10 - nutrient.score) / 10) * 50;
+      barColor = isOrange ? '#f59e0b' : '#ef4444'; // Orange or Red
+    }
+  } else {
+    if (isGreen || isOrange) {
+      isLeft = false;
+      widthPercent = (nutrient.score / 10) * 50;
+      barColor = isGreen ? '#10b981' : '#f59e0b'; // Green or Orange
+    } else {
+      isLeft = true;
+      widthPercent = ((10 - nutrient.score) / 10) * 50;
+      barColor = '#ef4444'; // Red
+    }
+  }
+
+  // Ensure widthPercent is bounded
+  widthPercent = Math.max(0, Math.min(50, widthPercent));
+
   return (
     <div className="flex items-center gap-3">
       <div className="w-24 text-sm font-medium text-gray-700">{nutrient.name}</div>
       <div className="flex-1">
-        <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
-          <div className="h-full rounded-full transition-all duration-700 ease-out"
-            style={{ width: (nutrient.score / nutrient.maxScore) * 100 + "%", backgroundColor: nutrient.color }} />
+        {/* Bi-directional bar container */}
+        <div className="relative h-3 bg-gray-100 rounded-full overflow-hidden">
+          {/* Middle dividing line */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-gray-300 z-10" />
+          
+          {/* Filled bar */}
+          <div 
+            className={`absolute h-full transition-all duration-700 ease-out ${
+              isLeft ? 'right-1/2 rounded-l-full' : 'left-1/2 rounded-r-full'
+            }`}
+            style={{ 
+              width: `${widthPercent}%`, 
+              backgroundColor: barColor 
+            }} 
+          />
         </div>
       </div>
-      <div className="w-16 text-right">
+      <div className="w-20 text-right shrink-0">
         <span className="text-sm font-semibold" style={{ color: nutrient.color }}>
           {nutrient.value}{nutrient.unit}
         </span>
-        <span className="text-xs text-gray-400 ml-1">({nutrient.label})</span>
+        <span className="text-xs text-gray-400 block font-normal">({nutrient.label})</span>
       </div>
     </div>
   );
