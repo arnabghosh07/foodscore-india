@@ -36,7 +36,7 @@ export default function BarcodeScanner({ onScan, onError }: BarcodeScannerProps)
           qrbox: { width: 280, height: 160 },
           aspectRatio: 1.5,
         },
-        (decodedText) => {
+        async (decodedText) => {
           // Guard: only process the FIRST successful decode per session.
           // html5-qrcode fires this callback on every frame containing a
           // barcode at 10fps — stop() is async so we'd get 3-5 calls before
@@ -44,15 +44,13 @@ export default function BarcodeScanner({ onScan, onError }: BarcodeScannerProps)
           if (hasScannedRef.current) return;
           hasScannedRef.current = true;
 
-          // Stop scanner asynchronously in the background
-          scanner.stop().catch(() => {});
-          scannerRef.current = null; // Clear to prevent cleanup useEffect from calling stop() again
+          try {
+            await scanner.stop();
+          } catch (err) {
+            console.error('[BarcodeScanner] Failed to stop scanner:', err);
+          }
           setIsScanning(false);
-
-          // Small 300ms timeout to let the camera tracks release before unmounting the DOM container
-          setTimeout(() => {
-            onScan(decodedText);
-          }, 300);
+          onScan(decodedText);
         },
         () => {
           // Ignore per-frame errors (no barcode found in this frame)
