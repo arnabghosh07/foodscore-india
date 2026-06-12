@@ -3,6 +3,7 @@
 import { FoodScoreResult, NutrientScore, Nutriments } from '@/lib/types';
 import { useState } from 'react';
 import ShareCard from './ShareCard';
+import FoodChat from './FoodChat';
 
 interface ScoreDisplayProps {
   result: FoodScoreResult;
@@ -363,6 +364,11 @@ export default function ScoreDisplay({ result, onBack }: ScoreDisplayProps) {
                     ))}
                   </div>
                 </div>
+              )}
+
+              {/* Food Advisor AI Chatbot */}
+              {!scoringFailed && (
+                <FoodChat result={result} />
               )}
 
               {/* Raw nutrition — always shown as the primary data source */}
