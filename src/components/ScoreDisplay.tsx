@@ -186,22 +186,38 @@ export default function ScoreDisplay({ result, onBack, onSelectProduct }: ScoreD
             if (res.overallScore <= result.overallScore) {
               return false;
             }
+            // Must be a genuinely healthy product (Grade A or B, or at least a decent score >= 60)
+            if (res.overallScore < 60) {
+              return false;
+            }
 
             // Strict category alignment check to make sure alternatives are of same category & similar purpose
             const altName = (res.product.product_name || '').toLowerCase();
             const altCats = (res.product.categories || '').toLowerCase();
             
-            let isCategoryAligned = true;
+            let isCategoryAligned = false;
+            
             if (name.includes('noodle') || name.includes('maggi') || name.includes('ramen')) {
-              isCategoryAligned = altName.includes('noodle') || altName.includes('ramen') || altCats.includes('noodle') || altCats.includes('ramen');
+              const hasNoodleKeyword = altName.includes('noodle') || altName.includes('pasta') || altName.includes('vermicelli') || altCats.includes('noodle') || altCats.includes('pasta');
+              const hasHealthyGrain = altName.includes('wheat') || altName.includes('atta') || altName.includes('millet') || altName.includes('ragi') || altName.includes('oat') || altName.includes('jowar') || altName.includes('baked');
+              isCategoryAligned = hasNoodleKeyword && hasHealthyGrain;
             } else if (name.includes('biscuit') || name.includes('cookie')) {
-              isCategoryAligned = altName.includes('biscuit') || altName.includes('cookie') || altCats.includes('biscuit') || altCats.includes('cookie');
+              const hasBiscuitKeyword = altName.includes('biscuit') || altName.includes('cookie') || altCats.includes('biscuit') || altCats.includes('cookie');
+              const hasHealthyGrain = altName.includes('digestive') || altName.includes('oat') || altName.includes('ragi') || altName.includes('multigrain') || altName.includes('wheat') || altName.includes('grain');
+              isCategoryAligned = hasBiscuitKeyword && hasHealthyGrain;
             } else if (name.includes('chip') || name.includes('wafer') || name.includes('kurkure') || name.includes('potato') || name.includes('nacho')) {
-              isCategoryAligned = altName.includes('chip') || altName.includes('puff') || altName.includes('nacho') || altName.includes('crisp') || altCats.includes('chip') || altCats.includes('snack') || altCats.includes('crisp');
+              const hasSnackKeyword = altName.includes('chip') || altName.includes('nacho') || altName.includes('makhana') || altName.includes('chana') || altName.includes('popcorn') || altCats.includes('chip') || altCats.includes('snack');
+              const hasHealthyPrep = altName.includes('baked') || altName.includes('roasted') || altName.includes('millet') || altName.includes('ragi') || altName.includes('diet') || altName.includes('chana') || altName.includes('makhana');
+              isCategoryAligned = hasSnackKeyword && hasHealthyPrep;
             } else if (name.includes('drink') || name.includes('cola') || name.includes('soda') || name.includes('juice') || name.includes('beverage')) {
-              isCategoryAligned = altName.includes('drink') || altName.includes('water') || altName.includes('soda') || altName.includes('juice') || altCats.includes('beverage') || altCats.includes('drink') || altCats.includes('juice');
+              const hasDrinkKeyword = altName.includes('drink') || altName.includes('water') || altName.includes('soda') || altName.includes('juice') || altName.includes('chaas') || altName.includes('buttermilk') || altName.includes('lassi') || altCats.includes('beverage') || altCats.includes('drink') || altCats.includes('juice');
+              const hasHealthyType = altName.includes('coconut') || altName.includes('chaas') || altName.includes('buttermilk') || altName.includes('diet') || altName.includes('sugar free') || altName.includes('zero sugar') || altName.includes('aloe') || altName.includes('pure') || altName.includes('fresh');
+              isCategoryAligned = hasDrinkKeyword && hasHealthyType;
             } else if (name.includes('chocolate')) {
-              isCategoryAligned = altName.includes('chocolate') || altCats.includes('chocolate') || altCats.includes('cocoa');
+              isCategoryAligned = (altName.includes('chocolate') || altCats.includes('chocolate')) && (altName.includes('dark') || altName.includes('85') || altName.includes('70') || altName.includes('90') || altName.includes('sugar free'));
+            } else {
+              // Default fallback: allow general category matching
+              isCategoryAligned = true;
             }
             
             return isCategoryAligned;
