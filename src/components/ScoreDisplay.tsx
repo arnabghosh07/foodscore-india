@@ -366,10 +366,7 @@ export default function ScoreDisplay({ result, onBack }: ScoreDisplayProps) {
                 </div>
               )}
 
-              {/* Food Advisor AI Chatbot */}
-              {!scoringFailed && (
-                <FoodChat result={result} />
-              )}
+
 
               {/* Raw nutrition — always shown as the primary data source */}
               <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
@@ -441,6 +438,10 @@ export default function ScoreDisplay({ result, onBack }: ScoreDisplayProps) {
 
         </div>
       </div>
+      {/* Floating AI Chatbot - Visible across all tabs */}
+      {!scoringFailed && (
+        <FoodChat result={result} />
+      )}
     </div>
   );
 }
