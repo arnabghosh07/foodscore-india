@@ -47,6 +47,8 @@ export interface FoodScoreResult {
   warnings: string[];
   positives: string[];
   summary: string;
+  /** True when scoring algorithm failed — product data is still valid */
+  scoringFailed?: boolean;
 }
 
 export interface NutrientScore {

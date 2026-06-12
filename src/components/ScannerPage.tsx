@@ -31,36 +31,69 @@ export default function ScannerPage() {
     setViewState('loading');
     setErrorMessage('');
 
+    // ── Step 1: Fetch product data ────────────────────────────────────────
+    // This is the ONLY thing that can send us to the error screen.
+    let product: Product | null = null;
     try {
-      const product = await lookupProduct(barcode);
+      product = await lookupProduct(barcode);
+    } catch (err) {
+      setErrorType(err instanceof ApiError ? err.type : 'unknown');
+      setErrorMessage(err instanceof Error ? err.message : 'Something went wrong');
+      setViewState('error');
+      return;
+    }
 
-      if (!product) {
-        setViewState('not-found');
-        return;
-      }
+    if (!product) {
+      setViewState('not-found');
+      return;
+    }
 
-      const scoreResult = calculateFoodScore(product);
-      setResult(scoreResult);
-      setViewState('results');
+    // ── Step 2: Score the product ─────────────────────────────────────────
+    // Scoring is secondary — if it fails for any reason we still show the
+    // raw product data with a neutral placeholder score.
+    let scoreResult: FoodScoreResult;
+    try {
+      scoreResult = calculateFoodScore(product);
+    } catch {
+      scoreResult = {
+        dataSource: 'openfoodfacts',
+        product,
+        overallScore: 0,
+        negativePoints: 0,
+        positivePoints: 0,
+        grade: '?',
+        gradeColor: '#95a5a6',
+        gradeLabel: 'Unavailable',
+        novaGroup: product.nova_group ?? 4,
+        novaLabel: 'Unknown',
+        novaDescription: 'Processing level could not be determined.',
+        novaScore: 0,
+        nutrientScores: [],
+        warnings: [],
+        positives: [],
+        feedback: 'Score unavailable — showing raw product data.',
+        summary: product.product_name,
+        scoringFailed: true,
+      };
+    }
 
-      // Save to history
+    setResult(scoreResult);
+    setViewState('results');
+
+    // ── Step 3: Save to history ───────────────────────────────────────────
+    // Never let a history error affect the UI.
+    try {
       addToHistory({
         barcode: product.code,
         productName: product.product_name,
-        score: scoreResult.overallScore,
+        score: scoreResult.scoringFailed ? 0 : scoreResult.overallScore,
         grade: scoreResult.grade,
         timestamp: Date.now(),
         imageUrl: product.image_front_url,
       });
       setHistory(getHistory());
-    } catch (err) {
-      if (err instanceof ApiError) {
-        setErrorType(err.type);
-      } else {
-        setErrorType('unknown');
-      }
-      setErrorMessage(err instanceof Error ? err.message : 'Something went wrong');
-      setViewState('error');
+    } catch {
+      // silently ignore
     }
   }, []);
 
