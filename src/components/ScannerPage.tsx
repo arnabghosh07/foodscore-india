@@ -130,7 +130,7 @@ export default function ScannerPage() {
   }, []);
 
   if (viewState === 'results' && result) {
-    return <ScoreDisplay result={result} onBack={handleBack} />;
+    return <ScoreDisplay result={result} onBack={handleBack} onSelectProduct={handleLookup} />;
   }
 
   return (

@@ -10,6 +10,7 @@ import { calculateFoodScore } from '@/lib/scoring';
 interface ScoreDisplayProps {
   result: FoodScoreResult;
   onBack: () => void;
+  onSelectProduct?: (barcode: string) => void;
 }
 
 function ScoreCircle({ score, color }: { score: number; color: string }) {
@@ -127,7 +128,7 @@ function RawNutritionPanel({ nutriments }: { nutriments: Nutriments }) {
   );
 }
 
-export default function ScoreDisplay({ result, onBack }: ScoreDisplayProps) {
+export default function ScoreDisplay({ result, onBack, onSelectProduct }: ScoreDisplayProps) {
   const [activeTab, setActiveTab] = useState<'overview' | 'details' | 'about'>('overview');
   const [dbAlternatives, setDbAlternatives] = useState<FoodScoreResult[]>([]);
   const [loadingAlts, setLoadingAlts] = useState(false);
@@ -144,13 +145,15 @@ export default function ScoreDisplay({ result, onBack }: ScoreDisplayProps) {
         const name = (product.product_name + ' ' + (product.categories || '')).toLowerCase();
         let searchTerms: string[] = [];
         if (name.includes('noodle') || name.includes('maggi') || name.includes('ramen')) {
-          searchTerms = ['atta noodles', 'millet noodles'];
+          searchTerms = ['atta noodles', 'millet noodles', 'oats noodles'];
         } else if (name.includes('biscuit') || name.includes('cookie')) {
-          searchTerms = ['digestive biscuits', 'roasted makhana'];
-        } else if (name.includes('chip') || name.includes('kurkure') || name.includes('wafer') || name.includes('namkeen') || name.includes('potato')) {
-          searchTerms = ['roasted chana', 'roasted makhana'];
+          searchTerms = ['digestive biscuits', 'oats cookies', 'ragi biscuits'];
+        } else if (name.includes('chip') || name.includes('kurkure') || name.includes('wafer') || name.includes('namkeen') || name.includes('potato') || name.includes('nacho')) {
+          searchTerms = ['baked chips', 'millet chips', 'nachos ragi'];
         } else if (name.includes('drink') || name.includes('cola') || name.includes('soda') || name.includes('juice') || name.includes('beverage')) {
-          searchTerms = ['coconut water', 'buttermilk chaas'];
+          searchTerms = ['coconut water', 'buttermilk chaas', 'diet soda'];
+        } else if (name.includes('chocolate')) {
+          searchTerms = ['dark chocolate 85', 'dark chocolate 70'];
         } else {
           searchTerms = ['roasted almonds', 'roasted makhana'];
         }
@@ -180,7 +183,28 @@ export default function ScoreDisplay({ result, onBack }: ScoreDisplayProps) {
               return false;
             }
             // Only suggest healthier alternatives
-            return res.overallScore > result.overallScore;
+            if (res.overallScore <= result.overallScore) {
+              return false;
+            }
+
+            // Strict category alignment check to make sure alternatives are of same category & similar purpose
+            const altName = (res.product.product_name || '').toLowerCase();
+            const altCats = (res.product.categories || '').toLowerCase();
+            
+            let isCategoryAligned = true;
+            if (name.includes('noodle') || name.includes('maggi') || name.includes('ramen')) {
+              isCategoryAligned = altName.includes('noodle') || altName.includes('ramen') || altCats.includes('noodle') || altCats.includes('ramen');
+            } else if (name.includes('biscuit') || name.includes('cookie')) {
+              isCategoryAligned = altName.includes('biscuit') || altName.includes('cookie') || altCats.includes('biscuit') || altCats.includes('cookie');
+            } else if (name.includes('chip') || name.includes('wafer') || name.includes('kurkure') || name.includes('potato') || name.includes('nacho')) {
+              isCategoryAligned = altName.includes('chip') || altName.includes('puff') || altName.includes('nacho') || altName.includes('crisp') || altCats.includes('chip') || altCats.includes('snack') || altCats.includes('crisp');
+            } else if (name.includes('drink') || name.includes('cola') || name.includes('soda') || name.includes('juice') || name.includes('beverage')) {
+              isCategoryAligned = altName.includes('drink') || altName.includes('water') || altName.includes('soda') || altName.includes('juice') || altCats.includes('beverage') || altCats.includes('drink') || altCats.includes('juice');
+            } else if (name.includes('chocolate')) {
+              isCategoryAligned = altName.includes('chocolate') || altCats.includes('chocolate') || altCats.includes('cocoa');
+            }
+            
+            return isCategoryAligned;
           });
 
         // Deduplicate by name and brand
@@ -440,7 +464,12 @@ export default function ScoreDisplay({ result, onBack }: ScoreDisplayProps) {
                         {dbAlternatives.map((alt, idx) => {
                           const scoreDiff = alt.overallScore - result.overallScore;
                           return (
-                            <div key={idx} className="bg-white rounded-xl p-3 border border-emerald-100/50 shadow-sm flex items-center justify-between gap-3">
+                            <div 
+                              key={idx} 
+                              onClick={() => onSelectProduct?.(alt.product.code)}
+                              className="bg-white rounded-xl p-3 border border-emerald-100/50 shadow-sm flex items-center justify-between gap-3 hover:border-emerald-500 hover:shadow-md transition duration-200 cursor-pointer"
+                              title="Click to view health score details"
+                            >
                               <div className="flex items-center gap-3 overflow-hidden">
                                 {alt.product.image_front_url ? (
                                   <img 
