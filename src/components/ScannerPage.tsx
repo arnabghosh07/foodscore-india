@@ -8,6 +8,7 @@ import ScoreDisplay from './ScoreDisplay';
 import HistoryList from './HistoryList';
 import LoadingSpinner from './LoadingSpinner';
 import NotFound from './NotFound';
+import Footer from './Footer';
 import { lookupProduct, searchProducts, ApiError } from '@/lib/api';
 import { calculateFoodScore } from '@/lib/scoring';
 import { getHistory, addToHistory, clearHistory } from '@/lib/history';
@@ -298,6 +299,7 @@ export default function ScannerPage() {
                 />
               </div>
             )}
+            <Footer />
           </>
         )}
       </div>

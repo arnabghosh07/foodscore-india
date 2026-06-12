@@ -2,6 +2,7 @@
 
 import { FoodScoreResult, NutrientScore, Nutriments } from '@/lib/types';
 import { useState } from 'react';
+import ShareCard from './ShareCard';
 
 interface ScoreDisplayProps {
   result: FoodScoreResult;
@@ -147,6 +148,9 @@ export default function ScoreDisplay({ result, onBack }: ScoreDisplayProps) {
             </>
           )}
         </div>
+
+        {/* Share button — always shown */}
+        <ShareCard result={result} />
 
         {/* ── Tabs ── */}
         <div className="mt-6 flex bg-gray-100 rounded-xl p-1">

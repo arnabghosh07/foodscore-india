@@ -7,6 +7,7 @@ import { Analytics } from '@vercel/analytics/react';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://foodscore-india.vercel.app'),
   title: 'FoodScore India - Scan & Rate Your Food',
   description: 'Scan barcodes of Indian packaged food products and get instant health scores. Powered by Open Food Facts and NOVA classification.',
   manifest: '/manifest.json',
@@ -17,6 +18,28 @@ export const metadata: Metadata = {
   },
   formatDetection: {
     telephone: false,
+  },
+  openGraph: {
+    title: 'FoodScore India - Scan & Rate Your Food',
+    description: 'Scan barcodes of Indian packaged food products and get instant health scores. Calibrated for the Indian dietary context.',
+    url: 'https://foodscore-india.vercel.app',
+    siteName: 'FoodScore India',
+    images: [
+      {
+        url: '/icon-512.png',
+        width: 512,
+        height: 512,
+        alt: 'FoodScore India Logo',
+      },
+    ],
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'FoodScore India - Scan & Rate Your Food',
+    description: 'Scan barcodes of Indian packaged food products and get instant health scores.',
+    images: ['/icon-512.png'],
   },
 };
 
