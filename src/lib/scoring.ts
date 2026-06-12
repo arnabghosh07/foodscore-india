@@ -1,10 +1,18 @@
 import { Product, FoodScoreResult, NutrientScore, Nutriments } from './types';
-
-/** Return n if it is a finite number, otherwise fallback (default 0). */
-function safeNum(n: number | undefined, fallback = 0): number {
-  return (n != null && isFinite(n)) ? n : fallback;
-}
 import { lookupIndianFood } from './indianFoods';
+
+/** Return n if it is a finite, real number, otherwise return fallback (default 0). */
+function safeNum(n: number | undefined | null, fallback = 0): number {
+  if (n == null) return fallback;
+  const v = typeof n === 'number' ? n : Number(n);
+  return isFinite(v) ? v : fallback;
+}
+
+/** Ensure a nutriments object is always defined and all values are numbers. */
+function safeNutriments(raw: Nutriments | undefined | null): Nutriments {
+  if (!raw || typeof raw !== 'object') return {};
+  return raw;
+}
 
 // Indian dietary context thresholds (per 100g)
 const INDIAN_THRESHOLDS = {
@@ -33,11 +41,11 @@ function getGrade(score: number): { grade: string; color: string; label: string 
 }
 
 // Calculate negative points (unhealthy components)
-function calculateNegativePoints(nutriments: Nutriments): number {
+function calculateNegativePoints(n: Nutriments): number {
   let points = 0;
-  const sugars = safeNum(nutriments.sugars_100g);
-  const satFat = safeNum(nutriments.saturated_fat_100g);
-  const sodium = safeNum(nutriments.sodium_100g) || safeNum(nutriments.salt_100g ? nutriments.salt_100g / 2.5 : 0);
+  const sugars = safeNum(n.sugars_100g);
+  const satFat = safeNum(n.saturated_fat_100g);
+  const sodium = safeNum(n.sodium_100g) || safeNum(n.salt_100g ? n.salt_100g / 2.5 : 0);
 
   // Sugar points (0-10)
   if (sugars >= INDIAN_THRESHOLDS.sugar.veryHigh) points += 10;
@@ -61,11 +69,11 @@ function calculateNegativePoints(nutriments: Nutriments): number {
 }
 
 // Calculate positive points (healthy components)
-function calculatePositivePoints(nutriments: Nutriments): number {
+function calculatePositivePoints(n: Nutriments): number {
   let points = 0;
-  const fiber = safeNum(nutriments.fiber_100g);
-  const protein = safeNum(nutriments.proteins_100g);
-  const fruitsVeg = safeNum(nutriments.fruits_vegetables_nuts_100g);
+  const fiber = safeNum(n.fiber_100g);
+  const protein = safeNum(n.proteins_100g);
+  const fruitsVeg = safeNum(n.fruits_vegetables_nuts_100g);
 
   // Fiber points (0-5)
   if (fiber >= INDIAN_THRESHOLDS.fiber.excellent) points += 5;
@@ -97,11 +105,11 @@ function getNOVAScore(novaGroup: number | undefined): number {
 }
 
 // Generate nutrient scores for display
-function getNutrientScores(nutriments: Nutriments): NutrientScore[] {
+function getNutrientScores(n: Nutriments): NutrientScore[] {
   const scores: NutrientScore[] = [];
 
   // Sugar
-  const sugars = safeNum(nutriments.sugars_100g);
+  const sugars = safeNum(n.sugars_100g);
   const sugarScore = Math.min(10, Math.max(0, 10 - (sugars / 2.5)));
   scores.push({
     name: 'Sugar',
@@ -114,7 +122,7 @@ function getNutrientScores(nutriments: Nutriments): NutrientScore[] {
   });
 
   // Saturated Fat
-  const satFat = safeNum(nutriments.saturated_fat_100g);
+  const satFat = safeNum(n.saturated_fat_100g);
   const satFatScore = Math.min(10, Math.max(0, 10 - (satFat / 1)));
   scores.push({
     name: 'Saturated Fat',
@@ -127,7 +135,7 @@ function getNutrientScores(nutriments: Nutriments): NutrientScore[] {
   });
 
   // Sodium
-  const sodium = safeNum(nutriments.sodium_100g) || safeNum(nutriments.salt_100g ? nutriments.salt_100g / 2.5 : 0);
+  const sodium = safeNum(n.sodium_100g) || safeNum(n.salt_100g ? n.salt_100g / 2.5 : 0);
   const sodiumScore = Math.min(10, Math.max(0, 10 - (sodium / 0.06)));
   scores.push({
     name: 'Sodium',
@@ -140,7 +148,7 @@ function getNutrientScores(nutriments: Nutriments): NutrientScore[] {
   });
 
   // Fiber
-  const fiber = safeNum(nutriments.fiber_100g);
+  const fiber = safeNum(n.fiber_100g);
   const fiberScore = Math.min(10, Math.max(0, (fiber / 0.6)));
   scores.push({
     name: 'Fiber',
@@ -153,7 +161,7 @@ function getNutrientScores(nutriments: Nutriments): NutrientScore[] {
   });
 
   // Protein
-  const protein = safeNum(nutriments.proteins_100g);
+  const protein = safeNum(n.proteins_100g);
   const proteinScore = Math.min(10, Math.max(0, (protein / 1.2)));
   scores.push({
     name: 'Protein',
@@ -169,11 +177,11 @@ function getNutrientScores(nutriments: Nutriments): NutrientScore[] {
 }
 
 // Generate warnings based on nutritional content
-function generateWarnings(nutriments: Nutriments, novaGroup?: number): string[] {
+function generateWarnings(n: Nutriments, novaGroup?: number): string[] {
   const warnings: string[] = [];
-  const sugars = safeNum(nutriments.sugars_100g);
-  const satFat = safeNum(nutriments.saturated_fat_100g);
-  const sodium = safeNum(nutriments.sodium_100g) || safeNum(nutriments.salt_100g ? nutriments.salt_100g / 2.5 : 0);
+  const sugars = safeNum(n.sugars_100g);
+  const satFat = safeNum(n.saturated_fat_100g);
+  const sodium = safeNum(n.sodium_100g) || safeNum(n.salt_100g ? n.salt_100g / 2.5 : 0);
 
   if (sugars >= INDIAN_THRESHOLDS.sugar.veryHigh) {
     warnings.push(`High sugar: ${sugars}g per 100g (WHO recommends <25g/day)`);
@@ -187,20 +195,20 @@ function generateWarnings(nutriments: Nutriments, novaGroup?: number): string[] 
   if (novaGroup === 4) {
     warnings.push('Ultra-processed food (NOVA Group 4) - linked to health risks');
   }
-  if (nutriments.energy_100g && nutriments.energy_100g > 500) {
-    warnings.push(`High energy: ${nutriments.energy_100g} kcal per 100g`);
+  if (n.energy_100g && n.energy_100g > 500) {
+    warnings.push(`High energy: ${n.energy_100g} kcal per 100g`);
   }
 
   return warnings;
 }
 
 // Generate positives
-function generatePositives(nutriments: Nutriments, novaGroup?: number): string[] {
+function generatePositives(n: Nutriments, novaGroup?: number): string[] {
   const positives: string[] = [];
-  const fiber = safeNum(nutriments.fiber_100g);
-  const protein = safeNum(nutriments.proteins_100g);
-  const sugars = safeNum(nutriments.sugars_100g);
-  const satFat = safeNum(nutriments.saturated_fat_100g);
+  const fiber = safeNum(n.fiber_100g);
+  const protein = safeNum(n.proteins_100g);
+  const sugars = safeNum(n.sugars_100g);
+  const satFat = safeNum(n.saturated_fat_100g);
 
   if (fiber >= INDIAN_THRESHOLDS.fiber.good) {
     positives.push(`Good source of fiber: ${fiber}g per 100g`);
@@ -223,72 +231,106 @@ function generatePositives(nutriments: Nutriments, novaGroup?: number): string[]
 
 // Main scoring function
 export function calculateFoodScore(product: Product): FoodScoreResult {
-  // Use product nutriments, fall back to IFCT Indian food data if empty
-  let nutriments = product.nutriments ?? {};
-  
-  // Check if nutriments are empty (all zeros or missing key fields)
-  const hasNutriments = nutriments.proteins_100g != null || nutriments.sugars_100g != null;
-  let usedIfctFallback = false;
-  if (!hasNutriments && product.product_name) {
-    const indianData = lookupIndianFood(product.product_name);
-    if (indianData) {
-      nutriments = { ...nutriments, ...indianData };
-      usedIfctFallback = true;
+  try {
+    // Always ensure nutriments is a safe object — never undefined/null
+    let nutriments: Nutriments = safeNutriments(product?.nutriments);
+
+    // If nutriments are empty, try IFCT Indian food fallback
+    const hasNutriments =
+      nutriments.proteins_100g != null || nutriments.sugars_100g != null;
+    let usedIfctFallback = false;
+
+    if (!hasNutriments && product?.product_name) {
+      try {
+        const indianData = lookupIndianFood(product.product_name);
+        if (indianData) {
+          nutriments = { ...nutriments, ...indianData };
+          usedIfctFallback = true;
+        }
+      } catch {
+        // IFCT lookup failed — proceed with empty nutriments
+      }
     }
+
+    const novaGroup = product?.nova_group ?? 4;
+
+    // Base score from Nutri-Score methodology
+    const negativePoints = calculateNegativePoints(nutriments);
+    const positivePoints = calculatePositivePoints(nutriments);
+    const novaScore = getNOVAScore(novaGroup);
+
+    // Calculate overall score (0-100)
+    // Formula: 50 (base) + positive - negative + nova bonus
+    let overallScore = 50 + positivePoints - negativePoints + novaScore;
+    overallScore = Math.max(0, Math.min(100, overallScore));
+    if (!isFinite(overallScore)) overallScore = 50;
+
+    const { grade, color, label } = getGrade(overallScore);
+    const novaInfo = NOVA_LABELS[novaGroup] ?? NOVA_LABELS[4];
+    const nutrientScores = getNutrientScores(nutriments);
+    const warnings = generateWarnings(nutriments, novaGroup);
+    const positives = generatePositives(nutriments, novaGroup);
+
+    // Generate feedback (combines key positive and warning)
+    const feedback = positives.length > 0 && warnings.length > 0
+      ? positives[0] + '. ' + warnings[0]
+      : positives.length > 0
+        ? positives[0]
+        : warnings.length > 0
+          ? warnings[0]
+          : 'No specific feedback.';
+
+    const productName = product?.product_name ?? 'Unknown product';
+
+    // Generate summary
+    let summary = productName + ' scores ' + Math.round(overallScore) + '/100 (' + grade + '). ';
+    if (positives.length > 0) {
+      summary += positives[0] + '. ';
+    }
+    if (warnings.length > 0) {
+      summary += warnings[0];
+    }
+
+    return {
+      dataSource: usedIfctFallback ? 'ifct_fallback' : 'openfoodfacts',
+      product,
+      overallScore,
+      negativePoints,
+      positivePoints,
+      grade,
+      gradeColor: color,
+      gradeLabel: label,
+      novaGroup,
+      novaLabel: novaInfo.label,
+      novaDescription: novaInfo.description,
+      novaScore,
+      nutrientScores,
+      warnings,
+      positives,
+      feedback,
+      summary,
+    };
+  } catch (err) {
+    // Last-resort fallback: return a neutral score so the app never crashes
+    console.error('[scoring] calculateFoodScore failed:', err);
+    return {
+      dataSource: 'openfoodfacts',
+      product,
+      overallScore: 50,
+      negativePoints: 0,
+      positivePoints: 0,
+      grade: 'C',
+      gradeColor: '#f39c12',
+      gradeLabel: 'Fair',
+      novaGroup: product?.nova_group ?? 4,
+      novaLabel: 'Unknown',
+      novaDescription: 'Could not compute score for this product.',
+      novaScore: 0,
+      nutrientScores: [],
+      warnings: [],
+      positives: [],
+      feedback: 'Nutritional data unavailable for this product.',
+      summary: 'Score could not be computed.',
+    };
   }
-  const novaGroup = product.nova_group ?? 4;
-
-  // Base score from Nutri-Score methodology
-  const negativePoints = calculateNegativePoints(nutriments);
-  const positivePoints = calculatePositivePoints(nutriments);
-  const novaScore = getNOVAScore(novaGroup);
-
-  // Calculate overall score (0-100)
-  // Formula: 50 (base) + positive - negative + nova bonus
-  let overallScore = 50 + positivePoints - negativePoints + novaScore;
-  overallScore = Math.max(0, Math.min(100, overallScore));
-
-  const { grade, color, label } = getGrade(overallScore);
-  const novaInfo = NOVA_LABELS[novaGroup] || NOVA_LABELS[4];
-  const nutrientScores = getNutrientScores(nutriments);
-  const warnings = generateWarnings(nutriments, novaGroup);
-  const positives = generatePositives(nutriments, novaGroup);
-
-  // Generate feedback (combines key positive and warning)
-  const feedback = positives.length > 0 && warnings.length > 0
-    ? positives[0] + '. ' + warnings[0]
-    : positives.length > 0
-      ? positives[0]
-      : warnings.length > 0
-        ? warnings[0]
-        : 'No specific feedback.';
-
-  // Generate summary
-  let summary = product.product_name + ' scores ' + Math.round(overallScore) + '/100 (' + grade + '). '; 
-  if (positives.length > 0) {
-    summary += positives[0] + '. ';
-  }
-  if (warnings.length > 0) {
-    summary += warnings[0];
-  }
-
-  return {
-    dataSource: usedIfctFallback ? 'ifct_fallback' : 'openfoodfacts',
-    product,
-    overallScore,
-    negativePoints,
-    positivePoints,
-    grade,
-    gradeColor: color,
-    gradeLabel: label,
-    novaGroup,
-    novaLabel: novaInfo.label,
-    novaDescription: novaInfo.description,
-    novaScore,
-    nutrientScores,
-    warnings,
-    positives,
-    feedback,
-    summary,
-  };
 }
