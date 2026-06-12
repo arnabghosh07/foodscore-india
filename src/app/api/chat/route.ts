@@ -128,7 +128,7 @@ export async function POST(request: Request) {
               'X-Title': 'FoodScore India'
             },
             body: JSON.stringify({
-              model: 'google/gemini-2.5-flash',
+              model: 'openrouter/free',
               messages,
               max_tokens: 250, // Limit to prevent 402 budget exhaustion errors
               temperature: 0.7
