@@ -1,4 +1,4 @@
-import { Product, FoodScoreResult, NutrientScore, Nutriments } from './types';
+import { Product, FoodScoreResult, NutrientScore, Nutriments, SafetyRecommendation, HealthyAlternative } from './types';
 import { lookupIndianFood } from './indianFoods';
 
 /** Return n if it is a finite, real number, otherwise return fallback (default 0). */
@@ -253,22 +253,91 @@ export function calculateFoodScore(product: Product): FoodScoreResult {
     }
 
     const novaGroup = product?.nova_group ?? 4;
+    const productName = product?.product_name ?? 'Unknown product';
 
-    // Base score from Nutri-Score methodology
-    const negativePoints = calculateNegativePoints(nutriments);
-    const positivePoints = calculatePositivePoints(nutriments);
-    const novaScore = getNOVAScore(novaGroup);
+    // Red flag and penalty scoring
+    const redFlags: string[] = [];
+    const ingredients = (product?.ingredients_text || '').toLowerCase();
+    const sugars = safeNum(nutriments.sugars_100g);
+    const sodium = safeNum(nutriments.sodium_100g) || safeNum(nutriments.salt_100g ? nutriments.salt_100g / 2.5 : 0);
+    const satFat = safeNum(nutriments.saturated_fat_100g);
 
-    // Calculate overall score (0-100)
-    // Formula: 50 (base) + positive - negative + nova bonus
-    let overallScore = 50 + positivePoints - negativePoints + novaScore;
+    // 1. Palm Oil Check
+    const usesPalmOil = ingredients.includes('palm') || ingredients.includes('palmolein') || ingredients.includes('vanaspati');
+    if (usesPalmOil) {
+      redFlags.push('Contains Palm Oil / Palmolein (bad for heart health and raises cholesterol)');
+    }
+    // 2. High Sugar Check
+    if (sugars >= 25) {
+      redFlags.push(`Very High Sugar: ${sugars}g per 100g (exceeds recommended daily limit of 25g)`);
+    }
+    // 3. High Sodium Check
+    if (sodium >= 0.6) {
+      redFlags.push(`Very High Sodium: ${Math.round(sodium * 1000)}mg per 100g (raises blood pressure)`);
+    }
+    // 4. High Saturated Fat Check
+    if (satFat >= 10) {
+      redFlags.push(`Very High Saturated Fat: ${satFat}g per 100g`);
+    }
+    // 5. Hydrogenated Fats Check
+    if (ingredients.includes('hydrogenated') || ingredients.includes('vanaspati')) {
+      redFlags.push('Contains Hydrogenated / Trans Fats');
+    }
+
+    // Base score = 80
+    let penalties = 0;
+
+    // Palm oil penalty
+    if (usesPalmOil) penalties += 25;
+
+    // Sugars penalty
+    if (sugars >= 25) penalties += 20;
+    else if (sugars > 5) penalties += (sugars - 5) * 0.8;
+
+    // Sodium penalty
+    if (sodium >= 0.6) penalties += 20;
+    else if (sodium > 0.1) penalties += (sodium - 0.1) * 30;
+
+    // Saturated fat penalty
+    if (satFat >= 10) penalties += 15;
+    else if (satFat > 1.5) penalties += (satFat - 1.5) * 1.5;
+
+    // NOVA processing penalty
+    if (novaGroup === 4) penalties += 15;
+    else if (novaGroup === 3) penalties += 5;
+
+    // Credits:
+    let credits = 0;
+    const protein = safeNum(nutriments.proteins_100g);
+    const fiber = safeNum(nutriments.fiber_100g);
+    const fruitsVeg = safeNum(nutriments.fruits_vegetables_nuts_100g);
+
+    if (protein > 0) credits += Math.min(10, protein * 1.0);
+    if (fiber > 0) credits += Math.min(10, fiber * 1.5);
+    if (fruitsVeg >= 40) credits += Math.min(10, (fruitsVeg / 10));
+
+    // NOVA Group 1 bonus
+    if (novaGroup === 1) credits += 10;
+
+    let overallScore = 80 - penalties + credits;
+
+    // CAP the score if there is a major red flag
+    if (sugars >= 40 || sodium >= 1.0) {
+      overallScore = Math.min(30, overallScore); // Force Grade E for extreme cases
+    } else if (usesPalmOil || sugars >= 25 || sodium >= 0.6) {
+      overallScore = Math.min(45, overallScore); // Force Grade D/E
+    }
+
     overallScore = Math.max(0, Math.min(100, overallScore));
     if (!isFinite(overallScore)) overallScore = 50;
 
     const { grade, color, label } = getGrade(overallScore);
     const novaInfo = NOVA_LABELS[novaGroup] ?? NOVA_LABELS[4];
     const nutrientScores = getNutrientScores(nutriments);
-    const warnings = generateWarnings(nutriments, novaGroup);
+    
+    // Add red flags to warnings list so they also show up in health warnings tab
+    const baseWarnings = generateWarnings(nutriments, novaGroup);
+    const warnings = Array.from(new Set([...redFlags, ...baseWarnings]));
     const positives = generatePositives(nutriments, novaGroup);
 
     // Generate feedback (combines key positive and warning)
@@ -280,8 +349,6 @@ export function calculateFoodScore(product: Product): FoodScoreResult {
           ? warnings[0]
           : 'No specific feedback.';
 
-    const productName = product?.product_name ?? 'Unknown product';
-
     // Generate summary
     let summary = productName + ' scores ' + Math.round(overallScore) + '/100 (' + grade + '). ';
     if (positives.length > 0) {
@@ -291,27 +358,32 @@ export function calculateFoodScore(product: Product): FoodScoreResult {
       summary += warnings[0];
     }
 
+    // Safety recommendations & alternatives
+    const safetyRecommendation = calculateSafetyRecommendation(nutriments, product, novaGroup, overallScore, redFlags);
+    const healthyAlternatives = getHealthyAlternatives(productName, product?.categories);
+
     return {
       dataSource: usedIfctFallback ? 'ifct_fallback' : 'openfoodfacts',
       product,
       overallScore,
-      negativePoints,
-      positivePoints,
+      negativePoints: penalties,
+      positivePoints: credits,
       grade,
       gradeColor: color,
       gradeLabel: label,
       novaGroup,
       novaLabel: novaInfo.label,
       novaDescription: novaInfo.description,
-      novaScore,
+      novaScore: novaGroup === 1 ? 10 : 0,
       nutrientScores,
       warnings,
       positives,
       feedback,
       summary,
+      safetyRecommendation,
+      healthyAlternatives,
     };
   } catch (err) {
-    // Last-resort fallback: return a neutral score so the app never crashes
     console.error('[scoring] calculateFoodScore failed:', err);
     return {
       dataSource: 'openfoodfacts',
@@ -333,4 +405,140 @@ export function calculateFoodScore(product: Product): FoodScoreResult {
       summary: 'Score could not be computed.',
     };
   }
+}
+
+export function getHealthyAlternatives(productName: string, categoryText?: string): HealthyAlternative[] {
+  const name = (productName + ' ' + (categoryText || '')).toLowerCase();
+  
+  if (name.includes('noodle') || name.includes('maggi') || name.includes('ramen')) {
+    return [
+      { name: '🌾 Whole Wheat / Atta Noodles (No Palm Oil)', grade: 'B', gradeColor: '#27ae60', reason: 'Made with whole wheat flour, high in fiber, and baked/air-dried rather than palm oil fried.' },
+      { name: '🌱 Millet Noodles (Ragi/Jowar)', grade: 'A', gradeColor: '#2ecc71', reason: 'Rich in fiber and minerals, low glycemic index, and baked with clean ingredients.' },
+    ];
+  }
+  if (name.includes('biscuit') || name.includes('cookie') || name.includes('good day') || name.includes('parle') || name.includes('marie') || name.includes('bourbon')) {
+    return [
+      { name: '🌾 Oats / Ragi Digestive Biscuits (No Palm Oil)', grade: 'B', gradeColor: '#27ae60', reason: 'High fiber, lower sugar, and usually baked with whole grains.' },
+      { name: '🥜 Roasted Makhana (Foxnuts)', grade: 'A', gradeColor: '#2ecc71', reason: 'Naturally low in fat, zero sugar, high in protein, and rich in calcium.' },
+    ];
+  }
+  if (name.includes('chip') || name.includes('wafer') || name.includes('kurkure') || name.includes('churkur') || name.includes('namkeen') || name.includes('snack') || name.includes('pataka') || name.includes('crunch') || name.includes('puff') || name.includes('potato')) {
+    return [
+      { name: '🥜 Roasted Chana (Bengal Gram)', grade: 'A', gradeColor: '#2ecc71', reason: 'Zero trans fats, rich in plant protein and dietary fiber, keeps you full longer.' },
+      { name: '🍿 Air-popped Popcorn / Makhana', grade: 'A', gradeColor: '#2ecc71', reason: 'Light, crunchy, low calorie snack. Make sure it is salted lightly without butter.' },
+    ];
+  }
+  if (name.includes('drink') || name.includes('cola') || name.includes('sting') || name.includes('energy') || name.includes('soda') || name.includes('juice') || name.includes('beverage') || name.includes('thums up')) {
+    return [
+      { name: '🥥 Fresh Tender Coconut Water', grade: 'A', gradeColor: '#2ecc71', reason: 'Natural electrolytes, hydration, and zero added sugars.' },
+      { name: '🥛 Buttermilk (Chaas) / Low Sugar Lassi', grade: 'A', gradeColor: '#2ecc71', reason: 'Probiotic benefits, cooling, protein-rich, and free from synthetic preservatives.' },
+    ];
+  }
+  return [
+    { name: '🥜 Roasted Almonds / Walnuts', grade: 'A', gradeColor: '#2ecc71', reason: 'Rich in healthy fats (omega-3), protein, and vitamins. Great for energy.' },
+    { name: '🍿 Roasted Makhana (Foxnuts)', grade: 'A', gradeColor: '#2ecc71', reason: 'Crispy, low-calorie, rich in calcium and antioxidants.' },
+  ];
+}
+
+function calculateSafetyRecommendation(
+  n: Nutriments,
+  product: Product,
+  novaGroup: number,
+  overallScore: number,
+  redFlags: string[]
+): SafetyRecommendation {
+  const sugars = safeNum(n.sugars_100g);
+  const satFat = safeNum(n.saturated_fat_100g);
+  const sodium = safeNum(n.sodium_100g) || safeNum(n.salt_100g ? n.salt_100g / 2.5 : 0);
+  const ingredients = (product.ingredients_text || '').toLowerCase();
+  const name = product.product_name.toLowerCase();
+
+  const hasPalmOil = redFlags.some(flag => flag.toLowerCase().includes('palm') || flag.toLowerCase().includes('palmolein') || flag.toLowerCase().includes('vanaspati'));
+  const hasHighSugar = sugars > 15;
+  const hasHighSodium = sodium > 0.3;
+  const hasCaffeine = ingredients.includes('caffeine') || name.includes('sting') || name.includes('energy drink') || name.includes('red bull');
+
+  // 1. High risk groups
+  const highRiskGroups: string[] = [];
+  if (hasHighSugar) {
+    highRiskGroups.push('Diabetics', 'Young Children', 'Weight Watchers');
+  }
+  if (hasHighSodium) {
+    highRiskGroups.push('Hypertension Patients', 'Heart Patients', 'Elderly');
+  }
+  if (hasPalmOil || satFat > 8) {
+    highRiskGroups.push('Heart Patients', 'High Cholesterol Patients');
+  }
+  if (hasCaffeine) {
+    highRiskGroups.push('Pregnant Women', 'Children', 'Caffeine-sensitive individuals');
+  }
+  if (novaGroup === 4 && highRiskGroups.length === 0) {
+    highRiskGroups.push('Young Children');
+  }
+
+  // 2. Daily portion recommendation
+  // WHO/FSSAI thresholds: max 25g sugar, 22g sat fat, 2g sodium (5g salt) per day from food
+  let sugarLimit = sugars > 0 ? (25 / sugars) * 100 : 500;
+  let satFatLimit = satFat > 0 ? (22 / satFat) * 100 : 500;
+  let sodiumLimit = sodium > 0 ? (2 / sodium) * 100 : 500;
+
+  let maxPortion = Math.min(sugarLimit, satFatLimit, sodiumLimit);
+
+  // Cap it based on score and processing
+  if (novaGroup === 4) {
+    if (overallScore < 35) {
+      maxPortion = Math.min(maxPortion, 25); // very small portion for dangerous foods
+    } else if (overallScore < 50) {
+      maxPortion = Math.min(maxPortion, 35);
+    } else {
+      maxPortion = Math.min(maxPortion, 50); // cap ultra-processed at 50g daily
+    }
+  } else if (novaGroup === 3) {
+    maxPortion = Math.min(maxPortion, 100);
+  }
+
+  let dailyLimit = '';
+  if (novaGroup === 1 && sugars < 5 && sodium < 0.1) {
+    dailyLimit = 'Can be consumed freely as part of a balanced diet (standard portion ~150g-200g)';
+  } else {
+    const roundedLimit = Math.round(maxPortion / 5) * 5;
+    if (roundedLimit <= 15) {
+      dailyLimit = 'Strictly limit. If consumed, eat at most 10g-15g (a tiny bite)';
+    } else {
+      let servingEst = '';
+      if (name.includes('biscuit') || name.includes('cookie')) {
+        const count = Math.max(1, Math.round(roundedLimit / 10));
+        servingEst = ` (approx. ${count} biscuit${count > 1 ? 's' : ''})`;
+      } else if (name.includes('noodle') || name.includes('maggi')) {
+        servingEst = ' (approx. 1/3 pack of cooked noodles)';
+      } else if (name.includes('chip') || name.includes('kurkure') || name.includes('namkeen')) {
+        servingEst = ' (approx. a small handful)';
+      } else if (name.includes('drink') || name.includes('cola') || name.includes('sting') || name.includes('energy')) {
+        servingEst = ` (approx. ${Math.round(roundedLimit)}ml - half a glass)`;
+      }
+      dailyLimit = `Max ${roundedLimit}g per day${servingEst}`;
+    }
+  }
+
+  // 3. Weekly Frequency
+  let weeklyFrequency = '';
+  if (overallScore >= 80) {
+    weeklyFrequency = 'Daily / Regular consumption is safe (4-7 times a week)';
+  } else if (overallScore >= 65) {
+    weeklyFrequency = 'Moderate consumption (3-4 times a week)';
+  } else if (overallScore >= 50) {
+    weeklyFrequency = 'Occasional treat (1-2 times a week)';
+  } else if (overallScore >= 35) {
+    weeklyFrequency = 'Limit to once a week or less (Rare treat)';
+  } else {
+    weeklyFrequency = 'Avoid completely or consume at most once a month as a rare treat';
+  }
+
+  return {
+    dailyLimit,
+    weeklyFrequency,
+    highRiskGroups,
+    hasRedFlags: redFlags.length > 0,
+    redFlags,
+  };
 }

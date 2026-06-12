@@ -28,6 +28,21 @@ export interface Product {
   countries_tags?: string[];
 }
 
+export interface SafetyRecommendation {
+  dailyLimit: string;        // e.g. "Max 30g (approx 2 biscuits)"
+  weeklyFrequency: string;   // e.g. "At most once a week"
+  highRiskGroups: string[];   // e.g. ["Diabetics", "Heart Patients"]
+  hasRedFlags: boolean;
+  redFlags: string[];         // e.g. ["Contains Palm Oil", "High Added Sugar"]
+}
+
+export interface HealthyAlternative {
+  name: string;
+  grade: string;
+  gradeColor: string;
+  reason: string;
+}
+
 export interface FoodScoreResult {
   /** Source of nutritional data: 'openfoodfacts' from API, 'ifct_fallback' from Indian food database */
   dataSource: 'openfoodfacts' | 'ifct_fallback';
@@ -49,6 +64,8 @@ export interface FoodScoreResult {
   summary: string;
   /** True when scoring algorithm failed — product data is still valid */
   scoringFailed?: boolean;
+  safetyRecommendation?: SafetyRecommendation;
+  healthyAlternatives?: HealthyAlternative[];
 }
 
 export interface NutrientScore {

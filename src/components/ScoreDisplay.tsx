@@ -172,6 +172,78 @@ export default function ScoreDisplay({ result, onBack }: ScoreDisplayProps) {
           {/* ── Overview tab ── */}
           {activeTab === 'overview' && (
             <>
+              {/* Red Flags */}
+              {!scoringFailed && result.safetyRecommendation?.hasRedFlags && (
+                <div className="bg-red-50 border border-red-200 rounded-2xl p-4 shadow-sm">
+                  <h3 className="font-bold text-red-950 flex items-center gap-2 mb-2 text-base">
+                    <svg className="w-5 h-5 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                    </svg>
+                    CRITICAL RED FLAGS
+                  </h3>
+                  <ul className="space-y-2">
+                    {result.safetyRecommendation.redFlags.map((flag, idx) => (
+                      <li key={idx} className="text-sm text-red-800 font-semibold flex items-start gap-1.5 leading-relaxed">
+                        <span className="text-red-600 mt-0.5">•</span>
+                        {flag}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Portion Control & Safety Guidelines */}
+              {!scoringFailed && result.safetyRecommendation && (
+                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 space-y-4">
+                  <h3 className="font-semibold text-gray-900 flex items-center gap-2 text-base">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                    </svg>
+                    Consumption Guidelines
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="bg-emerald-50/50 rounded-xl p-3.5 border border-emerald-100/40">
+                      <span className="text-xs text-emerald-800 font-bold uppercase tracking-wider block mb-1">Recommended Portion</span>
+                      <span className="text-sm font-semibold text-gray-800 leading-snug">
+                        {result.safetyRecommendation.dailyLimit}
+                      </span>
+                    </div>
+                    <div className="bg-emerald-50/50 rounded-xl p-3.5 border border-emerald-100/40">
+                      <span className="text-xs text-emerald-800 font-bold uppercase tracking-wider block mb-1">Weekly Frequency</span>
+                      <span className="text-sm font-semibold text-gray-800 leading-snug">
+                        {result.safetyRecommendation.weeklyFrequency}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* High Risk Groups */}
+                  {result.safetyRecommendation.highRiskGroups.length > 0 && (
+                    <div className="pt-3 border-t border-gray-50">
+                      <span className="text-xs text-gray-500 font-bold uppercase tracking-wider block mb-2">Who should limit/avoid:</span>
+                      <div className="flex flex-wrap gap-2">
+                        {result.safetyRecommendation.highRiskGroups.map((group, idx) => {
+                          let icon = '👥';
+                          if (group.includes('Diabetics')) icon = '🍬';
+                          else if (group.includes('Pregnant')) icon = '🤰';
+                          else if (group.includes('Children')) icon = '👶';
+                          else if (group.includes('Heart')) icon = '❤️';
+                          else if (group.includes('Hypertension') || group.includes('Elderly')) icon = '👵';
+                          else if (group.includes('Cholesterol')) icon = '🍳';
+                          else if (group.includes('Weight')) icon = '⚖️';
+                          
+                          return (
+                            <span key={idx} className="inline-flex items-center gap-1 px-3 py-1.5 bg-red-50 text-red-700 border border-red-100 rounded-full text-xs font-semibold">
+                              <span>{icon}</span>
+                              {group}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
               {/* NOVA processing level */}
               {!scoringFailed && (
                 <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
@@ -216,6 +288,35 @@ export default function ScoreDisplay({ result, onBack }: ScoreDisplayProps) {
                       <li key={i} className="text-sm text-red-700">⚠ {w}</li>
                     ))}
                   </ul>
+                </div>
+              )}
+
+              {/* Healthy Alternatives */}
+              {!scoringFailed && result.healthyAlternatives && result.healthyAlternatives.length > 0 && (
+                <div className="bg-gradient-to-br from-emerald-50 to-teal-50/30 rounded-2xl border border-emerald-100 p-5 space-y-4">
+                  <div className="flex items-center gap-2">
+                    <svg className="w-5 h-5 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h3 className="font-bold text-emerald-950 text-base">Healthier Alternatives</h3>
+                  </div>
+                  <p className="text-xs text-emerald-800 leading-normal">
+                    Love this type of food? Swap it for these cleaner, highly rated alternatives:
+                  </p>
+                  <div className="space-y-3.5">
+                    {result.healthyAlternatives.map((alt, idx) => (
+                      <div key={idx} className="bg-white rounded-xl p-4 border border-emerald-100/60 shadow-sm flex items-start gap-3">
+                        <span className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-black text-white shrink-0 shadow-sm"
+                          style={{ backgroundColor: alt.gradeColor }}>
+                          {alt.grade}
+                        </span>
+                        <div className="space-y-1">
+                          <h4 className="font-bold text-gray-900 text-sm">{alt.name}</h4>
+                          <p className="text-xs text-gray-600 leading-relaxed">{alt.reason}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
 
