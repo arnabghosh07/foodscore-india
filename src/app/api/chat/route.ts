@@ -36,9 +36,8 @@ export async function POST(request: Request) {
       `Guidelines for your response:\n` +
       `1. Be concise: Keep your response under 3-4 sentences maximum. Users are reading this on mobile.\n` +
       `2. Adapt to the Indian context: Mention typical Indian eating habits, ingredients, or dietary habits when relevant.\n` +
-      `3. Be safe: NEVER prescribe medicines, diagnose specific illnesses, or tell users to ignore doctor recommendations. If asked for medical prescriptions, strictly decline and refer them to a doctor.\n` +
-      `4. Tone: Helpful, positive, and educational.\n` +
-      `5. ALWAYS end your response with this short disclaimer: "⚠️ AI info; not medical advice."`;
+      `3. Be safe: NEVER prescribe medicines, diagnose specific illnesses, or suggest medical treatments. If the user asks about serious health conditions, disease treatments, prescriptions, or if you are in any way confused or unsure, state clearly that you are an AI and they should consult a doctor or healthcare professional for serious matters.\n` +
+      `4. Tone: Helpful, positive, and educational.`;
 
     let reply = '';
     let success = false;
