@@ -2,20 +2,20 @@
 * @arnabghosh07
 
 # Core scoring algorithm and types
-/src/lib/scoring.ts @arnabghosh07
-/src/lib/types.ts @arnabghosh07
+src/lib/scoring.ts @arnabghosh07
+src/lib/types.ts @arnabghosh07
 
 # API integration
-/src/lib/api.ts @arnabghosh07
+src/lib/api.ts @arnabghosh07
 
 # UI Components
-/src/components/ @arnabghosh07
+src/components/ @arnabghosh07
 
 # App routes and layout
-/src/app/ @arnabghosh07
+src/app/ @arnabghosh07
 
 # Tests
-/src/__tests__/ @arnabghosh07
+src/__tests__/ @arnabghosh07
 
 # CI/CD and deployment config
 .github/ @arnabghosh07
