@@ -220,7 +220,36 @@ export default function ScoreDisplay({ result, onBack, onSelectProduct }: ScoreD
               isCategoryAligned = true;
             }
             
-            return isCategoryAligned;
+            if (!isCategoryAligned) {
+              return false;
+            }
+
+            // Enforce ready-to-eat / semi-ready-to-eat: exclude raw flours, grains, seeds, baking ingredients
+            const rawIngredientsBlacklist = [
+              'flour', 'atta', 'maida', 'besan', 'sooji', 'suji', 'rawa', 'rava', 'powder', 'starch',
+              'raw seed', 'seeds', 'raw grain', 'grains', 'raw millet', 'whole grain',
+              'baking powder', 'yeast', 'baking soda', 'oil', 'ghee', 'butter oil', 'vinegar', 'salt pack'
+            ];
+            
+            const hasRawIngredient = rawIngredientsBlacklist.some(blacklisted => {
+              const isMatch = altName.includes(blacklisted) || altCats.includes(blacklisted);
+              if (isMatch) {
+                if (blacklisted === 'atta' && (altName.includes('noodle') || altName.includes('pasta') || altName.includes('biscuit') || altName.includes('cookie'))) {
+                  return false; // Allow "atta noodles" or "atta biscuits"
+                }
+                if (blacklisted === 'grains' && (altName.includes('cereal') || altName.includes('muesli') || altName.includes('flake'))) {
+                  return false; // Allow multigrain cereal
+                }
+                return true;
+              }
+              return false;
+            });
+            
+            if (hasRawIngredient) {
+              return false;
+            }
+
+            return true;
           });
 
         // Deduplicate by name and brand
