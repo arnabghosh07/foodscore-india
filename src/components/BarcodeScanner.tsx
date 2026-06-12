@@ -44,9 +44,15 @@ export default function BarcodeScanner({ onScan, onError }: BarcodeScannerProps)
           if (hasScannedRef.current) return;
           hasScannedRef.current = true;
 
+          // Stop scanner asynchronously in the background
           scanner.stop().catch(() => {});
+          scannerRef.current = null; // Clear to prevent cleanup useEffect from calling stop() again
           setIsScanning(false);
-          onScan(decodedText);
+
+          // Small 300ms timeout to let the camera tracks release before unmounting the DOM container
+          setTimeout(() => {
+            onScan(decodedText);
+          }, 300);
         },
         () => {
           // Ignore per-frame errors (no barcode found in this frame)
