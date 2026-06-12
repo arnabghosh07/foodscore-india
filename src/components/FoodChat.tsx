@@ -13,22 +13,35 @@ interface Message {
 }
 
 export default function FoodChat({ result }: FoodChatProps) {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      role: 'model',
-      content: `Hello! I am FoodScore AI 🌿. Ask me anything about **${result.product.product_name || 'this product'}**. For example, you can ask about its ingredients, portion sizes, or how it affects specific health conditions!`,
-    },
-  ]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Reset chat whenever a new product is scanned
+  useEffect(() => {
+    setMessages([
+      {
+        role: 'model',
+        content: `Hello! I am FoodScore AI 🌿. Ask me anything about **${result.product.product_name || 'this product'}**. For example, you can ask about its ingredients, portion sizes, or how it affects specific health conditions!`,
+      },
+    ]);
+    setError(null);
+    setLoading(false);
+  }, [result]);
+
   // Auto scroll to bottom of messages
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, loading]);
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [messages, loading, isOpen]);
 
   const handleSendMessage = async (text: string) => {
     if (!text.trim() || loading) return;
@@ -48,7 +61,6 @@ export default function FoodChat({ result }: FoodChatProps) {
         },
         body: JSON.stringify({
           message: text,
-          // Exclude the initial welcome message from the history to keep context clean
           history: messages.slice(1).map((m) => ({
             role: m.role,
             content: m.content,
@@ -91,116 +103,157 @@ export default function FoodChat({ result }: FoodChatProps) {
   ];
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 space-y-4">
-      {/* Header */}
-      <div className="flex items-center gap-2 pb-3 border-b border-gray-50">
-        <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center shadow-md shadow-emerald-500/25">
-          <svg className="w-4.5 h-4.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-          </svg>
-        </div>
-        <div>
-          <h3 className="font-bold text-gray-900 text-sm">Ask FoodScore AI</h3>
-          <p className="text-xxs text-gray-400">Powered by Gemini 1.5 Flash</p>
-        </div>
-      </div>
-
-      {/* Messages */}
-      <div className="h-64 overflow-y-auto px-1 py-2 space-y-3 scrollbar-thin">
-        {messages.map((msg, idx) => (
-          <div
-            key={idx}
-            className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-          >
-            <div
-              className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-xs leading-relaxed ${
-                msg.role === 'user'
-                  ? 'bg-emerald-600 text-white font-medium rounded-tr-none shadow-sm'
-                  : 'bg-gray-50 text-gray-800 border border-gray-100 rounded-tl-none'
-              }`}
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end pointer-events-none">
+      {/* Chat Window Panel */}
+      {isOpen && (
+        <div className="w-[calc(100vw-2rem)] sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 mb-4 flex flex-col overflow-hidden pointer-events-auto transition-all duration-300 transform scale-100 origin-bottom-right h-[480px]">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-emerald-600 to-teal-700 text-white px-4 py-3 flex items-center justify-between shadow-md">
+            <div className="flex items-center gap-2.5">
+              <div className="relative w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center backdrop-blur-md">
+                <svg className="w-4.5 h-4.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                </svg>
+                <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 border-2 border-emerald-600 rounded-full" />
+              </div>
+              <div>
+                <h3 className="font-bold text-xs text-white leading-tight">FoodScore AI</h3>
+                <p className="text-[10px] text-emerald-100/90 font-medium truncate max-w-[180px] sm:max-w-[240px]">
+                  Analyzing {result.product.product_name || 'Product'}
+                </p>
+              </div>
+            </div>
+            <button 
+              onClick={() => setIsOpen(false)}
+              className="p-1 hover:bg-white/10 rounded-lg transition active:scale-95 cursor-pointer"
             >
-              {msg.role === 'model' ? (
-                // Safe basic markdown parsing for bold text
-                <div 
-                  dangerouslySetInnerHTML={{ 
-                    __html: msg.content
-                      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                      .replace(/\n/g, '<br />') 
-                  }} 
-                />
-              ) : (
-                msg.content
-              )}
-            </div>
+              <svg className="w-5 h-5 text-emerald-100 hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
-        ))}
-        {loading && (
-          <div className="flex justify-start">
-            <div className="bg-gray-50 border border-gray-100 text-gray-400 rounded-2xl rounded-tl-none px-4 py-3 text-xs flex items-center gap-1.5 shadow-sm">
-              <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-              <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-              <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-            </div>
-          </div>
-        )}
-        {error && (
-          <div className="text-center py-1 bg-red-50 text-red-700 border border-red-100 rounded-xl text-xxs font-medium">
-            ⚠️ {error}
-          </div>
-        )}
-        <div ref={messagesEndRef} />
-      </div>
 
-      {/* Quick Action Chips */}
-      {messages.length === 1 && !loading && (
-        <div className="space-y-1.5">
-          <span className="text-xxs font-semibold text-gray-400 uppercase tracking-wider block">Suggested Questions</span>
-          <div className="flex flex-wrap gap-1.5">
-            {quickQuestions.map((q, idx) => (
-              <button
+          {/* Messages Container */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-3 scrollbar-thin bg-gray-50/50">
+            {messages.map((msg, idx) => (
+              <div
                 key={idx}
-                onClick={() => handleQuickQuestion(q)}
-                className="px-2.5 py-1.5 bg-emerald-50/50 hover:bg-emerald-100/50 border border-emerald-100/40 text-emerald-800 rounded-xl text-xxs font-medium transition active:scale-[0.98]"
+                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
-                {q}
-              </button>
+                <div
+                  className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-xs leading-relaxed ${
+                    msg.role === 'user'
+                      ? 'bg-emerald-600 text-white font-medium rounded-tr-none shadow-sm'
+                      : 'bg-white text-gray-800 border border-gray-100 rounded-tl-none shadow-sm'
+                  }`}
+                >
+                  {msg.role === 'model' ? (
+                    <div 
+                      dangerouslySetInnerHTML={{ 
+                        __html: msg.content
+                          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                          .replace(/\n/g, '<br />') 
+                      }} 
+                    />
+                  ) : (
+                    msg.content
+                  )}
+                </div>
+              </div>
             ))}
+            {loading && (
+              <div className="flex justify-start">
+                <div className="bg-white border border-gray-100 text-gray-400 rounded-2xl rounded-tl-none px-4 py-3 text-xs flex items-center gap-1.5 shadow-sm">
+                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                </div>
+              </div>
+            )}
+            {error && (
+              <div className="text-center py-2 px-3 bg-red-50 text-red-700 border border-red-100 rounded-xl text-xxs font-medium">
+                ⚠️ {error}
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+
+          {/* Bottom Controls / Input Area */}
+          <div className="p-3 bg-white border-t border-gray-100 space-y-2.5">
+            {/* Quick Action Chips (only shown at starting state) */}
+            {messages.length === 1 && !loading && (
+              <div className="space-y-1">
+                <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider block">Suggested Questions</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {quickQuestions.map((q, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleQuickQuestion(q)}
+                      className="px-2.5 py-1.5 bg-emerald-50 hover:bg-emerald-100/70 border border-emerald-100/50 text-emerald-800 rounded-xl text-[10px] font-semibold transition active:scale-[0.98] cursor-pointer"
+                    >
+                      {q}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Disclaimer */}
+            <div className="bg-amber-50/60 border border-amber-100/50 rounded-xl p-2 flex items-start gap-1.5">
+              <span className="text-amber-600 text-xs">⚖️</span>
+              <p className="text-[9px] text-amber-700 leading-normal font-medium">
+                AI info; not medical advice, prescriptions, or diagnoses.
+              </p>
+            </div>
+
+            {/* Input Form */}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSendMessage(input);
+              }}
+              className="flex gap-2"
+            >
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Ask a question..."
+                className="flex-1 px-3.5 py-2 bg-gray-50 border border-gray-200 rounded-xl text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all disabled:opacity-50"
+                disabled={loading}
+              />
+              <button
+                type="submit"
+                disabled={!input.trim() || loading}
+                className="px-4 bg-emerald-600 hover:bg-emerald-700 disabled:bg-gray-100 text-white disabled:text-gray-400 rounded-xl text-xs font-semibold shadow-md shadow-emerald-500/10 transition active:scale-[0.98] flex items-center justify-center cursor-pointer"
+              >
+                Send
+              </button>
+            </form>
           </div>
         </div>
       )}
 
-      {/* Disclaimer */}
-      <div className="bg-amber-50/50 border border-amber-100/40 rounded-xl p-2.5 flex items-start gap-2">
-        <span className="text-amber-600 text-xs mt-0.5">⚖️</span>
-        <p className="text-xxs text-amber-700 leading-normal font-medium">
-          FoodScore AI is for general educational info only. It is not a doctor and cannot replace medical advice, diagnoses, or prescriptions.
-        </p>
-      </div>
-
-      {/* Input Form */}
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSendMessage(input);
-        }}
-        className="flex gap-2"
+      {/* Floating Action Button (FAB) */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-14 h-14 bg-gradient-to-tr from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white rounded-full flex items-center justify-center shadow-lg shadow-emerald-500/35 transition-all duration-300 hover:scale-105 active:scale-95 pointer-events-auto cursor-pointer group relative"
+        aria-label="Toggle Chat"
       >
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask a question..."
-          className="flex-1 px-4 py-2.5 bg-gray-50 border border-gray-150 rounded-xl text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
-          disabled={loading}
-        />
-        <button
-          type="submit"
-          disabled={!input.trim() || loading}
-          className="px-4 bg-emerald-600 hover:bg-emerald-700 disabled:bg-gray-100 text-white disabled:text-gray-400 rounded-xl text-xs font-semibold shadow-md shadow-emerald-500/10 transition active:scale-[0.98] flex items-center justify-center"
-        >
-          Send
-        </button>
-      </form>
+        {isOpen ? (
+          <svg className="w-6 h-6 transition-transform duration-300 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        ) : (
+          <div className="relative">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+            <span className="absolute -top-1.5 -right-1.5 w-3 h-3 bg-rose-500 border-2 border-emerald-500 rounded-full animate-ping" />
+            <span className="absolute -top-1.5 -right-1.5 w-3 h-3 bg-rose-500 border border-emerald-500 rounded-full" />
+          </div>
+        )}
+      </button>
     </div>
   );
 }
