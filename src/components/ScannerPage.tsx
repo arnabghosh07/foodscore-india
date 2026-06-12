@@ -243,16 +243,19 @@ export default function ScannerPage() {
                   onClick={() => setShowAllSamples(!showAllSamples)}
                   className="text-xs font-medium text-emerald-600 hover:text-emerald-700 transition-all"
                 >
-                  {showAllSamples ? 'Show less' : 'Show all 5'}
+                  {showAllSamples ? 'Show less' : 'Show all 8'}
                 </button>
               </div>
               <div className="flex flex-wrap gap-2">
                 {[
-                  { barcode: '8901058022193', name: 'Maggi Noodles' },
-                  { barcode: '8901058006292', name: 'Maggi 2-Min Noodles' },
-                  { barcode: '8901058851304', name: 'Maggi Masala Noodles' },
-                  { barcode: '8901058019346', name: 'Maggi Noodles 280g' },
-                  { barcode: '8901058000306', name: 'Maggi Noodles 560g' },
+                  { barcode: '8901058022193', name: '🍜 Maggi Noodles' },
+                  { barcode: '8901719134852', name: '🍪 Parle-G Biscuit' },
+                  { barcode: '8901063093522', name: '🍪 Britannia Good Day' },
+                  { barcode: '8901063162914', name: '🥛 Marie Gold' },
+                  { barcode: '8906010500764', name: '🫙 Balaji Wafers' },
+                  { barcode: '8901491100519', name: '🌽 Kurkure' },
+                  { barcode: '8902080000227', name: '⚡ Sting Energy' },
+                  { barcode: '8901764042911', name: '🥤 Thums Up' },
                 ]
                   .filter((_, i) => showAllSamples || i < 3)
                   .map((item) => (
