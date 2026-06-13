@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Markdown from 'react-markdown';
 import { FoodScoreResult } from '@/lib/types';
 
 interface FoodChatProps {
@@ -83,9 +84,9 @@ export default function FoodChat({ result }: FoodChatProps) {
 
       const data = await response.json();
       setMessages((prev) => [...prev, { role: 'model', content: data.reply }]);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('[FoodChat] Chat failed:', err);
-      setError(err.message || 'Something went wrong. Please try again.');
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -148,13 +149,9 @@ export default function FoodChat({ result }: FoodChatProps) {
                   }`}
                 >
                   {msg.role === 'model' ? (
-                    <div 
-                      dangerouslySetInnerHTML={{ 
-                        __html: msg.content
-                          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                          .replace(/\n/g, '<br />') 
-                      }} 
-                    />
+                    <div className="prose prose-xs max-w-none prose-p:my-1 prose-strong:text-inherit prose-strong:font-semibold">
+                      <Markdown>{msg.content}</Markdown>
+                    </div>
                   ) : (
                     msg.content
                   )}

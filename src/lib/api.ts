@@ -9,7 +9,7 @@ const MAX_RETRIES = 2;
  * OFf mixes numbers, strings ("g", "kcal", "~"), and null in the nutriments object.
  * Returns undefined for anything that isn't a finite number.
  */
-function toNum(v: unknown): number | undefined {
+export function toNum(v: unknown): number | undefined {
   if (v == null) return undefined;
   const n = typeof v === 'number' ? v : parseFloat(String(v));
   return isFinite(n) ? n : undefined;
@@ -26,7 +26,7 @@ function toNum(v: unknown): number | undefined {
  *  4. Some products store sodium/salt in mg instead of g (dirty data);
  *     we detect this and convert (>10 g sodium per 100g is impossible).
  */
-function normalizeNutriments(raw: Record<string, unknown>): Nutriments {
+export function normalizeNutriments(raw: Record<string, unknown>): Nutriments {
   // Energy: prefer the explicit kcal field; fall back to converting kJ
   const energyKcalRaw = toNum(raw['energy-kcal_100g']);
   const energyKjRaw = toNum(raw['energy_100g']); // energy_100g is always kJ in OFf

@@ -458,7 +458,7 @@ function calculateSafetyRecommendation(
   const satFat = safeNum(n.saturated_fat_100g);
   const sodium = safeNum(n.sodium_100g) || safeNum(n.salt_100g ? n.salt_100g / 2.5 : 0);
   const ingredients = (product.ingredients_text || '').toLowerCase();
-  const name = product.product_name.toLowerCase();
+  const name = (product.product_name || '').toLowerCase();
 
   const hasPalmOil = redFlags.some(flag => flag.toLowerCase().includes('palm') || flag.toLowerCase().includes('palmolein') || flag.toLowerCase().includes('vanaspati'));
   const hasHighSugar = sugars > 15;
