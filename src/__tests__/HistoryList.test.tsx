@@ -72,6 +72,20 @@ describe('HistoryList component', () => {
       expect(badge).toHaveStyle({ backgroundColor: '#2ecc71' });
     });
 
+    it('should apply correct background color for grade B', () => {
+      const items = [createHistoryItem({ grade: 'B' })];
+      render(<HistoryList history={items} onSelect={vi.fn()} onClear={vi.fn()} />);
+      const badge = screen.getByText('B');
+      expect(badge).toHaveStyle({ backgroundColor: '#27ae60' });
+    });
+
+    it('should apply correct background color for grade C', () => {
+      const items = [createHistoryItem({ grade: 'C' })];
+      render(<HistoryList history={items} onSelect={vi.fn()} onClear={vi.fn()} />);
+      const badge = screen.getByText('C');
+      expect(badge).toHaveStyle({ backgroundColor: '#f39c12' });
+    });
+
     it('should apply correct background color for grade D', () => {
       const items = [createHistoryItem({ grade: 'D' })];
       render(<HistoryList history={items} onSelect={vi.fn()} onClear={vi.fn()} />);
