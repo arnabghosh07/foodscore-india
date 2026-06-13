@@ -238,9 +238,8 @@ describe('ScoreDisplay', () => {
       const onBack = vi.fn();
       const result = createMockResult();
       render(<ScoreDisplay result={result} onBack={onBack} />);
-      // The back button is the first button in the header with the chevron SVG
       const header = screen.getByText('Health Score').closest('div')!;
-      const backButton = header.querySelector('button')!;
+      const backButton = within(header).getByRole('button');
       fireEvent.click(backButton);
       expect(onBack).toHaveBeenCalledTimes(1);
     });
