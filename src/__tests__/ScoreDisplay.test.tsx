@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent, within } from '@testing-library/react';
 import '@testing-library/jest-dom/vitest';
 import ScoreDisplay from '@/components/ScoreDisplay';
 import { FoodScoreResult } from '@/lib/types';
@@ -197,30 +197,18 @@ describe('ScoreDisplay', () => {
       expect(screen.getByText('NOVA Group 4')).toBeInTheDocument();
     });
 
-    it('should show positives section', async () => {
+    it('should show positives section', () => {
       const result = createMockResult();
-      await act(async () => {
-        render(<ScoreDisplay result={result} onBack={vi.fn()} />);
-      });
-      expect(screen.getByText('Good Points')).toBeInTheDocument();
-      // Check the li element containing the positive (not the summary)
-      const positivesHeading = screen.getByText('Good Points');
-      const positivesList = positivesHeading.closest('div')!.querySelector('ul');
-      expect(positivesList).toBeTruthy();
-      expect(positivesList!.textContent).toContain('Good source of fiber');
+      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+      const positivesSection = screen.getByText('Good Points').closest('div')!;
+      expect(within(positivesSection).getByText(/Good source of fiber/)).toBeInTheDocument();
     });
 
-    it('should show warnings section', async () => {
+    it('should show warnings section', () => {
       const result = createMockResult();
-      await act(async () => {
-        render(<ScoreDisplay result={result} onBack={vi.fn()} />);
-      });
-      expect(screen.getByText('Health Warnings')).toBeInTheDocument();
-      // Check the li element containing the warning (not the summary)
-      const warningsHeading = screen.getByText('Health Warnings');
-      const warningsList = warningsHeading.closest('div')!.querySelector('ul');
-      expect(warningsList).toBeTruthy();
-      expect(warningsList!.textContent).toContain('High sugar');
+      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+      const warningsSection = screen.getByText('Health Warnings').closest('div')!;
+      expect(within(warningsSection).getByText(/High sugar/)).toBeInTheDocument();
     });
 
     it('should show healthy alternatives', () => {
