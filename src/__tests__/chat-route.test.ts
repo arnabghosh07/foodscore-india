@@ -192,6 +192,85 @@ describe('/api/chat POST', () => {
     expect(mockGenerateContent).toHaveBeenCalled();
   });
 
+  it('should handle empty history array', async () => {
+    process.env.GEMINI_API_KEY = 'test-gemini-key';
+    process.env.OPENROUTER_API_KEY = '';
+
+    const req = makeRequest({
+      message: 'Is this healthy?',
+      history: [],
+    });
+    const res = await POST(req);
+
+    expect(res.status).toBe(200);
+    const callArgs = mockGenerateContent.mock.calls[0][0];
+    // No history turns + 1 current message = 1 content
+    expect(callArgs.contents).toHaveLength(1);
+    expect(callArgs.contents[0].role).toBe('user');
+    expect(callArgs.contents[0].parts[0].text).toBe('Is this healthy?');
+  });
+
+  it('should handle missing productContext gracefully', async () => {
+    process.env.GEMINI_API_KEY = 'test-gemini-key';
+    process.env.OPENROUTER_API_KEY = '';
+
+    const req = makeRequest({ message: 'Tell me about this product' });
+    const res = await POST(req);
+    const data = await res.json();
+
+    expect(res.status).toBe(200);
+    expect(data.reply).toBe('This is a helpful response about your food.');
+  });
+
+  it('should handle missing history (undefined) gracefully', async () => {
+    process.env.GEMINI_API_KEY = 'test-gemini-key';
+    process.env.OPENROUTER_API_KEY = '';
+
+    const req = makeRequest({ message: 'Is this safe?' });
+    const res = await POST(req);
+
+    expect(res.status).toBe(200);
+    const callArgs = mockGenerateContent.mock.calls[0][0];
+    // Only the current message, no history
+    expect(callArgs.contents).toHaveLength(1);
+    expect(callArgs.contents[0].parts[0].text).toBe('Is this safe?');
+  });
+
+  it('should use default product name when productContext has no product_name', async () => {
+    process.env.GEMINI_API_KEY = 'test-gemini-key';
+    process.env.OPENROUTER_API_KEY = '';
+
+    const req = makeRequest({
+      message: 'Is this healthy?',
+      productContext: {
+        brands: 'Unknown',
+        overallScore: 50,
+        grade: 'C',
+      },
+    });
+    const res = await POST(req);
+    expect(res.status).toBe(200);
+  });
+
+  it('should send OpenRouter request with correct message body', async () => {
+    process.env.GEMINI_API_KEY = '';
+    process.env.OPENROUTER_API_KEY = 'test-openrouter-key';
+
+    const req = makeRequest({
+      message: 'What are the health risks?',
+      history: [{ role: 'user', content: 'Tell me about Maggi' }],
+    });
+    const res = await POST(req);
+
+    expect(res.status).toBe(200);
+    const fetchCall = mockFetch.mock.calls[0];
+    const body = JSON.parse(fetchCall[1].body);
+    // system message + 1 history + 1 current = 3 messages
+    expect(body.messages).toHaveLength(3);
+    expect(body.messages[2].role).toBe('user');
+    expect(body.messages[2].content).toBe('What are the health risks?');
+  });
+
   it('should return 500 on invalid JSON body', async () => {
     const req = new Request('http://localhost:3000/api/chat', {
       method: 'POST',
