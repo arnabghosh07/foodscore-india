@@ -37,8 +37,8 @@ let mockToBlob: ReturnType<typeof vi.fn>;
 let originalCreateElement: typeof document.createElement;
 
 beforeEach(() => {
-  mockToBlob = vi.fn((_cb: BlobCallback, _type?: string) => {
-    _cb(new Blob(['fake'], { type: 'image/png' }));
+  mockToBlob = vi.fn((cb: BlobCallback) => {
+    cb(new Blob(['fake'], { type: 'image/png' }));
   });
 
   originalCreateElement = document.createElement.bind(document);

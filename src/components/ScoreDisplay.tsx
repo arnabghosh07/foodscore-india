@@ -173,7 +173,7 @@ export default function ScoreDisplay({ result, onBack, onSelectProduct }: ScoreD
           .map(p => {
             try {
               return calculateFoodScore(p);
-            } catch (e) {
+            } catch {
               return null;
             }
           })

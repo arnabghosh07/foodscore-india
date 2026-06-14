@@ -94,13 +94,13 @@ describe('ScoreDisplay', () => {
 
   describe('product card', () => {
     it('should render product name and brand', async () => {
-      const { result } = await renderScore();
+      await renderScore();
       expect(screen.getByText('Test Biscuit')).toBeInTheDocument();
       expect(screen.getByText('Test Brand')).toBeInTheDocument();
     });
 
     it('should render product image when available', async () => {
-      const { result } = await renderScore();
+      await renderScore();
       const img = screen.getByRole('img', { name: 'Test Biscuit' });
       // next/image rewrites src to /_next/image?url=...
       expect(img).toHaveAttribute('src', expect.stringContaining('example.com%2Fimg.jpg'));
