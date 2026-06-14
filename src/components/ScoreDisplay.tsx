@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { FoodScoreResult, NutrientScore, Nutriments } from '@/lib/types';
+import { FoodScoreResult, NutrientScore, Nutriments, Product } from '@/lib/types';
 import { useState, useEffect } from 'react';
 import ShareCard from './ShareCard';
 import FoodChat from './FoodChat';
@@ -160,7 +160,7 @@ export default function ScoreDisplay({ result, onBack, onSelectProduct }: ScoreD
         }
 
         const promises = searchTerms.map(term => 
-          searchProducts(term).catch(() => [] as any[])
+          searchProducts(term).catch((): Product[] => [])
         );
         const searchResultsLists = await Promise.all(promises);
         
@@ -671,7 +671,7 @@ export default function ScoreDisplay({ result, onBack, onSelectProduct }: ScoreD
       </div>
       {/* Floating AI Chatbot - Visible across all tabs */}
       {!scoringFailed && (
-        <FoodChat result={result} />
+        <FoodChat key={result.product.code} result={result} />
       )}
     </div>
   );

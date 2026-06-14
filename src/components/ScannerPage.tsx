@@ -20,8 +20,7 @@ export default function ScannerPage() {
   const [viewState, setViewState] = useState<ViewState>('scanner');
   const [result, setResult] = useState<FoodScoreResult | null>(null);
   const [showAllSamples, setShowAllSamples] = useState(false);
-  const [history, setHistory] = useState<ScanHistory[]>([]);
-  useEffect(() => { setHistory(getHistory()); }, []);
+  const [history, setHistory] = useState<ScanHistory[]>(() => getHistory());
   const [currentBarcode, setCurrentBarcode] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [errorType, setErrorType] = useState<string>('unknown');

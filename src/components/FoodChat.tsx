@@ -15,24 +15,17 @@ interface Message {
 
 export default function FoodChat({ result }: FoodChatProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      role: 'model',
+      content: `Hello! I am FoodScore AI 🌿. Ask me anything about **${result.product.product_name || 'this product'}**. For example, you can ask about its ingredients, portion sizes, or how it affects specific health conditions!`,
+    },
+  ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  // Reset chat whenever a new product is scanned
-  useEffect(() => {
-    setMessages([
-      {
-        role: 'model',
-        content: `Hello! I am FoodScore AI 🌿. Ask me anything about **${result.product.product_name || 'this product'}**. For example, you can ask about its ingredients, portion sizes, or how it affects specific health conditions!`,
-      },
-    ]);
-    setError(null);
-    setLoading(false);
-  }, [result]);
 
   // Auto scroll to bottom of messages
   useEffect(() => {
