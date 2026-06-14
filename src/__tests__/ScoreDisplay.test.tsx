@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent, within } from '@testing-library/react';
+import { render, screen, fireEvent, within, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/vitest';
 import ScoreDisplay from '@/components/ScoreDisplay';
 import { FoodScoreResult } from '@/lib/types';
@@ -9,8 +9,9 @@ import { FoodScoreResult } from '@/lib/types';
 Element.prototype.scrollIntoView = vi.fn();
 
 // Mock searchProducts to prevent real API calls
+const mockSearchProducts = vi.fn().mockResolvedValue([]);
 vi.mock('@/lib/api', () => ({
-  searchProducts: vi.fn().mockResolvedValue([]),
+  searchProducts: (...args: unknown[]) => mockSearchProducts(...args),
 }));
 
 // Mock ShareCard to avoid clipboard API issues
@@ -83,161 +84,147 @@ function createMockResult(overrides?: Partial<FoodScoreResult>): FoodScoreResult
 }
 
 describe('ScoreDisplay', () => {
+  // Helper: render and flush async effects (useEffect with searchProducts)
+  async function renderScore(overrides?: Partial<FoodScoreResult>, onBack = vi.fn()) {
+    const result = createMockResult(overrides);
+    render(<ScoreDisplay result={result} onBack={onBack} />);
+    await waitFor(() => {});
+    return { result, onBack };
+  }
+
   describe('product card', () => {
-    it('should render product name and brand', () => {
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should render product name and brand', async () => {
+      const { result } = await renderScore();
       expect(screen.getByText('Test Biscuit')).toBeInTheDocument();
       expect(screen.getByText('Test Brand')).toBeInTheDocument();
     });
 
-    it('should render product image when available', () => {
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
-      // img has alt={product_name} so it gets role="img" not "presentation"
+    it('should render product image when available', async () => {
+      const { result } = await renderScore();
       const img = screen.getByRole('img', { name: 'Test Biscuit' });
       expect(img).toHaveAttribute('src', 'https://example.com/img.jpg');
     });
 
-    it('should render categories when available', () => {
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should render categories when available', async () => {
+      await renderScore();
       expect(screen.getByText('Biscuits')).toBeInTheDocument();
     });
 
-    it('should not render image when image_front_url is missing', () => {
-      const result = createMockResult({
+    it('should not render image when image_front_url is missing', async () => {
+      await renderScore({
         product: { ...createMockResult().product, image_front_url: undefined },
       });
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
       expect(screen.queryByRole('img')).not.toBeInTheDocument();
     });
   });
 
   describe('score circle', () => {
-    it('should display the score number', () => {
-      const result = createMockResult({ overallScore: 72 });
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should display the score number', async () => {
+      await renderScore({ overallScore: 72 });
       expect(screen.getByText('72')).toBeInTheDocument();
       expect(screen.getByText('out of 100')).toBeInTheDocument();
     });
 
-    it('should display grade badge with label', () => {
-      const result = createMockResult({ grade: 'A', gradeLabel: 'Excellent', gradeColor: '#2ecc71' });
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should display grade badge with label', async () => {
+      await renderScore({ grade: 'A', gradeLabel: 'Excellent', gradeColor: '#2ecc71' });
       expect(screen.getByText('A — Excellent')).toBeInTheDocument();
     });
 
-    it('should display summary text', () => {
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should display summary text', async () => {
+      await renderScore();
       expect(screen.getByText(/Test Biscuit scores 45\/100/)).toBeInTheDocument();
     });
 
-    it('should show "Score unavailable" when scoringFailed is true', () => {
-      const result = createMockResult({ scoringFailed: true });
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should show "Score unavailable" when scoringFailed is true', async () => {
+      await renderScore({ scoringFailed: true });
       expect(screen.getByText('Score unavailable')).toBeInTheDocument();
       expect(screen.getByText(/health score could not be computed/)).toBeInTheDocument();
     });
   });
 
   describe('tab switching', () => {
-    it('should default to overview tab', () => {
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should default to overview tab', async () => {
+      await renderScore();
       expect(screen.getByText('Good Points')).toBeInTheDocument();
       expect(screen.getByText('Health Warnings')).toBeInTheDocument();
     });
 
-    it('should switch to details tab', () => {
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should switch to details tab', async () => {
+      await renderScore();
       fireEvent.click(screen.getByText('Details'));
       expect(screen.getByText('Energy')).toBeInTheDocument();
     });
 
-    it('should switch to about tab', () => {
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should switch to about tab', async () => {
+      await renderScore();
       fireEvent.click(screen.getByText('About'));
       expect(screen.getByText('How this score works')).toBeInTheDocument();
     });
   });
 
   describe('overview tab content', () => {
-    it('should show red flags when hasRedFlags is true', () => {
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should show red flags when hasRedFlags is true', async () => {
+      await renderScore();
       expect(screen.getByText('CRITICAL RED FLAGS')).toBeInTheDocument();
       expect(screen.getByText(/Very High sugar/)).toBeInTheDocument();
     });
 
-    it('should show consumption guidelines', () => {
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should show consumption guidelines', async () => {
+      await renderScore();
       expect(screen.getByText('Consumption Guidelines')).toBeInTheDocument();
       expect(screen.getByText('Max 30g per day (approx. 3 biscuits)')).toBeInTheDocument();
       expect(screen.getByText('Limit to once a week or less (Rare treat)')).toBeInTheDocument();
     });
 
-    it('should show high risk groups', () => {
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should show high risk groups', async () => {
+      await renderScore();
       expect(screen.getByText('Who should limit/avoid:')).toBeInTheDocument();
       expect(screen.getByText('Diabetics')).toBeInTheDocument();
       expect(screen.getByText('Young Children')).toBeInTheDocument();
     });
 
-    it('should show NOVA processing level', () => {
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should show NOVA processing level', async () => {
+      await renderScore();
       expect(screen.getByText('Processing Level')).toBeInTheDocument();
       expect(screen.getByText('Ultra-Processed')).toBeInTheDocument();
       expect(screen.getByText('NOVA Group 4')).toBeInTheDocument();
     });
 
-    it('should show positives section', () => {
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should show positives section', async () => {
+      await renderScore();
       const positivesSection = screen.getByText('Good Points').closest('div')!;
       expect(within(positivesSection).getByText(/Good source of fiber/)).toBeInTheDocument();
     });
 
-    it('should show warnings section', () => {
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should show warnings section', async () => {
+      await renderScore();
       const warningsSection = screen.getByText('Health Warnings').closest('div')!;
       expect(within(warningsSection).getByText(/High sugar/)).toBeInTheDocument();
     });
 
-    it('should show healthy alternatives', () => {
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should show healthy alternatives', async () => {
+      await renderScore();
       expect(screen.getByText('Healthier Alternatives')).toBeInTheDocument();
       expect(screen.getByText('Oats Biscuit')).toBeInTheDocument();
       expect(screen.getByText('Roasted Makhana')).toBeInTheDocument();
     });
 
-    it('should show nutrition panel', () => {
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should show nutrition panel', async () => {
+      await renderScore();
       expect(screen.getByText('Nutrition per 100g')).toBeInTheDocument();
     });
 
-    it('should show ingredients when available', () => {
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should show ingredients when available', async () => {
+      await renderScore();
       expect(screen.getByText('Ingredients')).toBeInTheDocument();
       expect(screen.getByText('Flour, sugar, palm oil')).toBeInTheDocument();
     });
   });
 
   describe('callbacks', () => {
-    it('should call onBack when back button is clicked', () => {
+    it('should call onBack when back button is clicked', async () => {
       const onBack = vi.fn();
-      const result = createMockResult();
-      render(<ScoreDisplay result={result} onBack={onBack} />);
+      await renderScore(undefined, onBack);
       const header = screen.getByText('Health Score').closest('div')!;
       const backButton = within(header).getByRole('button');
       fireEvent.click(backButton);
@@ -246,21 +233,18 @@ describe('ScoreDisplay', () => {
   });
 
   describe('scoringFailed state', () => {
-    it('should not show red flags when scoringFailed', () => {
-      const result = createMockResult({ scoringFailed: true });
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should not show red flags when scoringFailed', async () => {
+      await renderScore({ scoringFailed: true });
       expect(screen.queryByText('CRITICAL RED FLAGS')).not.toBeInTheDocument();
     });
 
-    it('should not show consumption guidelines when scoringFailed', () => {
-      const result = createMockResult({ scoringFailed: true });
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should not show consumption guidelines when scoringFailed', async () => {
+      await renderScore({ scoringFailed: true });
       expect(screen.queryByText('Consumption Guidelines')).not.toBeInTheDocument();
     });
 
-    it('should not show NOVA level when scoringFailed', () => {
-      const result = createMockResult({ scoringFailed: true });
-      render(<ScoreDisplay result={result} onBack={vi.fn()} />);
+    it('should not show NOVA level when scoringFailed', async () => {
+      await renderScore({ scoringFailed: true });
       expect(screen.queryByText('Processing Level')).not.toBeInTheDocument();
     });
   });
