@@ -9,7 +9,7 @@ import HistoryList from './HistoryList';
 import LoadingSpinner from './LoadingSpinner';
 import NotFound from './NotFound';
 import Footer from './Footer';
-import { lookupProduct, searchProducts, ApiError } from '@/lib/api';
+import { lookupProduct, ApiError } from '@/lib/api';
 import { calculateFoodScore } from '@/lib/scoring';
 import { getHistory, addToHistory, clearHistory } from '@/lib/history';
 import { Product, FoodScoreResult, ScanHistory } from '@/lib/types';
@@ -19,7 +19,6 @@ type ViewState = 'scanner' | 'loading' | 'results' | 'search-results' | 'not-fou
 export default function ScannerPage() {
   const [viewState, setViewState] = useState<ViewState>('scanner');
   const [result, setResult] = useState<FoodScoreResult | null>(null);
-  const [searchResults, setSearchResults] = useState<Product[]>([]);
   const [showAllSamples, setShowAllSamples] = useState(false);
   const [history, setHistory] = useState<ScanHistory[]>([]);
   useEffect(() => { setHistory(getHistory()); }, []);

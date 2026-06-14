@@ -102,7 +102,8 @@ describe('ScoreDisplay', () => {
     it('should render product image when available', async () => {
       const { result } = await renderScore();
       const img = screen.getByRole('img', { name: 'Test Biscuit' });
-      expect(img).toHaveAttribute('src', 'https://example.com/img.jpg');
+      // next/image rewrites src to /_next/image?url=...
+      expect(img).toHaveAttribute('src', expect.stringContaining('example.com%2Fimg.jpg'));
     });
 
     it('should render categories when available', async () => {

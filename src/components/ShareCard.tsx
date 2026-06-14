@@ -1,7 +1,7 @@
 'use client';
 
 import { FoodScoreResult } from '@/lib/types';
-import { useState, useRef, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 
 interface ShareCardProps {
   result: FoodScoreResult;

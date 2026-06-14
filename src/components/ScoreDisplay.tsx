@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { FoodScoreResult, NutrientScore, Nutriments } from '@/lib/types';
 import { useState, useEffect } from 'react';
 import ShareCard from './ShareCard';
@@ -301,11 +302,15 @@ export default function ScoreDisplay({ result, onBack, onSelectProduct }: ScoreD
         {/* ── Product card (always shown, data from API) ── */}
         <div className="mt-6 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
           {product.image_front_url && (
-            <img
-              src={product.image_front_url}
-              alt={product.product_name}
-              className="w-full h-48 object-contain bg-gray-50 p-4"
-            />
+            <div className="relative w-full h-48 bg-gray-50 p-4 overflow-hidden">
+              <Image
+                src={product.image_front_url}
+                alt={product.product_name}
+                fill
+                sizes="(max-width: 640px) 100vw, 512px"
+                className="object-contain"
+              />
+            </div>
           )}
           <div className="p-4">
             <h2 className="text-xl font-bold text-gray-900">{product.product_name}</h2>
@@ -517,11 +522,15 @@ export default function ScoreDisplay({ result, onBack, onSelectProduct }: ScoreD
                             >
                               <div className="flex items-center gap-3 overflow-hidden">
                                 {alt.product.image_front_url ? (
-                                  <img 
-                                    src={alt.product.image_front_url} 
-                                    alt={alt.product.product_name}
-                                    className="w-10 h-10 object-contain rounded-md bg-gray-50 border border-gray-100 p-1 flex-shrink-0"
-                                  />
+                                  <div className="relative w-10 h-10 rounded-md bg-gray-50 border border-gray-100 overflow-hidden flex-shrink-0 p-1">
+                                    <Image
+                                      src={alt.product.image_front_url}
+                                      alt={alt.product.product_name}
+                                      fill
+                                      sizes="40px"
+                                      className="object-contain"
+                                    />
+                                  </div>
                                 ) : (
                                   <div className="w-10 h-10 bg-gray-50 rounded-md border border-gray-100 flex items-center justify-center text-gray-400 text-xs flex-shrink-0">
                                     📦

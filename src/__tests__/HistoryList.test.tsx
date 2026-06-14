@@ -112,9 +112,9 @@ describe('HistoryList component', () => {
     it('should show product image when imageUrl is provided', () => {
       const items = [createHistoryItem({ imageUrl: 'https://example.com/img.jpg' })];
       render(<HistoryList history={items} onSelect={vi.fn()} onClear={vi.fn()} />);
-      // <img alt=""> gets presentation role per ARIA spec in jsdom
       const img = screen.getByRole('presentation');
-      expect(img).toHaveAttribute('src', 'https://example.com/img.jpg');
+      // next/image rewrites src to /_next/image?url=...
+      expect(img).toHaveAttribute('src', expect.stringContaining('example.com%2Fimg.jpg'));
     });
 
     it('should show barcode icon placeholder when no imageUrl', () => {

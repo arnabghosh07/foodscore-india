@@ -40,70 +40,6 @@ function getGrade(score: number): { grade: string; color: string; label: string 
   return { grade: 'E', color: '#e74c3c', label: 'Very Poor' };
 }
 
-// Calculate negative points (unhealthy components)
-function calculateNegativePoints(n: Nutriments): number {
-  let points = 0;
-  const sugars = safeNum(n.sugars_100g);
-  const satFat = safeNum(n.saturated_fat_100g);
-  const sodium = safeNum(n.sodium_100g) || safeNum(n.salt_100g ? n.salt_100g / 2.5 : 0);
-
-  // Sugar points (0-10)
-  if (sugars >= INDIAN_THRESHOLDS.sugar.veryHigh) points += 10;
-  else if (sugars >= INDIAN_THRESHOLDS.sugar.high) points += 7;
-  else if (sugars >= INDIAN_THRESHOLDS.sugar.low) points += 4;
-  else points += 1;
-
-  // Saturated fat points (0-10)
-  if (satFat >= INDIAN_THRESHOLDS.saturatedFat.veryHigh) points += 10;
-  else if (satFat >= INDIAN_THRESHOLDS.saturatedFat.high) points += 7;
-  else if (satFat >= INDIAN_THRESHOLDS.saturatedFat.low) points += 4;
-  else points += 1;
-
-  // Sodium points (0-10)
-  if (sodium >= INDIAN_THRESHOLDS.sodium.veryHigh) points += 10;
-  else if (sodium >= INDIAN_THRESHOLDS.sodium.high) points += 7;
-  else if (sodium >= INDIAN_THRESHOLDS.sodium.low) points += 4;
-  else points += 1;
-
-  return points;
-}
-
-// Calculate positive points (healthy components)
-function calculatePositivePoints(n: Nutriments): number {
-  let points = 0;
-  const fiber = safeNum(n.fiber_100g);
-  const protein = safeNum(n.proteins_100g);
-  const fruitsVeg = safeNum(n.fruits_vegetables_nuts_100g);
-
-  // Fiber points (0-5)
-  if (fiber >= INDIAN_THRESHOLDS.fiber.excellent) points += 5;
-  else if (fiber >= INDIAN_THRESHOLDS.fiber.good) points += 3;
-  else if (fiber >= INDIAN_THRESHOLDS.fiber.low) points += 2;
-
-  // Protein points (0-5)
-  if (protein >= INDIAN_THRESHOLDS.protein.excellent) points += 5;
-  else if (protein >= INDIAN_THRESHOLDS.protein.good) points += 3;
-  else if (protein >= INDIAN_THRESHOLDS.protein.low) points += 1;
-
-  // Fruits/vegetables/nuts points (0-5)
-  if (fruitsVeg >= 80) points += 5;
-  else if (fruitsVeg >= 60) points += 3;
-  else if (fruitsVeg >= 40) points += 1;
-
-  return points;
-}
-
-// NOVA penalty/bonus
-function getNOVAScore(novaGroup: number | undefined): number {
-  switch (novaGroup) {
-    case 1: return 15;
-    case 2: return 10;
-    case 3: return 5;
-    case 4: return -5;
-    default: return 0;
-  }
-}
-
 // Generate nutrient scores for display
 function getNutrientScores(n: Nutriments): NutrientScore[] {
   const scores: NutrientScore[] = [];
@@ -485,9 +421,9 @@ function calculateSafetyRecommendation(
 
   // 2. Daily portion recommendation
   // WHO/FSSAI thresholds: max 25g sugar, 22g sat fat, 2g sodium (5g salt) per day from food
-  let sugarLimit = sugars > 0 ? (25 / sugars) * 100 : 500;
-  let satFatLimit = satFat > 0 ? (22 / satFat) * 100 : 500;
-  let sodiumLimit = sodium > 0 ? (2 / sodium) * 100 : 500;
+  const sugarLimit = sugars > 0 ? (25 / sugars) * 100 : 500;
+  const satFatLimit = satFat > 0 ? (22 / satFat) * 100 : 500;
+  const sodiumLimit = sodium > 0 ? (2 / sodium) * 100 : 500;
 
   let maxPortion = Math.min(sugarLimit, satFatLimit, sodiumLimit);
 

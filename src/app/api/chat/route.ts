@@ -76,7 +76,7 @@ export async function POST(request: Request) {
           generationConfig: {
             temperature: 0.7,
             maxOutputTokens: 800,
-            // @ts-ignore - thinkingConfig is supported but might not be in the local typings file yet
+            // @ts-expect-error - thinkingConfig is supported but might not be in the local typings file yet
             thinkingConfig: {
               thinkingBudget: 0,
             },

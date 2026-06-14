@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { ScanHistory } from '@/lib/types';
 
 interface HistoryListProps {
@@ -65,11 +66,15 @@ export default function HistoryList({ history, onSelect, onClear }: HistoryListP
           className="w-full flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-sm transition text-left"
         >
           {item.imageUrl ? (
-            <img
-              src={item.imageUrl}
-              alt=""
-              className="w-12 h-12 rounded-lg object-contain bg-gray-50"
-            />
+            <div className="relative w-12 h-12 rounded-lg bg-gray-50 overflow-hidden">
+              <Image
+                src={item.imageUrl}
+                alt=""
+                fill
+                sizes="48px"
+                className="object-contain"
+              />
+            </div>
           ) : (
             <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center">
               <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
