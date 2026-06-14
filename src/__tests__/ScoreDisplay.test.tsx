@@ -233,6 +233,111 @@ describe('ScoreDisplay', () => {
     });
   });
 
+  describe('edge cases', () => {
+    it('should show RawNutritionPanel fallback when nutrientScores is empty', async () => {
+      await renderScore({ nutrientScores: [] });
+      // Details tab should fall back to raw nutriment panel
+      fireEvent.click(screen.getByText('Details'));
+      expect(screen.getByText('Nutrition per 100g')).toBeInTheDocument();
+      // Should show raw nutrient values from nutriments
+      expect(screen.getByText('450.0 kcal')).toBeInTheDocument();
+    });
+
+    it('should hide red flags when safetyRecommendation is missing', async () => {
+      await renderScore({ safetyRecommendation: undefined });
+      expect(screen.queryByText('CRITICAL RED FLAGS')).not.toBeInTheDocument();
+    });
+
+    it('should hide consumption guidelines when safetyRecommendation is missing', async () => {
+      await renderScore({ safetyRecommendation: undefined });
+      expect(screen.queryByText('Consumption Guidelines')).not.toBeInTheDocument();
+      expect(screen.queryByText('Recommended Portion')).not.toBeInTheDocument();
+    });
+
+    it('should hide high risk groups when safetyRecommendation has empty array', async () => {
+      await renderScore({
+        safetyRecommendation: {
+          dailyLimit: 'Max 50g per day',
+          weeklyFrequency: '2-3 times per week',
+          highRiskGroups: [],
+          hasRedFlags: false,
+          redFlags: [],
+        },
+      });
+      expect(screen.queryByText('Who should limit/avoid:')).not.toBeInTheDocument();
+    });
+
+    it('should hide warnings section when warnings is empty', async () => {
+      await renderScore({ warnings: [] });
+      expect(screen.queryByText('Health Warnings')).not.toBeInTheDocument();
+    });
+
+    it('should hide positives section when positives is empty', async () => {
+      await renderScore({ positives: [] });
+      expect(screen.queryByText('Good Points')).not.toBeInTheDocument();
+    });
+
+    it('should hide healthy alternatives section when healthyAlternatives is empty', async () => {
+      await renderScore({ healthyAlternatives: [] });
+      // The section header should not appear
+      expect(screen.queryByText('General Clean Food Swaps')).not.toBeInTheDocument();
+    });
+
+    it('should hide ingredients when ingredients_text is missing', async () => {
+      await renderScore({
+        product: { ...createMockResult().product, ingredients_text: undefined },
+      });
+      expect(screen.queryByText('Ingredients')).not.toBeInTheDocument();
+    });
+
+    it('should hide brands when brands is missing', async () => {
+      await renderScore({
+        product: { ...createMockResult().product, brands: undefined },
+      });
+      expect(screen.queryByText('Test Brand')).not.toBeInTheDocument();
+    });
+
+    it('should hide categories when categories is missing', async () => {
+      await renderScore({
+        product: { ...createMockResult().product, categories: undefined },
+      });
+      expect(screen.queryByText('Biscuits')).not.toBeInTheDocument();
+    });
+
+    it('should show "No nutritional data available" when all nutriment values are null', async () => {
+      await renderScore({
+        product: {
+          ...createMockResult().product,
+          nutriments: {
+            energy_100g: undefined,
+            proteins_100g: undefined,
+            carbohydrates_100g: undefined,
+            sugars_100g: undefined,
+            fat_100g: undefined,
+            saturated_fat_100g: undefined,
+            fiber_100g: undefined,
+            sodium_100g: undefined,
+          },
+        },
+      });
+      expect(screen.getByText('No nutritional data available')).toBeInTheDocument();
+    });
+
+    it('should handle safetyRecommendation without red flags', async () => {
+      await renderScore({
+        safetyRecommendation: {
+          dailyLimit: 'Max 100g per day',
+          weeklyFrequency: 'Daily okay',
+          highRiskGroups: [],
+          hasRedFlags: false,
+          redFlags: [],
+        },
+      });
+      expect(screen.queryByText('CRITICAL RED FLAGS')).not.toBeInTheDocument();
+      expect(screen.getByText('Consumption Guidelines')).toBeInTheDocument();
+    });
+  });
+
   describe('scoringFailed state', () => {
     it('should not show red flags when scoringFailed', async () => {
       await renderScore({ scoringFailed: true });

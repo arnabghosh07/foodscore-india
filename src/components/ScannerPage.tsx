@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import dynamic from 'next/dynamic';
 const BarcodeScanner = dynamic(() => import('./BarcodeScanner'), { ssr: false });
 import ManualEntry from './ManualEntry';

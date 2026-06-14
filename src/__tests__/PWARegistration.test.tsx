@@ -68,4 +68,51 @@ describe('PWARegistration', () => {
       expect(mockUpdate).toHaveBeenCalled();
     });
   });
+
+  it('should not crash when serviceWorker is not supported', () => {
+    // Delete the property entirely so 'serviceWorker' in navigator returns false
+    delete (navigator as { serviceWorker?: ServiceWorkerContainer }).serviceWorker;
+
+    // Should not throw
+    expect(() => render(<PWARegistration />)).not.toThrow();
+  });
+
+  it('should handle registration returning undefined gracefully', async () => {
+    (navigator.serviceWorker.register as ReturnType<typeof vi.fn>).mockResolvedValue(undefined as unknown as ServiceWorkerRegistration);
+
+    expect(() => render(<PWARegistration />)).not.toThrow();
+
+    await vi.waitFor(() => {
+      expect(navigator.serviceWorker.register).toHaveBeenCalled();
+    });
+  });
+
+  it('should handle update() throwing after successful registration', async () => {
+    const mockUpdate = vi.fn().mockRejectedValue(new Error('Update failed'));
+    (navigator.serviceWorker.register as ReturnType<typeof vi.fn>).mockResolvedValue({ update: mockUpdate });
+
+    // Should not throw
+    expect(() => render(<PWARegistration />)).not.toThrow();
+
+    await vi.waitFor(() => {
+      expect(mockUpdate).toHaveBeenCalled();
+    });
+  });
+
+  it('should not re-register after unmount', async () => {
+    const { unmount } = render(<PWARegistration />);
+    expect(navigator.serviceWorker.register).toHaveBeenCalledTimes(1);
+
+    unmount();
+
+    // Verify register was only called once total
+    expect(navigator.serviceWorker.register).toHaveBeenCalledTimes(1);
+  });
+
+  it('should register with the correct sw.js path', () => {
+    render(<PWARegistration />);
+    expect(navigator.serviceWorker.register).toHaveBeenCalledWith('/sw.js');
+    expect(navigator.serviceWorker.register).not.toHaveBeenCalledWith('sw.js');
+    expect(navigator.serviceWorker.register).not.toHaveBeenCalledWith('/service-worker.js');
+  });
 });
